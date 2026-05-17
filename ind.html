@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#120a2f">
   <base target="_top">
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon.png">
   
   <!-- Modern Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -516,7 +516,7 @@
   <div class="modal-overlay login-overlay" id="loginOverlay">
     <div class="modal-box login-box">
       <div style="text-align: center; margin-bottom: 32px;">
-        <img src="favicon.svg" alt="Logo" style="width: 80px; height: 80px; border-radius: 16px; margin-bottom: 16px; box-shadow: 0 0 20px rgba(59,130,246,0.4); object-fit: cover;">
+        <img src="favicon.png" alt="Logo" style="width: 80px; height: 80px; border-radius: 16px; margin-bottom: 16px; box-shadow: 0 0 20px rgba(59,130,246,0.4); object-fit: cover;">
         <h2 class="h2-title" style="font-size: 24px; color: var(--text-main); font-family: var(--font-head); font-weight:700;">Zona Occludens</h2>
         <p class="sub-text" style="margin-bottom: 0;">Welcome to the ultimate mastery protocol.</p>
       </div>
@@ -593,7 +593,7 @@
     
     <aside class="sidebar" id="sidebar">
       <div class="brand">
-        <img src="favicon.svg" alt="Logo" class="brand-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Circle-icons-brain.svg/1200px-Circle-icons-brain.svg.png'">
+        <img src="favicon.png" alt="Logo" class="brand-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Circle-icons-brain.svg/1200px-Circle-icons-brain.svg.png'">
         <div class="brand-text"><h1>Zona Occludens</h1><p>NEET PG · INICET · UPSC</p></div>
       </div>
       
@@ -1364,7 +1364,7 @@
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js').catch(err => console.warn('Service worker registration failed:', err));
+        navigator.serviceWorker.register('sw.js').catch(err => console.warn('Service worker registration failed:', err));
       });
     }
 
@@ -2292,12 +2292,17 @@
           let arsChips = entry.arsenal.length ? entry.arsenal.map(a => `<span class="a-chip active">${a}</span>`).join('') : '<span class="a-chip">No Resources Tagged</span>';
           let priorityBadge = entry.priority ? `<span class="p-priority ${entry.priority.toLowerCase().replace(' ','-')}">${entry.priority}</span>` : '';
           let notesHtml = entry.notes ? `<div style="margin-top:16px; padding:12px; background:rgba(0,0,0,0.3); border-radius:8px; font-size:13px; font-weight:500; border-left:3px solid var(--blue); color:white;">${entry.notes}</div>` : '';
-          let dayFinishedBtn = `<button class="btn btn-sm ${entry.dayFinished ? 'btn-primary' : 'btn-outline'}" style="padding: 6px 12px; font-size: 11px; font-weight:800;" onclick="toggleDayFinished('${d}')"><i class="fas ${entry.dayFinished ? 'fa-check-double' : 'fa-flag-checkered'} mr-1"></i> ${entry.day<!-- ... existing code ... -->
-                  ${dayFinishedBtn}
-                  <span class="p-status ${statusClass}">${entry.status}</span>
-                  <button class="icon-btn" style="width:28px; height:28px; border:none; background:rgba(0,0,0,0.3); font-size:12px;" onclick="togglePlannerEdit('${d}')"><i class="fas fa-pen"></i></button>
-                </div>
-              </div>
+          let dayFinishedBtn = `<button class="btn btn-sm ${entry.dayFinished ? 'btn-primary' : 'btn-outline'}" style="padding: 6px 12px; font-size: 11px; font-weight:800;" onclick="toggleDayFinished('${d}')"><i class="fas ${entry.dayFinished ? 'fa-check-double' : 'fa-flag-checkered'} mr-1"></i> ${entry.dayFinished ? 'Day Finished' : 'Finish Day'}</button>`;
+
+          html += `
+            <div class="planner-day edit-mode" id="pd-${d}">
+              <div class="p-header">
+                <span class="p-target"><i class="fas fa-calendar-day text-blue-500 mr-2"></i> ${formatStr}</span>
+                <div style="display:flex; gap:10px; align-items:center;">
+                  ${dayFinishedBtn}
+                  <button class="btn btn-primary btn-sm" onclick="togglePlannerEdit('${d}')"><i class="fas fa-save"></i> Save</button>
+                </div>
+              </div>
               <div class="p-body">
                 <div style="display:flex; justify-content:space-between; align-items:flex-start;"><span class="p-subject">${subjLabel}</span>${priorityBadge}</div>
                 <div style="font-size:12px; text-transform:uppercase; font-weight:800; color:var(--text-dim); margin-bottom:8px; margin-top:12px; letter-spacing:1px;">Micro-Targets</div><ul class="p-item-list" style="display:flex; flex-direction:column; gap:6px;">${targetHtml}</ul>
