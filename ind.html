@@ -4,7 +4,11 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Zona Occludens 🧠 | Master Protocol Dashboard</title>
-  <link rel="icon" type="image/png" href="favicon.png">
+  <meta name="description" content="Zona Occludens offline-first exam planner, revision tracker, and study partner dashboard.">
+  <meta name="theme-color" content="#120a2f">
+  <base target="_top">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   
   <!-- Modern Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -160,6 +164,29 @@
     select.form-control option { background: #0f172a; color: #fff; }
     [data-theme="light"] select.form-control option { background: #fff; color: #000; }
     textarea.form-control { resize: vertical; min-height: 100px; line-height: 1.5; }
+    .text-center { text-align: center; }
+    .text-white { color: #ffffff; }
+    .text-slate-500 { color: #64748b; }
+    .text-slate-400 { color: #94a3b8; }
+    .text-amber-500 { color: #f59e0b; }
+    .text-blue-500 { color: #3b82f6; }
+    .text-blue-400 { color: #60a5fa; }
+    .text-purple-500 { color: #a855f7; }
+    .text-purple-400 { color: #c084fc; }
+    .text-orange-500 { color: #f97316; }
+    .text-green-500 { color: #10b981; }
+    .text-red-500 { color: #ef4444; }
+    .text-pink-500 { color: #ec4899; }
+    .text-xs { font-size: 0.75rem; }
+    .text-4xl { font-size: 2.25rem; line-height: 1; }
+    .block { display: block; }
+    .w-5 { width: 1.25rem; display: inline-flex; }
+    .mr-1 { margin-right: 0.25rem; }
+    .mr-2 { margin-right: 0.5rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .font-mono { font-family: var(--font-mono); }
+    .border-t-4 { border-top-width: 4px !important; }
+    .border-teal-500 { border-color: #14b8a6 !important; }
 
     .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
     .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
@@ -369,33 +396,39 @@
       color: var(--blue);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-family: var(--font-head);
-      background: rgba(59, 130, 246, 0.1);
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(59, 130, 246, 0.2);
-    }
-    [data-theme="light"] .p-target { color: #0F172A; background: rgba(59, 130, 246, 0.12); border-color: rgba(59, 130, 246, 0.18); }
+        } else {
+          let subjLabel = entry.subject ? SUBJECT_EMOJIS[entry.subject] + " " + entry.subject : 'No Primary Subject';
+          let targetHtml = entry.targets.length ? entry.targets.map((t, idx) => {
+            let text = typeof t === 'string' ? t : t.text; let done = typeof t === 'string' ? false : (t.done || false);
+            return `<li style="display:flex;align-items:center;gap:12px; background:rgba(0,0,0,0.1); padding:8px 12px; border-radius:8px;"><input type="checkbox" onchange="toggleTargetDone('${d}',${idx})" ${done?'checked':''} style="transform:scale(1.2);"><span style="${done?'text-decoration:line-through;color:var(--green);':''} font-weight:600; font-size:15px;">${text}</span></li>`;
+          }).join('') : '<li style="color:var(--text-dim); text-align:center; padding:10px; border:1px dashed var(--glass-border); border-radius:8px;">No targets set</li>';
+          let arsChips = entry.arsenal.length ? entry.arsenal.map(a => `<span class="a-chip active">${a}</span>`).join('') : '<span class="a-chip">No Resources Tagged</span>';
+          let priorityBadge = entry.priority ? `<span class="p-priority ${entry.priority.toLowerCase().replace(' ','-')}">${entry.priority}</span>` : '';
+          let notesHtml = entry.notes ? `<div style="margin-top:16px; padding:12px; background:rgba(0,0,0,0.3); border-radius:8px; font-size:13px; font-weight:500; border-left:3px solid var(--blue); color:white;">${entry.notes}</div>` : '';
+          let dayFinishedBtn = `<button class="btn btn-sm ${entry.dayFinished ? 'btn-primary' : 'btn-outline'}" style="padding: 6px 12px; font-size: 11px; font-weight:800;" onclick="toggleDayFinished('${d}')"><i class="fas ${entry.dayFinished ? 'fa-check-double' : 'fa-flag-checkered'} mr-1"></i> ${entry.dayFinished ? 'Day Finished' : 'Finish Day'}</button>`;
 
-    .p-status {
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      padding: 6px 12px;
-      border-radius: 6px;
-      letter-spacing: 0.5px;
-      font-family: var(--font-mono);
-      border: 2px solid currentColor;
-    }
-    .status-pending { background: rgba(96, 165, 250, 0.1); color: #60A5FA; }
-    .status-need-work { background: rgba(239, 68, 68, 0.15); color: #EF4444; }
-    .status-completed { background: rgba(16, 185, 129, 0.15); color: #10B981; }
-
-    .p-priority {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
+          html += `
+    <div class="planner-day" id="pd-${d}">
+      <div class="p-header">
+        <span class="p-target"><i class="fas fa-calendar-day text-blue-500 mr-2"></i> ${formatStr}</span>
+        <div style="display:flex; gap:10px; align-items:center;">
+          ${dayFinishedBtn}
+          <span class="p-status ${statusClass}">${entry.status}</span>
+          <button class="icon-btn" style="width:28px; height:28px; border:none; background:rgba(0,0,0,0.3); font-size:12px;" onclick="togglePlannerEdit('${d}')"><i class="fas fa-pen"></i></button>
+        </div>
+      </div>
+      <div class="p-body">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;"><span class="p-subject">${subjLabel}</span>${priorityBadge}</div>
+        <div style="font-size:12px; text-transform:uppercase; font-weight:800; color:var(--text-dim); margin-bottom:8px; margin-top:12px; letter-spacing:1px;">Micro-Targets</div>
+        <ul class="p-item-list" style="display:flex; flex-direction:column; gap:6px;">${targetHtml}</ul>
+        <div style="font-size:12px; text-transform:uppercase; font-weight:800; color:var(--text-dim); margin-bottom:8px; margin-top:16px; letter-spacing:1px;">Study Resources</div>
+        <div class="arsenal-chips">${arsChips}</div>
+        ${notesHtml}
+      </div>
+    </div>`;
+        }
+      });
+      container.innerHTML = html;
       padding: 4px 10px;
       border-radius: 4px;
       letter-spacing: 0.5px;
@@ -483,7 +516,7 @@
   <div class="modal-overlay login-overlay" id="loginOverlay">
     <div class="modal-box login-box">
       <div style="text-align: center; margin-bottom: 32px;">
-        <img src="favicon.png" alt="Logo" style="width: 80px; height: 80px; border-radius: 16px; margin-bottom: 16px; box-shadow: 0 0 20px rgba(59,130,246,0.4); object-fit: cover;">
+        <img src="favicon.svg" alt="Logo" style="width: 80px; height: 80px; border-radius: 16px; margin-bottom: 16px; box-shadow: 0 0 20px rgba(59,130,246,0.4); object-fit: cover;">
         <h2 class="h2-title" style="font-size: 24px; color: var(--text-main); font-family: var(--font-head); font-weight:700;">Zona Occludens</h2>
         <p class="sub-text" style="margin-bottom: 0;">Welcome to the ultimate mastery protocol.</p>
       </div>
@@ -560,7 +593,7 @@
     
     <aside class="sidebar" id="sidebar">
       <div class="brand">
-        <img src="favicon.png" alt="Logo" class="brand-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Circle-icons-brain.svg/1200px-Circle-icons-brain.svg.png'">
+        <img src="favicon.svg" alt="Logo" class="brand-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Circle-icons-brain.svg/1200px-Circle-icons-brain.svg.png'">
         <div class="brand-text"><h1>Zona Occludens</h1><p>NEET PG · INICET · UPSC</p></div>
       </div>
       
@@ -1328,6 +1361,12 @@
     // --- REPLACED google.script.run WITH fetch API ---
     // PASTE YOUR GOOGLE SCRIPT WEB APP URL HERE:
     const API_URL = "https://script.google.com/macros/s/AKfycbyZ2yeiy52Sz8CHXmWBk132PX8h2JWnfo6_TXj4xw6fm2lCXVNK1AfujauNp8n15aiP/exec"; 
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js').catch(err => console.warn('Service worker registration failed:', err));
+      });
+    }
 
     window.onload = function() {
       const saved = localStorage.getItem('pgmedprep_db_zacurians');
