@@ -374,6 +374,31 @@
       border-color: var(--blue);
       box-shadow: 0 12px 30px rgba(59, 130, 246, 0.18);
     }
+    #page-planner .glass-card {
+      border-color: rgba(249, 115, 22, 0.6);
+      box-shadow: 0 0 36px rgba(249, 115, 22, 0.18), inset 0 0 20px rgba(249, 115, 22, 0.08);
+    }
+    #page-planner .planner-day {
+      border-left: 6px solid rgba(249, 115, 22, 0.7);
+      background: rgba(40, 18, 2, 0.78);
+      box-shadow: inset 0 0 25px rgba(249, 115, 22, 0.08);
+    }
+    #page-planner .planner-day:nth-child(odd) { background: rgba(45, 22, 2, 0.82); }
+    #page-planner .planner-day:nth-child(even) { background: rgba(35, 15, 3, 0.68); }
+    #page-planner .planner-day:hover {
+      border-color: rgba(249, 115, 22, 0.85);
+      box-shadow: 0 14px 35px rgba(249, 115, 22, 0.25);
+    }
+    #page-planner .p-target {
+      background: rgba(249, 115, 22, 0.12);
+      border-color: rgba(249, 115, 22, 0.22);
+      color: rgba(249, 115, 22, 0.95);
+    }
+    #page-planner .p-subject {
+      background: rgba(249, 115, 22, 0.08);
+      border-color: rgba(249, 115, 22, 0.18);
+      color: #F59E0B;
+    }
     [data-theme="light"] .planner-day { 
       background: rgba(255, 255, 255, 0.96);
       border: 1px solid rgba(0, 0, 0, 0.1);
@@ -690,7 +715,7 @@
         <div class="brand-logo" style="background: transparent; box-shadow: none;">
             <img src="favicon.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px;">
         </div>
-        <div class="brand-text"><h1>Zona Occludens</h1><p>NEET PG · INICET · UPSC CMS · FMGE</p></div>
+        <div class="brand-text"><h1>Zona Occludens</h1><p>NEET PG · INICET · FMGE  ·UPSC CMS</p></div>
       </div>
       
       <div class="nav-menu">
@@ -715,14 +740,14 @@
         
         <div class="nav-section">Community & Resources</div>
         <div class="nav-item" onclick="navTo('study-partner', this)" style="color:var(--pink); font-weight:600;"><i class="fas fa-user-friends w-5 text-center"></i> Find Study Partner</div>
+        <div class="nav-item" onclick="navTo('revision-schedule', this)" style="color:var(--orange); font-weight:600;"><i class="fas fa-calendar-alt w-5 text-center"></i> 90-Day Revision Schedule</div>
         <div class="nav-item" onclick="navTo('syllabus', this)"><i class="fas fa-scale-balanced w-5 text-center"></i> Syllabus & Weightage</div>
       </div>
       
       <div class="sidebar-footer">
-        Developed by <a href="https://t.me/zacure" target="_blank">@zacure</a><br>
         <div style="margin-top:8px;">
-          <a href="https://t.me/Zacurians" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:rgba(59,130,246,0.1); padding:6px 12px; border-radius:6px; font-family:var(--font-mono);">
-            <i class="fab fa-telegram" style="font-size:14px;"></i> Join t.me/Zacurians
+          <a href="https://t.me/Zona_Occludens" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:rgba(59,130,246,0.1); padding:6px 12px; border-radius:6px; font-family:var(--font-mono);">
+            <i class="fab fa-telegram" style="font-size:14px;"></i> Join Now
           </a>
         </div>
       </div>
@@ -806,53 +831,6 @@
             </div>
           </div>
 
-          <!-- Ideal Revision Schedule -->
-          <div class="glass-card" style="margin-top: 24px; border-left: 4px solid var(--blue);">
-              <h2 class="h2-title"><i class="fas fa-calendar-alt mr-2 text-blue-400"></i> 90-Day Master Revision Schedule</h2>
-              <p class="sub-text" style="margin-bottom: 20px;">Calculated from May 17, 2026. The structured blueprint to conquer NEET PG, INICET & FMGE.</p>
-              
-              <div style="display: flex; flex-direction: column; gap: 16px;">
-                  <!-- R1 -->
-                  <div style="background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); padding: 16px; border-radius: var(--radius-md);">
-                      <div class="flex-between" style="flex-wrap: wrap; margin-bottom: 8px;">
-                          <h3 style="color: var(--blue); font-size: 16px; font-weight: 700; margin: 0;">Round 1 (R1): The Deep Dive</h3>
-                          <span class="badge" style="background: rgba(59, 130, 246, 0.1); color: var(--blue);">50 Days | May 17 — July 5, 2026</span>
-                      </div>
-                      <p style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 8px;">Starting with Surgery, OBG, PSM, Path, Micro, Pharma, Medicine, Biochem and Pedia followed by other subjects</p>
-                      <ul style="list-style: disc inside; margin-left: 1rem; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
-                          <li><strong style="color:var(--text-main);">Core Revision:</strong> Comprehensive review from primary source.</li>
-                          <li><strong style="color:var(--text-main);">Mandatory PYQs:</strong> Strict completion of last 10 years' PYQs.</li>
-                          <li><strong style="color:var(--text-main);">Testing:</strong> 1-2 SWTs (Complete Syllabus) every 3 days and 1 GT every 10 days.</li>
-                      </ul>
-                  </div>
-                  <!-- R2 -->
-                  <div style="background: rgba(168, 85, 247, 0.05); border: 1px solid rgba(168, 85, 247, 0.2); padding: 16px; border-radius: var(--radius-md);">
-                      <div class="flex-between" style="flex-wrap: wrap; margin-bottom: 8px;">
-                          <h3 style="color: var(--purple); font-size: 16px; font-weight: 700; margin: 0;">Round 2 (R2): Consolidation</h3>
-                          <span class="badge" style="background: rgba(168, 85, 247, 0.1); color: var(--purple);">25 Days | July 6 — July 30, 2026</span>
-                      </div>
-                      <ul style="list-style: disc inside; margin-left: 1rem; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
-                          <li><strong style="color:var(--text-main);">Core Revision:</strong> DAMS Revision + TND is absolutely MUST. Do BTR core for Integrated Approach.</li>
-                          <li><strong style="color:var(--text-main);">Mandatory PYQs:</strong> 2nd iteration focusing on frequently asked topics.</li>
-                          <li><strong style="color:var(--text-main);">Testing:</strong> 2 Grand Test (GT) every week.</li>
-                      </ul>
-                  </div>
-                  <!-- R3 -->
-                  <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); padding: 16px; border-radius: var(--radius-md);">
-                      <div class="flex-between" style="flex-wrap: wrap; margin-bottom: 8px;">
-                          <h3 style="color: var(--red); font-size: 16px; font-weight: 700; margin: 0;">Round 3 (R3): Final Lock & Volatile</h3>
-                          <span class="badge" style="background: rgba(239, 68, 68, 0.1); color: var(--red);">15 Days | July 31 — August 14, 2026</span>
-                      </div>
-                      <ul style="list-style: disc inside; margin-left: 1rem; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
-                          <li><strong style="color:var(--text-main);">Core Revision:</strong> DAMS LRR is MUST. Review Mistakes.</li>
-                          <li><strong style="color:var(--text-main);">High-Yield:</strong> Memorize volatile tables, images, factual data.</li>
-                          <li><strong style="color:var(--text-main);">Testing:</strong> Atleast 15 Grand Tests (GT).</li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-          
-          <h2 class="h2-title" style="margin-top: 40px; font-size:20px;"><i class="fas fa-bolt mr-2 text-amber-500"></i> Core Protocol Progress</h2>
           <div class="grid-4" id="quickStatsContainer"></div>
 
           <div class="grid-2" style="margin-top: 24px;">
@@ -1079,6 +1057,52 @@
           </div>
           <div id="overdueTasksContainer"></div>
           <div class="planner-grid" id="plannerContainer"></div>
+        </div>
+
+        <!-- ================= 90-DAY REVISION SCHEDULE ================= -->
+        <div id="page-revision-schedule" class="page">
+          <div class="glass-card" style="margin-top: 24px; border-left: 4px solid var(--orange);">
+              <h2 class="h2-title"><i class="fas fa-calendar-alt mr-2 text-orange-400"></i> 90-Day Master Revision Schedule</h2>
+              <p class="sub-text" style="margin-bottom: 20px;">Calculated from May 17, 2026. The structured blueprint to conquer NEET PG, INICET & FMGE.</p>
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                  <div style="background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.18); padding: 16px; border-radius: var(--radius-md);">
+                      <div class="flex-between" style="flex-wrap: wrap; margin-bottom: 8px;">
+                          <h3 style="color: var(--orange); font-size: 16px; font-weight: 700; margin: 0;">Round 1 (R1): The Deep Dive</h3>
+                          <span class="badge" style="background: rgba(249, 115, 22, 0.12); color: var(--orange);">50 Days | May 17 — July 5, 2026</span>
+                      </div>
+                      <p style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 8px;">Starting with Surgery, OBG, PSM, Path, Micro, Pharma, Medicine, Biochem and Pedia followed by other subjects</p>
+                      <ul style="list-style: disc inside; margin-left: 1rem; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+                          <li><strong style="color:var(--text-main);">Core Revision:</strong> Comprehensive review from primary source.</li>
+                          <li><strong style="color:var(--text-main);">Mandatory PYQs:</strong> Strict completion of last 10 years' PYQs.</li>
+                          <li><strong style="color:var(--text-main);">Testing:</strong> 1-2 SWTs (Complete Syllabus) every 3 days and 1 GT every 10 days.</li>
+                      </ul>
+                  </div>
+                  <div style="background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.18); padding: 16px; border-radius: var(--radius-md);">
+                      <div class="flex-between" style="flex-wrap: wrap; margin-bottom: 8px;">
+                          <h3 style="color: var(--orange); font-size: 16px; font-weight: 700; margin: 0;">Round 2 (R2): Consolidation</h3>
+                          <span class="badge" style="background: rgba(249, 115, 22, 0.12); color: var(--orange);">25 Days | July 6 — July 30, 2026</span>
+                      </div>
+                      <p style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 8px;">Focus on revision quality, mixed Qs, and balancing weak subjects with high-yield phases.</p>
+                      <ul style="list-style: disc inside; margin-left: 1rem; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+                          <li><strong style="color:var(--text-main);">Consolidation:</strong> Active recall and incremental review.</li>
+                          <li><strong style="color:var(--text-main);">Mock Integration:</strong> 1 GT + 2 SWTs every week.</li>
+                          <li><strong style="color:var(--text-main);">Weakness Fix:</strong> Target negative topics in daily micro-sessions.</li>
+                      </ul>
+                  </div>
+                  <div style="background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.18); padding: 16px; border-radius: var(--radius-md);">
+                      <div class="flex-between" style="flex-wrap: wrap; margin-bottom: 8px;">
+                          <h3 style="color: var(--orange); font-size: 16px; font-weight: 700; margin: 0;">Round 3 (R3): Lock & Polish</h3>
+                          <span class="badge" style="background: rgba(249, 115, 22, 0.12); color: var(--orange);">15 Days | July 31 — Aug 14, 2026</span>
+                      </div>
+                      <p style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 8px;">Final lock-in phase with sharp MCQ sessions, active memory testing, and rapid recall drills.</p>
+                      <ul style="list-style: disc inside; margin-left: 1rem; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+                          <li><strong style="color:var(--text-main);">High-Yield Focus:</strong> Only top flagged concepts and PYQs.</li>
+                          <li><strong style="color:var(--text-main);">Rapid Revision:</strong> Short, frequent cycles with self-assessment.</li>
+                          <li><strong style="color:var(--text-main);">Confidence Calibration:</strong> Review only what boosts accuracy and speed.</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
         </div>
 
         <!-- ================= MASTER TOPIC TRACKER ================= -->
@@ -1365,7 +1389,7 @@
                 <li style="margin-bottom:8px;">The Commission have discretion to fix qualifying marks in any or both the papers.</li>
                 <li style="margin-bottom:8px;">Penalty for wrong answers: There will be penalty (Negative Marking) for wrong answers. One third of the marks assigned to that question will be deducted. If a question is left blank, there will be no penalty.</li>
                 <li style="margin-bottom:8px;">Candidates are not permitted to use calculators.</li>
-                <li>7. Both the Papers of the CMSE will be of MBBS standard.</li>
+                <li>Both the Papers of the CMSE will be of MBBS standard.</li>
               </ul>
             </div>
           </div>
@@ -1431,6 +1455,7 @@
     };
 
     const RESOURCES_OPTIONS = ["Custom Notes", "RR Notes", "RR Videos 🎬", "Main Notes 📚", "Review Books", "Image PYQs 🖼️", "Error Log"];
+    const APP_START_DATE = '2026-05-17';
 
     const MOTIVATIONAL_QUOTES = [
       "The difference between ordinary and extraordinary is that little extra.",
@@ -1488,7 +1513,7 @@
 
     // --- REPLACED google.script.run WITH fetch API ---
     // PASTE YOUR GOOGLE SCRIPT WEB APP URL HERE:
-    const API_URL = "https://script.google.com/macros/s/AKfycbyZ2yeiy52Sz8CHXmWBk132PX8h2JWnfo6_TXj4xw6fm2lCXVNK1AfujauNp8n15aiP/exec"; 
+    const API_URL = "https://script.google.com/macros/s/AKfycbyGu4v-EvdPFQfTt2rLn93EfdlX0hgPqwVp7-gTgbspB-PmGqoBuM-baglnmHC-Ag_P/exec"; 
 
     window.onload = function() {
       const saved = localStorage.getItem('pgmedprep_db_zacurians');
@@ -1727,13 +1752,18 @@
     }
 
     function editProfile() {
+      if (!state.userProfile || !state.userProfile.name) {
+        showToast('No saved profile found yet. Please fill your profile first from the login overlay.');
+        return;
+      }
+
       const resources = Array.isArray(state.userProfile.resources) ? state.userProfile.resources : [];
-      document.getElementById('reg-name').value = state.userProfile.name;
-      document.getElementById('reg-mobile').value = state.userProfile.mobile;
-      document.getElementById('reg-tg').value = state.userProfile.tg;
-      document.getElementById('reg-exam').value = state.userProfile.exam;
-      document.getElementById('reg-phase').value = state.userProfile.phase;
-      document.getElementById('reg-hours').value = state.userProfile.hours;
+      document.getElementById('reg-name').value = state.userProfile.name || '';
+      document.getElementById('reg-mobile').value = state.userProfile.mobile || '';
+      document.getElementById('reg-tg').value = state.userProfile.tg || '';
+      document.getElementById('reg-exam').value = state.userProfile.exam || 'NEET PG';
+      document.getElementById('reg-phase').value = state.userProfile.phase || 'Just Started';
+      document.getElementById('reg-hours').value = state.userProfile.hours || '0-2';
       
       document.querySelectorAll('.reg-res-cb').forEach(cb => {
         cb.checked = resources.includes(cb.value);
@@ -1771,7 +1801,7 @@
             // Fallback to @Zacure
             document.getElementById('matchUsername').textContent = "@Zacure";
             document.getElementById('matchLink').href = "https://t.me/zacure";
-            document.getElementById('matchResult').querySelector('p').textContent = "No peer match found. Connected with mentor @Zacure for guidance.";
+            document.getElementById('matchResult').querySelector('p').textContent = "No peer match found. Connected with mentor @Zacure for accountability .";
             showToast("Connected to Mentor @Zacure.");
         }
       } catch(e) {
@@ -1813,8 +1843,18 @@
 
     function handleStreak() {
       const todayStr = new Date().toISOString().split('T')[0];
+      const streakAnchor = APP_START_DATE;
       const diffDays = (d1, d2) => Math.floor((new Date(d2) - new Date(d1)) / (1000*60*60*24));
-      if (!state.streak.lastDate) { state.streak.lastDate = todayStr; state.streak.count = 1; state.streak.history = [todayStr]; state.streak.pendingRepair = false;
+      if (!state.streak.lastDate) {
+        state.streak.lastDate = todayStr < streakAnchor ? todayStr : streakAnchor;
+        state.streak.count = 1;
+        state.streak.history = [state.streak.lastDate];
+        state.streak.pendingRepair = false;
+      } else if (state.streak.lastDate < streakAnchor) {
+        state.streak.lastDate = streakAnchor;
+        state.streak.count = 1;
+        state.streak.history = [streakAnchor];
+        state.streak.pendingRepair = false;
       } else {
         const d = diffDays(state.streak.lastDate, todayStr);
         if (d === 1) { state.streak.count++; state.streak.lastDate = todayStr; state.streak.history.push(todayStr); state.streak.pendingRepair = false; } 
@@ -2365,6 +2405,7 @@
       renderOverdueTasks();
       
       const container = document.getElementById('plannerContainer'); const filterMonth = document.getElementById('planner-month-filter').value;
+      const planStartIso = APP_START_DATE;
       const sortedDates = Object.keys(state.planner).sort(); let html = '';
       
       const examDaysMap = {
@@ -2375,6 +2416,7 @@
       };
 
       sortedDates.forEach(d => {
+        if (d < planStartIso) return;
         if(d.split('-')[1] !== filterMonth) return;
         const entry = state.planner[d]; const dateObj = new Date(d);
         const formatStr = dateObj.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
@@ -2521,7 +2563,12 @@
       const today = new Date(); 
       const mStr = (today.getMonth()+1).toString().padStart(2,'0');
       document.getElementById('planner-month-filter').value = mStr; renderPlanner();
-      setTimeout(() => { const dStr = today.toISOString().split('T')[0]; const el = document.getElementById('pd-'+dStr); if(el) { el.scrollIntoView({ behavior: "smooth", block: "center" }); el.style.borderColor = "var(--orange)"; setTimeout(() => el.style.borderColor = "var(--glass-border)", 2000); } }, 100);
+      setTimeout(() => {
+        let dStr = today.toISOString().split('T')[0];
+        if (dStr < APP_START_DATE) dStr = APP_START_DATE;
+        const el = document.getElementById('pd-'+dStr);
+        if(el) { el.scrollIntoView({ behavior: "smooth", block: "center" }); el.style.borderColor = "var(--orange)"; setTimeout(() => el.style.borderColor = "var(--glass-border)", 2000); }
+      }, 100);
     }
 
     function getAgendaHTML(dStr, label) {
