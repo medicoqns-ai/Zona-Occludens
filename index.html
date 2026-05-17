@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8"/>
+   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Zona Occludens 🧠 | Master Protocol Dashboard</title>
   <link rel="icon" type="image/png" href="favicon.png">
@@ -92,11 +92,44 @@
 
     ::-webkit-scrollbar { width: 6px; height: 6px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: rgba(249, 115, 22, 0.4); border-radius: 10px; }
 
+    /* Utility helpers for inline Tailwind-style classes */
+    .text-blue-500 { color: #3b82f6 !important; }
+    .text-blue-400 { color: #60a5fa !important; }
+    .text-green-500 { color: #10b981 !important; }
+    .text-orange-500 { color: #f59e0b !important; }
+    .text-amber-500 { color: #f59e0b !important; }
+    .text-pink-500 { color: #ec4899 !important; }
+    .text-purple-500 { color: #a855f7 !important; }
+    .text-teal { color: var(--teal) !important; }
+    .text-slate-400 { color: #94a3b8 !important; }
+    .text-red-500 { color: #ef4444 !important; }
+    .text-white { color: #ffffff !important; }
+    .font-mono { font-family: var(--font-mono) !important; }
+    .w-5 { width: 1.25rem !important; }
+    .w-full { width: 100% !important; }
+    .text-center { text-align: center !important; }
+    .inline-flex { display: inline-flex !important; }
+    .mr-1 { margin-right: 0.25rem !important; }
+    .mr-2 { margin-right: 0.5rem !important; }
+    .mr-3 { margin-right: 0.75rem !important; }
+    .ml-2 { margin-left: 0.5rem !important; }
+    .bg-blue-500 { background-color: #3b82f6 !important; }
+    .bg-orange-500 { background-color: #f59e0b !important; }
+    .bg-green-500 { background-color: #10b981 !important; }
+    .bg-pink-500 { background-color: #ec4899 !important; }
+    .bg-purple-500 { background-color: #a855f7 !important; }
+    .justify-between { justify-content: space-between !important; }
+    .items-center { align-items: center !important; }
+    .rounded-full { border-radius: 9999px !important; }
+    main .content ul { list-style: disc inside; margin-left: 1.2rem; }
+    main .content ul li { margin-bottom: 0.6rem; }
+    main .content ul li strong { color: var(--text-main); }
+
     /* Layout */
     .app-container { display: flex; min-height: 100vh; width: 100%; max-width: 100vw; overflow-x: hidden; }
     .sidebar { width: 280px; background: var(--glass-surface); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-right: 1px solid var(--glass-border); display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 100; transition: var(--transition); box-shadow: inset -1px 0 0 rgba(255,255,255,0.02); }
     .brand { padding: 24px 20px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid var(--glass-border); }
-    .brand-logo { width: 45px; height: 45px; background: linear-gradient(135deg, var(--orange), var(--purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-weight: 800; font-size: 20px; color: white; box-shadow: 0 0 24px rgba(251, 146, 60, 0.35); flex-shrink: 0; }
+    .brand-logo { width: 45px; height: 45px; background: transparent; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .brand-text h1 { font-family: var(--font-head); font-size: 17px; font-weight: 700; letter-spacing: 0.5px; color: var(--blue); } .brand-text p { font-size: 11px; color: var(--text-muted); font-weight: 500; font-family: var(--font-mono); text-transform: uppercase;}
     .nav-menu { padding: 20px 12px; flex: 1; overflow-y: auto; }
     .nav-section { font-size: 10px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; margin: 20px 0 8px 12px; }
@@ -132,9 +165,11 @@
     .ticker-item { margin-right: 40px; display: inline-flex; align-items: center; gap: 8px; }
 
     .content { padding: 32px 24px; flex: 1; min-width: 0; box-sizing: border-box; width: 100%; }
-    .page { display: none; animation: fadeIn 0.3s ease-out; }
+    .page { display: none; animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
     .page.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes quotePulse { 0% { opacity: 0.5; transform: scale(0.98); } 50% { opacity: 1; transform: scale(1.02); } 100% { opacity: 1; transform: scale(1); } }
+    .quote-animate { animation: quotePulse 0.8s ease-out forwards; }
 
     /* Components */
     .glass-card { background: var(--glass-surface); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-glass); transition: var(--transition); box-sizing: border-box; width: 100%; overflow: hidden; position: relative; }
@@ -652,7 +687,9 @@
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
       <div class="brand">
-        <div class="brand-logo"><i class="fas fa-brain"></i></div>
+        <div class="brand-logo" style="background: transparent; box-shadow: none;">
+            <img src="favicon.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px;">
+        </div>
         <div class="brand-text"><h1>Zona Occludens</h1><p>NEET PG · INICET · UPSC</p></div>
       </div>
       
@@ -700,7 +737,6 @@
           <span id="saveStatus" style="font-size: 10px; color: var(--text-dim); margin-right: 8px; font-weight:600; letter-spacing:0.5px; font-family:var(--font-mono);"><i class="fas fa-check-circle text-green-500"></i> Local Saved</span>
           <!-- Cloud Sync Button -->
           <button class="icon-btn" onclick="syncDataCloud()" title="Sync to Cloud Backend"><i class="fas fa-cloud-upload-alt" style="color:var(--blue);"></i></button>
-          <button class="icon-btn" onclick="editProfile()" title="Edit Profile"><i class="fas fa-user-edit"></i></button>
           <button class="icon-btn" onclick="exportData()" title="Export Backup JSON"><i class="fas fa-download"></i></button>
           <button class="icon-btn" onclick="document.getElementById('importFile').click()" title="Import Backup JSON"><i class="fas fa-upload"></i></button>
           <input type="file" id="importFile" style="display:none;" accept=".json" onchange="importData(event)">
@@ -769,6 +805,52 @@
               </div>
             </div>
           </div>
+
+          <!-- Ideal Revision Schedule -->
+          <div class="glass-card" style="margin-top: 24px; border-left: 4px solid var(--blue);">
+              <h2 class="h2-title"><i class="fas fa-calendar-alt mr-2 text-blue-400"></i> 90-Day Master Revision Schedule</h2>
+              <p class="sub-text" style="margin-bottom: 20px;">Calculated from May 17, 2026. The structured blueprint to conquer NEET PG, INICET & FMGE.</p>
+              
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                  <!-- R1 -->
+                  <div style="background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); padding: 16px; border-radius: var(--radius-md);">
+                      <div class="flex-between" style="flex-wrap: wrap; margin-bottom: 8px;">
+                          <h3 style="color: var(--blue); font-size: 16px; font-weight: 700; margin: 0;">Round 1 (R1): The Deep Dive</h3>
+                          <span class="badge" style="background: rgba(59, 130, 246, 0.1); color: var(--blue);">50 Days | May 17 — July 5, 2026</span>
+                      </div>
+                      <p style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 8px;">Starting with Surgery, OBG, PSM, Path, Micro, Pharma, Medicine, Biochem and Pedia followed by other subjects</p>
+                      <ul style="list-style: disc inside; margin-left: 1rem; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+                          <li><strong style="color:var(--text-main);">Core Revision:</strong> Comprehensive review from primary source.</li>
+                          <li><strong style="color:var(--text-main);">Mandatory PYQs:</strong> Strict completion of last 10 years' PYQs.</li>
+                          <li><strong style="color:var(--text-main);">Testing:</strong> 1-2 SWTs (Complete Syllabus) every 3 days and 1 GT every 10 days.</li>
+                      </ul>
+                  </div>
+                  <!-- R2 -->
+                  <div style="background: rgba(168, 85, 247, 0.05); border: 1px solid rgba(168, 85, 247, 0.2); padding: 16px; border-radius: var(--radius-md);">
+                      <div class="flex-between" style="flex-wrap: wrap; margin-bottom: 8px;">
+                          <h3 style="color: var(--purple); font-size: 16px; font-weight: 700; margin: 0;">Round 2 (R2): Consolidation</h3>
+                          <span class="badge" style="background: rgba(168, 85, 247, 0.1); color: var(--purple);">25 Days | July 6 — July 30, 2026</span>
+                      </div>
+                      <ul style="list-style: disc inside; margin-left: 1rem; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+                          <li><strong style="color:var(--text-main);">Core Revision:</strong> DAMS Revision + TND is absolutely MUST. Do BTR core for Integrated Approach.</li>
+                          <li><strong style="color:var(--text-main);">Mandatory PYQs:</strong> 2nd iteration focusing on frequently asked topics.</li>
+                          <li><strong style="color:var(--text-main);">Testing:</strong> 2 Grand Test (GT) every week.</li>
+                      </ul>
+                  </div>
+                  <!-- R3 -->
+                  <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); padding: 16px; border-radius: var(--radius-md);">
+                      <div class="flex-between" style="flex-wrap: wrap; margin-bottom: 8px;">
+                          <h3 style="color: var(--red); font-size: 16px; font-weight: 700; margin: 0;">Round 3 (R3): Final Lock & Volatile</h3>
+                          <span class="badge" style="background: rgba(239, 68, 68, 0.1); color: var(--red);">15 Days | July 31 — August 14, 2026</span>
+                      </div>
+                      <ul style="list-style: disc inside; margin-left: 1rem; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+                          <li><strong style="color:var(--text-main);">Core Revision:</strong> DAMS LRR is MUST. Review Mistakes.</li>
+                          <li><strong style="color:var(--text-main);">High-Yield:</strong> Memorize volatile tables, images, factual data.</li>
+                          <li><strong style="color:var(--text-main);">Testing:</strong> Atleast 15 Grand Tests (GT).</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
           
           <h2 class="h2-title" style="margin-top: 40px; font-size:20px;"><i class="fas fa-bolt mr-2 text-amber-500"></i> Core Protocol Progress</h2>
           <div class="grid-4" id="quickStatsContainer"></div>
@@ -801,12 +883,17 @@
             <div class="glass-card">
               <div class="flex-between" style="margin-bottom: 16px;">
                 <h2 class="h2-title" style="margin:0;"><i class="fas fa-triangle-exclamation mr-2 text-red-500"></i> Top Mistakes By Topic</h2>
-                <button class="btn btn-sm btn-outline" onclick="navTo('error-log', document.querySelectorAll('.nav-item')[9])">Notebook</button>
+                <button class="btn btn-sm btn-outline" onclick="navTo('error-log', Array.from(document.querySelectorAll('.nav-item')).find(n => n.textContent.includes('Mistake Notebook')))">Notebook</button>
               </div>
               <div id="topMistakesContainer" style="display: flex; flex-direction: column; gap: 12px;"></div>
             </div>
           </div>
 
+          <div class="glass-card" style="margin-top: 24px;">
+            <h2 class="h2-title"><i class="fas fa-layer-group mr-2 text-slate-400"></i> Subject Completion Snapshot</h2>
+            <p class="sub-text" style="margin-bottom: 16px;">Top 10 subjects by completed topic count.</p>
+            <div class="chart-wrap" style="height: 260px;"><canvas id="subjectVolumeChart"></canvas></div>
+          </div>
           <div class="glass-card" style="margin-top: 24px;">
             <h2 class="h2-title"><i class="fas fa-calendar-day mr-2 text-blue-400"></i> Today & Tomorrow's Agenda</h2>
             <div id="dashAgendaContainer" style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px;"></div>
@@ -977,7 +1064,7 @@
             <div class="flex-between" style="flex-wrap: wrap; gap: 16px;">
               <div>
                 <h2 class="h2-title" style="margin:0;"><i class="fas fa-calendar-check mr-2 text-orange-500"></i> Ultimate Daily Planner</h2>
-                <p class="sub-text" style="margin:4px 0 0 0;">Execute daily missions starting May 13th, 2026.</p>
+                <p class="sub-text" style="margin:4px 0 0 0;">Execute daily missions starting May 17th, 2026.</p>
               </div>
               <div class="planner-filter-bar" style="margin-bottom:0; align-items:center;">
                 <select class="form-control" id="planner-month-filter" style="width: 140px; font-weight:600;" onchange="renderPlanner()">
@@ -1374,7 +1461,7 @@
         ["Dermatology", "Basics of Dermatology"], ["Dermatology", "Skin Lesions in Dermatology"], ["Dermatology", "Cutaneous tuberculosis"], ["Dermatology", "Leprosy"], ["Dermatology", "Immunobullous disorders"], ["Dermatology", "Papulosquamous Disorders"], ["Dermatology", "Hair and Nail disorders"], ["Dermatology", "Disorders of Glands"], ["Dermatology", "Genital Ulcer Disease and STD Discharge"], ["Dermatology", "Eczema"], ["Dermatology", "Pigmentary disorders"], ["Dermatology", "Connective tissue disorders"], ["Dermatology", "Systemic diseases and skin"], ["Dermatology", "Adverse Drug Reactions, Pediatric Dermatoses, Urticaria and Angioedema"], ["Dermatology", "Genodermatoses, Vector-Borne Diseases, Bedside Tests in Dermatology"], ["Dermatology", "Skin Tumors"], ["Dermatology", "Bacterial Infections"], ["Dermatology", "Fungal Infections"], ["Dermatology", "Parasitic infestations of skin"], ["Dermatology", "Viral infections"],
         ["ENT", "Anatomy of External, Middle, and Internal Ear"], ["ENT", "Physiology and Assessment of Hearing"], ["ENT", "Vestibular System Physiology, Assessment, and Associated Diseases"], ["ENT", "Disorders of External Ear and Eustachian Tube"], ["ENT", "Middle Ear Diseases ASOM SOM"], ["ENT", "Cholesteatoma and CSOM"], ["ENT", "ASOM and CSOM Complications"], ["ENT", "Otosclerosis"], ["ENT", "Facial Nerve and Acoustic Neuroma"], ["ENT", "Meniere's Disease and Glomus Tumor"], ["ENT", "Hearing Rehabilitation, Otalgia, and Tinnitus"], ["ENT", "Anatomy of Nose and Paranasal Sinuses"], ["ENT", "Diseases of the External Nose and Septum"], ["ENT", "Rhinitis and CSF Rhinorrhea"], ["ENT", "Granulomatous Lesions, Congenital Anomalies, and Nasal Polyps"], ["ENT", "Epistaxis and Facial Trauma"], ["ENT", "Disorders of Paranasal Sinuses"], ["ENT", "Anatomy of Pharynx and Pharyngeal Spaces"], ["ENT", "Adenoid and Palatine Tonsils"], ["ENT", "JNA and Nasopharyngeal Carcinoma"], ["ENT", "Ludwig's Angina, Pharyngeal Pouch and Abscess related to Pharynx"], ["ENT", "Larynx Anatomy and Pathology"], ["ENT", "Voice Pathologies and Congenital Lesions of Larynx"], ["ENT", "Laryngeal Paralysis and Laryngeal Carcinoma"], ["ENT", "Miscellaneous"],
         ["Forensic Medicine", "Postmortem autopsy and torture"], ["Forensic Medicine", "BNS Sections"], ["Forensic Medicine", "Traces of evidence & Sexual offences"], ["Forensic Medicine", "Sexual Jurisprudence"], ["Forensic Medicine", "Medical Jurisprudence"], ["Forensic Medicine", "Infanticide"], ["Forensic Medicine", "Asphyxial Death"], ["Forensic Medicine", "Mechanical injuries"], ["Forensic Medicine", "Regional injuries"], ["Forensic Medicine", "Thermal injuries and RTA"], ["Forensic Medicine", "Forensic Ballistics"], ["Forensic Medicine", "Forensic Identification"], ["Forensic Medicine", "General Toxicology"], ["Forensic Medicine", "Forensic Toxicology 1"], ["Forensic Medicine", "Forensic Toxicology 2"], ["Forensic Medicine", "Thanatology"], ["Forensic Medicine", "Forensic Psychiatry"],
-        ["General Medicine", "Valvular Heart Disease"], ["General Medicine", "Heart Sounds and Murmurs"], ["General Medicine", "Takotsubo, Brugada syndrome, RHD, and Infective Endocarditis"], ["General Medicine", "ECG and Arrhythmias"], ["General Medicine", "Ischemic Heart Disease"], ["General Medicine", "Hypertension"], ["General Medicine", "CHF, BBB, Tachycardia, Bradycardia, and Heart Block"], ["General Medicine", "Diseases of the Pericardium and Cardiomyopathies"], ["General Medicine", "Emergency Cardiovascular Care Protocols (BCLS, ACLS, Mechanical ventilation) and Causes of Pulseless E"], ["General Medicine", "Massive Transfusion Protocol, ARDS, Snakebite, AHA updates, Altitude Sickness"], ["General Medicine", "Diabetes Mellitus-I"], ["General Medicine", "Diabetes Mellitus-II"], ["General Medicine", "Disorders of Adrenal Gland and Cushing Syndrome"], ["General Medicine", "Diseases of Thyroid"], ["General Medicine", "DKA and Hyperosmolar Coma, Pancreatic Neuroendocrine Tumors"], ["General Medicine", "Disorders of Parathyroid Gland and MEN Syndromes"], ["General Medicine", "Diseases of Anterior Pituitary"], ["General Medicine", "Disorders of Electrolyte Imbalance"], ["General Medicine", "Electrolyte Imbalance"], ["General Medicine", "Ciliopathies, PKD, TTP"], ["General Medicine", "Kidney Urine Analysis"], ["General Medicine", "AKI, Diabetic Nephropathy, Renal Stones"], ["General Medicine", "Chronic Kidney Disease"], ["General Medicine", "Renal Tubular Acidosis and Renal Artery Stenosis"], ["General Medicine", "Nephrotic and Nephritic Syndromes"], ["General Medicine", "Zollinger Ellison Syndrome"], ["General Medicine", "Inflammatory Bowel Disease-I"], ["General Medicine", "Inflammatory Bowel Disease-II"], ["General Medicine", "Irritable Bowel Syndrome"], ["General Medicine", "Peptic Ulcer and Gastrointestinal Bleeding"], ["General Medicine", "Malabsorption Syndromes"], ["General Medicine", "Chronic Lymphocytic Leukemia"], ["General Medicine", "Chronic Myeloid Leukemia"], ["General Medicine", "Acute Myeloid Leukemia"], ["General Medicine", "Acute Lymphocytic Leukemia"], ["General Medicine", "Multiple Myeloma"], ["General Medicine", "Blood components and Complications of blood transfusion"], ["General Medicine", "Hodgkin's and Non-Hodgkin's Lymphoma"], ["General Medicine", "Thalassemia and Hereditary Spherocytosis"], ["General Medicine", "Sickle cell disease, G6PD deficiency, and other Hemolytic anemias"], ["General Medicine", "Platelet disorders and hematology images"], ["General Medicine", "Basics of Cranial nerves, Mechanical thrombectomy, Stroke"], ["General Medicine", "Stroke, TIA and image based questions"], ["General Medicine", "Syringomelia, conus medullaris, channelopathies and SAH"], ["General Medicine", "CNS hemorrhage; Headaches and Migraine"], ["General Medicine", "Epilepsy and EEG"], ["General Medicine", "Intracranial Pathologies ICP, Brain Death, Tumors, and Neurocysticercosis"], ["General Medicine", "Meningitis and CNS infections"], ["General Medicine", "Parkinsonism and Parkinson's disease"], ["General Medicine", "Myasthenia Gravis"], ["General Medicine", "Guillian Barre Syndrome and Alzheimer's disease"], ["General Medicine", "Multiple sclerosis, neuromyelitis optica spectrum disorder, and ALS"], ["General Medicine", "SLE & ANTIPHOSPHOLIPID SYNDROME"], ["General Medicine", "Rheumatoid arthritis"], ["General Medicine", "Crystal Arthropathy"], ["General Medicine", "Vasculitis Syndromes"], ["General Medicine", "Scleroderma and Sjogren syndrome"], ["General Medicine", "Autoimmune and Inflammatory Diseases in Medicine"], ["General Medicine", "Viral Hepatitis, NAFLD, ALI"], ["General Medicine", "Hepatorenal and hepatopulmonary syndrome and alcoholic hepatitits"], ["General Medicine", "Autoimmune Hepatitis, Primary Biliary Cirrhosis, Primary Sclerosing Cholangitis, and Paracetamol Toxicity"], ["General Medicine", "Liver Cirrhosis and its Complications"], ["General Medicine", "Wilson disease and Hemochromatosis"], ["General Medicine", "Hereditary Hyperbilirubinemia; Budd Chiari syndrome"], ["General Medicine", "Cystic Fibrosis; Obstructive sleep apnea"], ["General Medicine", "Pulmonary Embolism and Fat Embolism"], ["General Medicine", "Bronchiectasis & Pneumonia"], ["General Medicine", "Bronchial asthma and COPD"], ["General Medicine", "Tuberculosis"], ["General Medicine", "Respiratory Physiology and Failure"], ["General Medicine", "INTERSTITIAL LUNG DISEASE AND PULMONARY ALVEOLAR PROTEINOSIS"], ["General Medicine", "Pleural effusion and pneumothorax"], ["General Medicine", "ABG analysis"], ["General Medicine", "Images in Pulmonology"], ["General Medicine", "PUO, Dengue, Nipah, Zika, and Pneumocystis jirovecii"], ["General Medicine", "Aspergillosis, AIDS, and COVID-19"],
+        ["General Medicine", "Valvular Heart Disease"], ["General Medicine", "Heart Sounds and Murmurs"], ["General Medicine", "Takotsubo, Brugada syndrome, RHD, and Infective Endocarditis"], ["General Medicine", "ECG and Arrhythmias"], ["General Medicine", "Ischemic Heart Disease"], ["General Medicine", "Hypertension"], ["General Medicine", "CHF, BBB, Tachycardia, Bradycardia, and Heart Block"], ["General Medicine", "Diseases of the Pericardium and Cardiomyopathies"], ["General Medicine", "Emergency Cardiovascular Care Protocols (BCLS, ACLS, Mechanical ventilation) and Causes of Pulseless E"], ["General Medicine", "Massive Transfusion Protocol, ARDS, Snakebite, AHA updates, Altitude Sickness"], ["General Medicine", "Diabetes Mellitus-I"], ["General Medicine", "Diabetes Mellitus-II"], ["General Medicine", "Disorders of Adrenal Gland and Cushing Syndrome"], ["General Medicine", "Diseases of Thyroid"], ["General Medicine", "DKA and Hyperosmolar Coma, Pancreatic Neuroendocrine Tumors"], ["General Medicine", "Disorders of Parathyroid Gland and MEN Syndromes"], ["General Medicine", "Diseases of Anterior Pituitary"], ["General Medicine", "Disorders of Electrolyte Imbalance"], ["General Medicine", "Electrolyte Imbalance"], ["General Medicine", "Ciliopathies, PKD, TTP"], ["General Medicine", "Kidney Urine Analysis"], ["General Medicine", "AKI, Diabetic Nephropathy, Renal Stones"], ["General Medicine", "Chronic Kidney Disease"], ["General Medicine", "Renal Tubular Acidosis and Renal Artery Stenosis"], ["General Medicine", "Nephrotic and Nephritic Syndromes"], ["General Medicine", "Zollinger Ellison Syndrome"], ["General Medicine", "Inflammatory Bowel Disease-I"], ["General Medicine", "Inflammatory Bowel Disease-II"], ["General Medicine", "Irritable Bowel Syndrome"], ["General Medicine", "Peptic Ulcer and Gastrointestinal Bleeding"], ["General Medicine", "Malabsorption Syndromes"], ["General Medicine", "Chronic Lymphocytic Leukemia"], ["General Medicine", "Chronic Myeloid Leukemia"], ["General Medicine", "Acute Myeloid Leukemia"], ["General Medicine", "Acute Lymphocytic Leukemia"], ["General Medicine", "Multiple Myeloma"], ["General Medicine", "Blood components and Complications of blood transfusion"], ["General Medicine", "Hodgkin's and Non-Hodgkin's Lymphoma"], ["General Medicine", "Thalassemia and Hereditary Spherocytosis"], ["General Medicine", "Sickle cell disease, G6PD deficiency, and other Hemolytic anemias"], ["General Medicine", "Platelet disorders and hematology images"], ["General Medicine", "Basics of Cranial nerves, Mechanical thrombectomy, Stroke"], ["General Medicine", "Stroke, TIA and image based questions"], ["General Medicine", "Syringomelia, conus medullaris, channelopathies and SAH"], ["General Medicine", "CNS hemorrhage; Headaches and Migraine"], ["General Medicine", "Epilepsy and EEG"], ["General Medicine", "Intracranial Pathologies ICP, Brain Death, Tumors, and Neurocysticercosis"], ["General Medicine", "Meningitis and CNS infections"], ["General Medicine", "Parkinsonism and Parkinson's disease"], ["General Medicine", "Myasthenia Gravis"], ["General Medicine", "Guillian Barre Syndrome and Alzheimer's disease"], ["General Medicine", "Multiple sclerosis, neuromyelitis optica spectrum disorder, and ALS"], ["General Medicine", "SLE & ANTIPHOSPHOLIPID SYNDROME"], ["General Medicine", "Rheumatoid arthritis"], ["General Medicine", "Crystal Arthropathy"], ["General Medicine", "Vasculitis Syndromes"], ["General Medicine", "Scleroderma and Sjogren syndrome"], ["General Medicine", "Autoimmune and Inflammatory Diseases in Medicine"], ["General Medicine", "Viral Hepatitis, NAFLD, ALI"], ["General Medicine", "Hepatorenal and hepatopulmonary syndrome and alcoholic hepatitits"], ["General Medicine", "Autoimmune Hepatitis, Primary Biliary Cirrhosis, Primary Sclerosing Cholangitis, and Paracetamol Toxicity"], ["General Medicine", "Liver Cirrhosis and Liver Failure"], ["General Medicine", "Wilson disease and Hemochromatosis"], ["General Medicine", "Hereditary Hyperbilirubinemia; Budd Chiari syndrome"], ["General Medicine", "Cystic Fibrosis; Obstructive sleep apnea"], ["General Medicine", "Pulmonary Embolism and Fat Embolism"], ["General Medicine", "Bronchiectasis & Pneumonia"], ["General Medicine", "Bronchial asthma and COPD"], ["General Medicine", "Tuberculosis"], ["General Medicine", "Respiratory Physiology and Failure"], ["General Medicine", "INTERSTITIAL LUNG DISEASE AND PULMONARY ALVEOLAR PROTEINOSIS"], ["General Medicine", "Pleural effusion and pneumothorax"], ["General Medicine", "ABG analysis"], ["General Medicine", "Images in Pulmonology"], ["General Medicine", "PUO, Dengue, Nipah, Zika, and Pneumocystis jirovecii"], ["General Medicine", "Aspergillosis, AIDS, and COVID-19"],
         ["Microbiology", "Scientists, Stains, and Microscopes"], ["Microbiology", "Bacterial Anatomy"], ["Microbiology", "Bacterial genetics"], ["Microbiology", "Culture Media"], ["Microbiology", "Sterilization and Disinfection"], ["Microbiology", "Staphylococcus, Streptococcus, and Neisseria"], ["Microbiology", "Corynebacterium & Filamentous bacterium"], ["Microbiology", "Spore Forming Bacteria"], ["Microbiology", "Mycobacterium"], ["Microbiology", "E coli and shigella"], ["Microbiology", "Klebsiella, Proteus, Yersinia, Salmonella"], ["Microbiology", "Vibrio and non-fermenters"], ["Microbiology", "Hemophillus, Bordatella, and Brucella"], ["Microbiology", "Syphilis, Chlamydia and Rickettsiae"], ["Microbiology", "Miscellaneous bacteria"], ["Microbiology", "Virology - General properties"], ["Microbiology", "Herpesviridae"], ["Microbiology", "Parvoviridae, Poxviridae, Adenovirus"], ["Microbiology", "Hepatitis virus"], ["Microbiology", "Myxovirus"], ["Microbiology", "Picornaviridae and Rhabdoviridae"], ["Microbiology", "RNA Virology- Arboviridae and Retroviridae"], ["Microbiology", "Other RNA viruses and COVID-19"], ["Microbiology", "Introduction to Mycology and its Classification"], ["Microbiology", "Superficial and subcutaneous mycosis, and dimorphic fungi"], ["Microbiology", "Oppurtunistic infections"],
         ["OBG", "Contraception"], ["OBG", "Clinical Anatomy of Female"], ["OBG", "Pelvis, Perineum and Pelvic diaphragm"], ["OBG", "Menstrual Physiology"], ["OBG", "Vaginitis and Syndromic approach for Vaginal discharge"], ["OBG", "Vulval Infections and Genital TB"], ["OBG", "Pelvic Inflammatory Disease"], ["OBG", "Polycystic Ovarian Syndrome"], ["OBG", "Fibroids and Polyps"], ["OBG", "Endometriosis & Adenomyosis"], ["OBG", "AUB, Hirsutism and Adnexal Mass"], ["OBG", "Embryology and Associated Disorders"], ["OBG", "Disorders of Puberty, Amenorrhea, Menopause"], ["OBG", "Infertility"], ["OBG", "Vulval and Vaginal Malignancy"], ["OBG", "Endometrial Carcinoma"], ["OBG", "Ovarian Tumors"], ["OBG", "Cervical Carcinoma"], ["OBG", "Pelvic Organ Prolapse"], ["OBG", "Urinary Incontinence and Fistulas"], ["OBG", "Physiological changes in Pregnancy"], ["OBG", "Diagnosis of Pregnancy and Antenatal Care"], ["OBG", "Abortions"], ["OBG", "Ectopic pregnancy"], ["OBG", "Gestational trophoblastic diseases and Molar pregnancy"], ["OBG", "Stages of labour"], ["OBG", "Abnormalities in Labor"], ["OBG", "Instrumental delivery and induction of labor"], ["OBG", "Antepartum Haemorrhage"], ["OBG", "Post-Partum Hemorrhage"], ["OBG", "Hypertension in pregnancy"], ["OBG", "Anemia in Pregnancy"], ["OBG", "Multifetal Pregnancy"], ["OBG", "Gestational diabetes mellitus"], ["OBG", "Abnormalities of Placenta and Umbilical Cord"], ["OBG", "Heart diseases in pregnancy"], ["OBG", "Amniotic Fluid Abnormalities"], ["OBG", "Preterm Labor and Post-dated Pregnancy"], ["OBG", "Hepatic Disorders in Pregnancy"], ["OBG", "Puerperium"], ["OBG", "Rh Isoimmunization"], ["OBG", "Cesarean Delivery"],
         ["Ophthalmology", "Introduction to Ophthalmology"], ["Ophthalmology", "Lens and Disorders"], ["Ophthalmology", "Glaucoma-PACG, Treatment, Congenital Glaucoma"], ["Ophthalmology", "Glaucoma - POAG, Tonometry, Perimetry"], ["Ophthalmology", "Cornea"], ["Ophthalmology", "Sclera"], ["Ophthalmology", "Uvea"], ["Ophthalmology", "Neuro Ophthalmology"], ["Ophthalmology", "Conjunctiva"], ["Ophthalmology", "Lacrimal Drainage System"], ["Ophthalmology", "Orbit"], ["Ophthalmology", "Ocular Injuries"], ["Ophthalmology", "Lids and Disorders"], ["Ophthalmology", "Optics-II"], ["Ophthalmology", "Optics-I"], ["Ophthalmology", "Squint"], ["Ophthalmology", "Retinal Investigations and Vascular Disorders"], ["Ophthalmology", "Macular and Fundus Disorders; Retinal Detachment and Retinoblastoma"],
@@ -1468,7 +1555,12 @@
     }
 
     function initApp() {
-      document.getElementById('motivationalQuote').textContent = MOTIVATIONAL_QUOTES[Math.floor(Math.random() * MOTIVATIONAL_QUOTES.length)];
+      const mq = document.getElementById('motivationalQuote');
+      mq.textContent = MOTIVATIONAL_QUOTES[Math.floor(Math.random() * MOTIVATIONAL_QUOTES.length)];
+      mq.classList.remove('quote-animate');
+      void mq.offsetWidth; // trigger reflow
+      mq.classList.add('quote-animate');
+
       setInterval(() => { if(needsSync) { syncDataCloud(true); } }, 10000);
 
       setUserGreeting();
@@ -1516,7 +1608,14 @@
         });
       });
       
-      const errLogFilter = document.getElementById('err-log-filter-subj');
+    const savedTheme = localStorage.getItem('zona-theme');
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+    if (document.getElementById('themeBtn')) {
+      document.getElementById('themeBtn').innerHTML = document.documentElement.getAttribute('data-theme') === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+    }
+    const errLogFilter = document.getElementById('err-log-filter-subj');
       if(errLogFilter) {
          errLogFilter.innerHTML = '<option value="All">All Subjects</option>';
          uniqueSubjects.forEach(s => {
@@ -1594,7 +1693,7 @@
           </div>
           <div style="background:rgba(255,255,255,0.05); padding:12px; border-radius:8px;">
             <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">Resources</div>
-            <div style="font-weight:600; color:var(--text-main); font-size:13px;">${state.userProfile.resources.join(', ') || 'None'}</div>
+            <div style="font-weight:600; color:var(--text-main); font-size:13px;">${Array.isArray(state.userProfile.resources) ? state.userProfile.resources.join(', ') : 'None'}</div>
           </div>
         `;
       }
@@ -1628,6 +1727,7 @@
     }
 
     function editProfile() {
+      const resources = Array.isArray(state.userProfile.resources) ? state.userProfile.resources : [];
       document.getElementById('reg-name').value = state.userProfile.name;
       document.getElementById('reg-mobile').value = state.userProfile.mobile;
       document.getElementById('reg-tg').value = state.userProfile.tg;
@@ -1636,7 +1736,7 @@
       document.getElementById('reg-hours').value = state.userProfile.hours;
       
       document.querySelectorAll('.reg-res-cb').forEach(cb => {
-        cb.checked = state.userProfile.resources.includes(cb.value);
+        cb.checked = resources.includes(cb.value);
       });
 
       document.getElementById('loginOverlay').classList.add('show');
@@ -1668,7 +1768,11 @@
             document.getElementById('matchLink').href = "https://t.me/" + json.data.partnerTg.replace('@', '');
             showToast("You already have a partner!");
         } else {
-            document.getElementById('matchResult').innerHTML = `<div style="font-size: 40px; margin-bottom: 12px;">⏳</div><h3 style="color: var(--orange); font-size: 20px; font-weight: 800; margin-bottom: 8px;">No Match Found Yet</h3><p style="color: var(--text-main); font-size: 14px; margin-bottom: 16px;">Check back later as more aspirants join the protocol.</p>`;
+            // Fallback to @Zacure
+            document.getElementById('matchUsername').textContent = "@Zacure";
+            document.getElementById('matchLink').href = "https://t.me/zacure";
+            document.getElementById('matchResult').querySelector('p').textContent = "No peer match found. Connected with mentor @Zacure for guidance.";
+            showToast("Connected to Mentor @Zacure.");
         }
       } catch(e) {
         loader.style.display = 'none';
@@ -1813,21 +1917,35 @@
     }
 
     function navTo(pageId, element) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.page').forEach(p => {
+        p.classList.remove('active');
+      });
       document.querySelectorAll('.nav-item').forEach(n => {
         n.classList.remove('active');
         if(n.style.color === 'var(--orange)' && !n.textContent.includes('Add Custom Topic')) n.style.color = 'var(--text-muted)';
         if(n.style.color === 'var(--teal)' && !n.textContent.includes('Subject Progress Bar')) n.style.color = 'var(--text-muted)';
         if(n.style.color === 'var(--pink)' && !n.textContent.includes('Study Partner')) n.style.color = 'var(--text-muted)';
       });
-      document.getElementById('page-' + pageId).classList.add('active'); 
+      
+      const targetPage = document.getElementById('page-' + pageId);
+      // Force DOM Reflow to restart CSS animations reliably
+      void targetPage.offsetWidth; 
+      targetPage.classList.add('active'); 
+
       if(element) {
         element.classList.add('active');
         document.getElementById('headerTitle').textContent = element.textContent.trim().replace(/[^a-zA-Z\s]/g, '');
       }
       toggleSidebar(true);
 
-      if (pageId === 'dashboard') { renderDashboard(); }
+      // Re-trigger quote animation if returning to dashboard
+      if (pageId === 'dashboard') { 
+          const mq = document.getElementById('motivationalQuote');
+          mq.classList.remove('quote-animate');
+          void mq.offsetWidth;
+          mq.classList.add('quote-animate');
+          renderDashboard(); 
+      }
       if (pageId === 'test-records') renderTestRecords();
       if (pageId === 'error-log') renderErrorLog();
       if (pageId === 'master-tracker') renderMasterTracker();
@@ -1849,10 +1967,15 @@
 
     function toggleTheme() {
       const html = document.documentElement;
-      if (html.getAttribute('data-theme') === 'dark') { html.setAttribute('data-theme', 'light'); document.getElementById('themeBtn').innerHTML = '<i class="fas fa-sun"></i>'; } 
-      else { html.setAttribute('data-theme', 'dark'); document.getElementById('themeBtn').innerHTML = '<i class="fas fa-moon"></i>'; }
-      if(window.testChartInst) renderCharts();
-      if(window.radarChartInstance) renderDashboard();
+      if (html.getAttribute('data-theme') === 'dark') {
+        html.setAttribute('data-theme', 'light');
+        document.getElementById('themeBtn').innerHTML = '<i class="fas fa-sun"></i>';
+        localStorage.setItem('zona-theme', 'light');
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        document.getElementById('themeBtn').innerHTML = '<i class="fas fa-moon"></i>';
+        localStorage.setItem('zona-theme', 'dark');
+      }
     }
 
     // --- Upcoming Tests Ticker ---
@@ -1984,8 +2107,8 @@
         
         if (weight > 0) {
           labels.push(subj);
-          dataSecured.push(secured.toFixed(1));
-          dataRemaining.push((weight - secured).toFixed(1));
+          dataSecured.push(Number(secured.toFixed(1)));
+          dataRemaining.push(Number((weight - secured).toFixed(1)));
         }
       });
 
@@ -2179,9 +2302,9 @@
       container.innerHTML = html;
     }
 
-    // --- Ultimate Planner (May 13 - Dec 31) ---
+    // --- Ultimate Planner (May 17 - Nov 1) ---
     function setupPlanner() {
-      const start = new Date('2026-05-13'); const end = new Date('2026-12-31'); let curr = new Date(start);
+      const start = new Date('2026-05-17'); const end = new Date('2026-11-01'); let curr = new Date(start);
       while(curr <= end) {
         let dStr = curr.toISOString().split('T')[0];
         if(!state.planner[dStr] || Array.isArray(state.planner[dStr])) { 
@@ -2698,7 +2821,7 @@
       
       let agg = {};
       state.errors.forEach(e => {
-        let key = `${e.subject}::${e.broad}::${e.subT}`;
+        let key = `${e.subject}::${e.broad}`;
         if(!agg[key]) agg[key] = { subject: e.subject, broad: e.broad, subT: e.subT, count: 0, dates: [], sources: [] };
         agg[key].count++;
         if(e.date) agg[key].dates.push(e.date);
