@@ -1254,11 +1254,14 @@
               <div class="flex-between" style="margin-bottom:16px; border-bottom:1px solid var(--glass-border); padding-bottom:16px;">
                 <div>
                   <h2 class="h2-title" style="margin:0;"><i class="fas fa-book-skull mr-2 text-slate-400"></i> The Mistake Notebook</h2>
-                  <p class="sub-text" style="margin:4px 0 0 0;">Aggregated tracking of specific repeated errors.</p>
+                  <p class="sub-text" style="margin:4px 0 0 0;">Add custom notes, resolve entries, and delete mistakes freely.</p>
                 </div>
-                <select class="form-control" id="err-log-filter-subj" style="width:160px; font-weight:600; color:var(--red); border-color:rgba(239,68,68,0.3);" onchange="renderErrorLog()">
-                  <option value="All">All Subjects</option>
-                </select>
+                <div style="display:flex; gap:10px; align-items:center; flex-wrap: wrap;">
+                  <button class="btn btn-outline btn-sm" style="min-width:130px; border-color:rgba(16,185,129,0.3); color:var(--green);" onclick="resolveAllErrors()"><i class="fas fa-check-double mr-2"></i>Resolve All</button>
+                  <select class="form-control" id="err-log-filter-subj" style="width:160px; font-weight:600; color:var(--red); border-color:rgba(239,68,68,0.3);" onchange="renderErrorLog()">
+                    <option value="All">All Subjects</option>
+                  </select>
+                </div>
               </div>
               <div id="errorLogList" style="flex:1; overflow-y: auto; padding-right: 8px; display:flex; flex-direction:column; gap:12px;"></div>
             </div>
@@ -2857,7 +2860,9 @@
       const date = document.getElementById('err-date').value; const source = document.getElementById('err-source').value;
       const sub = document.getElementById('err-subject').value; const broad = document.getElementById('err-broad').value; const subT = document.getElementById('err-sub').value;
       if(!broad) { showToast("Broad topic required! ⚠️", "error"); return; }
-      const errObj = { id: Date.now(), date, source, subject: SUBJECT_EMOJIS[sub] + " " + sub, broad, subT };
+      const subjectKey = sub || 'Unspecified';
+      const subjectText = subjectKey && SUBJECT_EMOJIS[subjectKey] ? `${SUBJECT_EMOJIS[subjectKey]} ${subjectKey}` : subjectKey;
+      const errObj = { id: Date.now(), date, source, subject: subjectText, subjectKey, broad, subT, notes: '', resolved: false };
       state.errors.push(errObj); undoStack.push({ action: 'add_err', data: errObj, idx: state.errors.length-1 });
       saveData(); document.getElementById('err-broad').value = ''; document.getElementById('err-sub').value = ''; renderErrorLog(); showToast('Error Added to Notebook! 📓', 'undo_add_err'); updateDatalists();
     }
@@ -2865,58 +2870,71 @@
     function renderErrorLog() {
       const container = document.getElementById('errorLogList');
       const filterSubj = document.getElementById('err-log-filter-subj').value;
-      
-      let agg = {};
-      state.errors.forEach(e => {
-        let key = `${e.subject}::${e.broad}`;
-        if(!agg[key]) agg[key] = { subject: e.subject, broad: e.broad, subT: e.subT, count: 0, dates: [], sources: [] };
-        agg[key].count++;
-        if(e.date) agg[key].dates.push(e.date);
-        if(e.source) agg[key].sources.push(e.source);
-      });
+      const visibleErrors = state.errors
+        .filter(e => filterSubj === 'All' || e.subjectKey === filterSubj)
+        .sort((a,b) => (b.date || '').localeCompare(a.date || '') || b.id - a.id);
 
-      let html = '';
-      Object.entries(agg).sort((a,b) => b[1].count - a[1].count).forEach(([key, data]) => {
-        if(filterSubj !== 'All' && data.subject !== filterSubj) return;
-        
-        if(!state.errorTracker) state.errorTracker = {};
-        if(!state.errorTracker[key]) state.errorTracker[key] = {r1:false, r2:false, r3:false, locked:false, notes:''};
-        let t = state.errorTracker[key];
-        
-        let countBadge = data.count > 1 ? `<span class="badge badge-error" style="font-size:12px; padding:6px 12px;"><i class="fas fa-repeat mr-1"></i> Repeated ${data.count}x!</span>` : `<span class="badge" style="background:rgba(255,255,255,0.1); color:var(--text-muted); font-size:12px; padding:6px 12px;">1x</span>`;
-        let lockedStyle = t.locked ? 'opacity: 0.5; background: rgba(16,185,129,0.05); border-color: rgba(16,185,129,0.3);' : 'background:rgba(0,0,0,0.5); border-color:rgba(239,68,68,0.3);';
-        let lastSource = data.sources.length ? ` <span style="font-size:10px; color:var(--text-dim); margin-left:12px; font-weight:800;"><i class="fas fa-clock mr-1"></i> LAST: ${data.sources[data.sources.length-1]}</span>` : '';
-
-        html += `
-        <div class="glass-card" style="padding: 20px 24px; margin-bottom: 0; ${lockedStyle}">
-           <div class="flex-between" style="margin-bottom: 16px;">
-              <div>
-                <div style="font-size:11px; color:var(--red); font-weight:900; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">${data.subject} ${lastSource} <span class="badge badge-error" style="margin-left:8px; background:var(--red); color:white;"><i class="fas fa-bolt mr-1"></i> ERROR TOPIC</span></div>
-                <div style="font-size:18px; font-weight:800; color:var(--text-main); margin-bottom:4px;">${data.broad}</div>
-                <div style="font-size:14px; font-weight:600; color:var(--text-muted);"><i class="fas fa-microscope mr-1"></i> ${data.subT || 'General Concept'}</div>
+      let html = visibleErrors.map(e => {
+        const statusLabel = e.resolved ? 'Resolved' : 'Resolve';
+        const statusColor = e.resolved ? 'var(--green)' : 'var(--orange)';
+        return `
+          <div class="glass-card" style="padding: 20px 24px; margin-bottom: 0; background: rgba(0,0,0,0.35); border-color: rgba(239,68,68,0.2);">
+            <div class="flex-between" style="margin-bottom: 16px; gap: 16px; flex-wrap: wrap;">
+              <div style="min-width: 0;">
+                <div style="font-size:11px; color:var(--red); font-weight:900; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+                  ${e.subject}<span style="background: rgba(255,255,255,0.08); padding:4px 10px; border-radius:999px; color:var(--text-muted); font-size:10px; font-weight:700;">ERROR NOTE</span>
+                </div>
+                <div style="font-size:18px; font-weight:800; color:var(--text-main); margin-bottom:4px; line-height:1.2;">${e.broad}</div>
+                <div style="font-size:14px; font-weight:600; color:var(--text-muted);"><i class="fas fa-microscope mr-1"></i> ${e.subT || 'General Concept'}</div>
+                <div style="font-size:12px; color:var(--text-dim); margin-top:10px; display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+                  <span><i class="fas fa-calendar-alt mr-1"></i>${e.date || 'No date'}</span>
+                  ${e.source ? `<span><i class="fas fa-link mr-1"></i>${e.source}</span>` : ''}
+                </div>
               </div>
-              <div style="text-align:right;">${countBadge}</div>
-           </div>
-           <textarea class="form-control" style="min-height:80px; font-size:13px; margin-bottom:20px; font-weight:500; line-height:1.6; background:rgba(0,0,0,0.3); border-color:rgba(255,255,255,0.1);" placeholder="Log active recall notes, volatile pearls, or mnemonics here..." onchange="updateErrNotes('${key}', this.value)">${t.notes || ''}</textarea>
-           <div class="topic-checks" style="padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.05); display:flex; gap:20px;">
-              <div class="check-label" onclick="toggleErrTrack('${key}','r1')"><div class="rev-cb ${t.r1?'checked':''}">${t.r1?'✓':''}</div> R1</div>
-              <div class="check-label" onclick="toggleErrTrack('${key}','r2')"><div class="rev-cb ${t.r2?'checked':''}">${t.r2?'✓':''}</div> R2</div>
-              <div class="check-label" onclick="toggleErrTrack('${key}','r3')"><div class="rev-cb ${t.r3?'checked':''}">${t.r3?'✓':''}</div> R3</div>
-              <div class="check-label" onclick="toggleErrTrack('${key}','locked')" style="color:var(--green); margin-left:auto;"><div class="rev-cb done-cb ${t.locked?'checked':''}">${t.locked?'🔒':''}</div> Resolve</div>
-           </div>
-        </div>`;
-      });
+              <div style="display:flex; gap:10px; flex-wrap: wrap; align-items:center;">
+                <button class="btn btn-outline btn-sm" style="min-width:110px; border-color:rgba(59,130,246,0.3); color:var(--text-main);" onclick="toggleErrorResolved(${e.id})"><i class="fas fa-check-circle mr-2" style="color:${statusColor};"></i>${statusLabel}</button>
+                <button class="btn btn-outline btn-sm" style="min-width:110px; color:var(--red); border-color:rgba(239,68,68,0.35);" onclick="deleteError(${e.id})"><i class="fas fa-trash mr-2"></i>Remove</button>
+              </div>
+            </div>
+            <div style="display:flex; gap:12px; align-items:flex-start; margin-bottom:12px;">
+              <div style="font-size:18px; color:var(--orange); margin-top:6px;"><i class="fas fa-pencil-alt"></i></div>
+              <textarea class="form-control" style="flex:1; min-height:100px; font-size:13px; margin-bottom:0; font-weight:500; line-height:1.6; background:rgba(0,0,0,0.28); border-color:rgba(255,255,255,0.12);" placeholder="Write custom notes here..." oninput="updateErrorNotes(${e.id}, this.value)">${e.notes || ''}</textarea>
+            </div>
+            ${e.resolved ? `<div class="badge badge-ini" style="display:inline-flex; gap:8px; align-items:center;"><i class="fas fa-check"></i>Resolved</div>` : ''}
+          </div>`;
+      }).join('');
+
       container.innerHTML = html || '<p class="sub-text" style="padding:60px; text-align:center; border:2px dashed var(--glass-border); border-radius:16px; font-size:16px;"><i class="fas fa-shield-halved text-4xl mb-4 text-green-500 block"></i> No errors logged yet. Clean slate!</p>';
     }
 
-    function toggleErrTrack(key, field) {
-      state.errorTracker[key][field] = !state.errorTracker[key][field];
+    function toggleErrorResolved(id) {
+      const idx = state.errors.findIndex(e => e.id === id);
+      if(idx === -1) return;
+      state.errors[idx].resolved = !state.errors[idx].resolved;
       saveData(); renderErrorLog();
     }
-    
-    function updateErrNotes(key, val) {
-      state.errorTracker[key].notes = val;
-      saveData();
+
+    function resolveAllErrors() {
+      state.errors.forEach(err => { err.resolved = true; });
+      saveData(); renderErrorLog(); showToast('All errors marked as resolved ✅');
+    }
+
+    const errorNoteTimers = {};
+    function updateErrorNotes(id, val) {
+      const err = state.errors.find(e => e.id === id);
+      if(!err) return;
+      err.notes = val;
+      if(errorNoteTimers[id]) clearTimeout(errorNoteTimers[id]);
+      errorNoteTimers[id] = setTimeout(() => {
+        saveData(); delete errorNoteTimers[id];
+      }, 500);
+    }
+
+    function deleteError(id) {
+      const idx = state.errors.findIndex(e => e.id === id);
+      if(idx === -1) return;
+      undoStack.push({ action: 'del_err', data: state.errors[idx], idx });
+      state.errors.splice(idx, 1); saveData(); renderErrorLog(); showToast('Error removed from notebook 🗑️', 'undo_del_err');
     }
 
     function showToast(msg, undoType = null) {
