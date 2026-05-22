@@ -790,7 +790,10 @@
         <div class="nav-item" onclick="navTo('revision-schedule', this)" style="color:var(--orange); font-weight:600;"><i class="fas fa-calendar-alt w-5 text-center"></i> 90-Day Revision Schedule</div>
         <div class="nav-item" onclick="navTo('syllabus', this)"><i class="fas fa-scale-balanced w-5 text-center"></i> Syllabus & Weightage</div>
       </div>
-      
+      <button onclick="resetMyData()" 
+        style="margin:0 16px 8px 16px; width:calc(100% - 32px); padding:8px 10px; font-size:13px; background:red; color:white; font-weight:700; cursor:pointer; border:none; border-radius:8px;">
+        🗑️ RESET DATA
+      </button>
       <div class="sidebar-footer">
         <div style="margin-top:8px;">
           <a href="https://t.me/Zona_Occludens" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:rgba(59,130,246,0.1); padding:6px 12px; border-radius:6px; font-family:var(--font-mono);">
@@ -949,7 +952,10 @@
               <div class="grid-2" id="partnerProfileData" style="gap: 12px;">
                 <!-- Filled via JS -->
               </div>
-              <button class="btn btn-outline btn-sm" style="margin-top: 16px;" onclick="editProfile()"><i class="fas fa-pen mr-1"></i> Edit Profile Info</button>
+              <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top: 16px;">
+                <button class="btn btn-outline btn-sm" onclick="editProfile()"><i class="fas fa-pen mr-1"></i> Edit Profile Info</button>
+                <button class="btn btn-outline btn-sm" style="border-color: rgba(239,68,68,0.3); color: var(--red);" onclick="deleteProfile()"><i class="fas fa-user-slash mr-1"></i> Delete Profile</button>
+              </div>
             </div>
 
             <div style="margin-top: 32px; text-align: center;">
@@ -1116,7 +1122,7 @@
                   <div style="background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.18); padding: 16px; border-radius: var(--radius-md);">
                       <div class="flex-between" style="flex-wrap: wrap; margin-bottom: 8px;">
                           <h3 style="color: var(--orange); font-size: 16px; font-weight: 700; margin: 0;">Round 1 (R1): The Deep Dive</h3>
-                          <span class="badge" style="background: rgba(249, 115, 22, 0.12); color: var(--orange);">50 Days | May 17 — July 5, 2026</span>
+                          <span class="badge" style="background: rgba(249, 115, 22, 0.12); color: var(--orange);">50 Days | May 22 — July 10, 2026</span>
                       </div>
                       <p style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 8px;">Starting with Surgery, OBG, PSM, Path, Micro, Pharma, Medicine, Biochem and Pedia followed by other subjects</p>
                       <ul style="list-style: disc inside; margin-left: 1rem; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
@@ -1128,7 +1134,7 @@
                   <div style="background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.18); padding: 16px; border-radius: var(--radius-md);">
                       <div class="flex-between" style="flex-wrap: wrap; margin-bottom: 8px;">
                           <h3 style="color: var(--orange); font-size: 16px; font-weight: 700; margin: 0;">Round 2 (R2): Consolidation</h3>
-                          <span class="badge" style="background: rgba(249, 115, 22, 0.12); color: var(--orange);">25 Days | July 6 — July 30, 2026</span>
+                          <span class="badge" style="background: rgba(249, 115, 22, 0.12); color: var(--orange);">25 Days | July 11 — Aug 5, 2026</span>
                       </div>
                       <p style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 8px;">Focus on revision quality, mixed Qs, and balancing weak subjects with high-yield phases.</p>
                       <ul style="list-style: disc inside; margin-left: 1rem; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
@@ -1140,7 +1146,7 @@
                   <div style="background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.18); padding: 16px; border-radius: var(--radius-md);">
                       <div class="flex-between" style="flex-wrap: wrap; margin-bottom: 8px;">
                           <h3 style="color: var(--orange); font-size: 16px; font-weight: 700; margin: 0;">Round 3 (R3): Lock & Polish</h3>
-                          <span class="badge" style="background: rgba(249, 115, 22, 0.12); color: var(--orange);">15 Days | July 31 — Aug 14, 2026</span>
+                          <span class="badge" style="background: rgba(249, 115, 22, 0.12); color: var(--orange);">15 Days | Aug 6 — Aug 21, 2026</span>
                       </div>
                       <p style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 8px;">Final lock-in phase with sharp MCQ sessions, active memory testing, and rapid recall drills.</p>
                       <ul style="list-style: disc inside; margin-left: 1rem; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
@@ -1585,6 +1591,36 @@
         initApp();
       }
     };
+
+    function resetMyData() {
+      const confirmDelete = confirm('This will delete your saved account data and log you out permanently. Do you want to continue?');
+      if (!confirmDelete) return;
+      localStorage.removeItem('pgmedprep_db_zacurians');
+      showToast('Your data has been removed. Reloading...');
+      setTimeout(() => location.reload(), 500);
+    }
+
+    async function deleteProfile() {
+      if (!state.userProfile || !state.userProfile.mobile) {
+        showToast('No profile found to delete.', 'error');
+        return;
+      }
+      const confirmDelete = confirm('Delete your profile? This will remove your profile and cloud account record.');
+      if (!confirmDelete) return;
+
+      try {
+        await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({ action: 'deleteUser', userId: state.userProfile.mobile }),
+        });
+      } catch (e) {
+        console.warn('Cloud delete failed', e);
+      }
+
+      state.userProfile = null;
+      localStorage.removeItem('pgmedprep_db_zacurians');
+      location.reload();
+    }
 
     async function submitLogin() {
       const name = document.getElementById('reg-name').value.trim();
