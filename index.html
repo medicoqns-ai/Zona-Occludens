@@ -1089,7 +1089,7 @@
             <div class="flex-between" style="flex-wrap: wrap; gap: 16px;">
               <div>
                 <h2 class="h2-title" style="margin:0;"><i class="fas fa-calendar-check mr-2 text-orange-500"></i> Ultimate Daily Planner</h2>
-                <p class="sub-text" style="margin:4px 0 0 0;">Execute daily missions from May 19th through November 1st, 2026.</p>
+                <p class="sub-text" style="margin:4px 0 0 0;">Execute daily missions from May 22nd through November 1st, 2026.</p>
               </div>
               <div class="planner-filter-bar" style="margin-bottom:0; align-items:center; gap:10px; display:flex; flex-wrap:wrap;">
                 <select class="form-control" id="planner-month-filter" style="width: 140px; font-weight:600;" onchange="renderPlanner()">
@@ -1371,11 +1371,11 @@
               <h3>Part-II: Personality Test: (100 Marks)</h3>
               <p>Personality test carrying 100 marks of such of the candidates who qualify on the results of the Computer based examination.</p>
               
-              <h4 style="color:var(--blue); text-transform:uppercase; margin-top:24px; font-size:16px; border-bottom:1px solid rgba(59,130,246,0.3); padding-bottom:6px;">(A) Computer based Examination:</h4>
+              <h4 style="color:var(--blue); text-transform:uppercase; margin-top:24px; font-size:13px; border-bottom:1px solid rgba(59,130,246,0.3); padding-bottom:6px;">(A) Computer based Examination:</h4>
               <p>1. The components and syllabi of two Papers and the weightage to different components in the two papers are given below:</p>
               
               <div style="background:rgba(249,115,22,0.03); border:1px solid rgba(249,115,22,0.15); padding:16px; border-radius:var(--radius-sm); margin-top:16px;">
-                <h3 style="color:var(--orange); margin-top:0; font-size:16px;">Paper I (Code No. 1) - Maximum Marks: 250</h3>
+                <h3 style="color:var(--orange); margin-top:0; font-size:13px;">Paper I (Code No. 1) - Maximum Marks: 250</h3>
                 <p><strong>General Medicine and Paediatrics:</strong><br>Total questions in Paper I = 120 (96 from General Medicine and 24 from Paediatrics)</p>
                 
                 <h4 style="color:var(--orange); margin-top:20px; text-transform:uppercase; font-size:11px; font-weight:700; letter-spacing:0.5px; font-family:var(--font-mono);">Syllabus of Paper-I</h4>
@@ -1401,7 +1401,7 @@
               </div>
 
               <div style="background:rgba(16,185,129,0.03); border:1px solid rgba(16,185,129,0.15); padding:16px; border-radius:var(--radius-sm); margin-top:20px;">
-                <h3 style="color:var(--green); margin-top:0; font-size:16px;">Paper II (Code No. 2) - Maximum Marks: 250</h3>
+                <h3 style="color:var(--green); margin-top:0; font-size:13px;">Paper II (Code No. 2) - Maximum Marks: 250</h3>
                 <p><strong>(a) Surgery (b) Gynaecology & Obstetrics (c) Preventive & Social Medicine</strong><br>Total questions in Paper II = 120 (40 questions from each part.)</p>
                 
                 <h4 style="color:var(--green); margin-top:20px; text-transform:uppercase; font-size:11px; font-weight:700; letter-spacing:0.5px; font-family:var(--font-mono);">Syllabus of Paper-II</h4>
@@ -1506,7 +1506,7 @@
     };
 
     const RESOURCES_OPTIONS = ["Custom Notes", "RR Notes", "RR Videos 🎬", "Main Notes 📚", "Review Books", "Image PYQs 🖼️", "Error Log"];
-    const APP_PLANNER_START = '2026-05-19';
+    const APP_PLANNER_START = '2026-05-22';
     const APP_PLANNER_END = '2026-11-01';
     const APP_START_DATE = APP_PLANNER_START;
 
@@ -1559,7 +1559,7 @@
       userProfile: null,
       tests: [], errors: [], masterTopics: {}, planner: {}, mcqPractice: [], errorTracker: {},
       upcomingTests: [], subjectProgress: {},
-      streak: { count: 0, lastDate: null, cards: 1, history: [], pendingRepair: false }
+      streak: { count: 0, lastDate: null, cards: 3, history: [], pendingRepair: false }
     };
     
     let undoStack = []; let showHYOnly = false; let showCustomOnly = false; let currentModalTopic = null; let needsSync = false;
@@ -1671,7 +1671,7 @@
       if (!state.errorTracker) state.errorTracker = {};
       if (!state.upcomingTests) state.upcomingTests = [];
       if (!state.subjectProgress) state.subjectProgress = {};
-      if (!state.streak) state.streak = { count: 0, lastDate: null, cards: 1, history: [], pendingRepair: false };
+      if (!state.streak) state.streak = { count: 0, lastDate: null, cards: 3, history: [], pendingRepair: false };
 
       initMasterData(); setupPlanner(); handleStreak(); setUserGreeting();
 
@@ -2411,7 +2411,7 @@
     }
 
     function resetPlannerProgress() {
-      if (!confirm('Reset planner progress and streak to May 19, 2026? Your profile data will be preserved.')) return;
+      if (!confirm('Reset planner progress and streak to May 22, 2026? Your profile data will be preserved.')) return;
       const newPlanner = {};
       const start = new Date(APP_PLANNER_START);
       const end = new Date(APP_PLANNER_END);
@@ -2422,7 +2422,7 @@
         curr.setDate(curr.getDate() + 1);
       }
       state.planner = newPlanner;
-      state.streak = { count: 1, lastDate: APP_PLANNER_START, cards: 1, history: [APP_PLANNER_START], pendingRepair: false };
+      state.streak = { count: 1, lastDate: APP_PLANNER_START, cards: 3, history: [APP_PLANNER_START], pendingRepair: false };
       saveData();
       renderPlanner();
       renderOverdueTasks();
