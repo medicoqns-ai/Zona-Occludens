@@ -921,10 +921,6 @@
             <p class="sub-text" style="margin-bottom: 16px;">Top 10 subjects by completed topic count.</p>
             <div class="chart-wrap" style="height: 260px;"><canvas id="subjectVolumeChart"></canvas></div>
           </div>
-          <div class="glass-card" style="margin-top: 24px;">
-            <h2 class="h2-title"><i class="fas fa-calendar-day mr-2 text-blue-400"></i> Today & Tomorrow's Agenda</h2>
-            <div id="dashAgendaContainer" style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px;"></div>
-          </div>
         </div>
 
         <!-- ================= SUBJECT PROGRESS BAR ================= -->
@@ -2589,19 +2585,6 @@
       }, 100);
     }
 
-    function getAgendaHTML(dStr, label) {
-      const entry = state.planner[dStr];
-      if(!entry) return `<div class="sub-text" style="padding:16px; border:1px dashed var(--glass-border); border-radius:12px; text-align:center;">${label}: No missions planned.</div>`;
-      let subjLabel = entry.subject ? SUBJECT_EMOJIS[entry.subject] + " " + entry.subject : 'No Primary Subject';
-      let targets = entry.targets.length ? entry.targets.map(t => typeof t === 'string' ? t : t.text).join('<br>• ') : 'No specific targets';
-      let statusClass = entry.status === 'NEED WORK' ? 'color:var(--red);' : (entry.status === 'COMPLETED' ? 'color:var(--green);' : 'color:var(--text-muted);');
-      return `
-        <div class="agenda-widget">
-          <div class="flex-between" style="margin-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:8px;"><span style="font-weight:800; font-size:15px; color:var(--text-main);"><i class="fas fa-calendar-day text-blue-500 mr-2"></i> ${label} (${dStr})</span><span style="font-size:11px; font-weight:800; ${statusClass} border:1px solid currentColor; padding:2px 8px; border-radius:4px;">${entry.status}</span></div>
-          <div style="font-size:15px; color:var(--orange); font-weight:800; margin-bottom:8px;">${subjLabel}</div><div style="font-size:14px; color:var(--text-main); font-weight:500; line-height:1.6;">• ${targets}</div>
-        </div>`;
-    }
-
     // --- Daily MCQ Practice ---
     function calcMcqPreview() {
       const a = parseInt(document.getElementById('mcq-attempt').value) || 0; const c = parseInt(document.getElementById('mcq-correct').value) || 0;
@@ -2637,10 +2620,6 @@
       
       let avgAcc = 0; let combinedEntries = [...state.tests.map(t=>parseFloat(t.acc)||0), ...state.mcqPractice.map(m=>parseFloat(m.accuracy)||0)];
       if(combinedEntries.length > 0) { let totalAcc = combinedEntries.reduce((sum, val) => sum + val, 0); avgAcc = (totalAcc / combinedEntries.length).toFixed(1); }
-
-      const todayDate = new Date(); const tmrwDate = new Date(todayDate); tmrwDate.setDate(tmrwDate.getDate() + 1);
-      const todayStr = todayDate.toISOString().split('T')[0]; const tmrwStr = tmrwDate.toISOString().split('T')[0];
-      const agendaContainer = document.getElementById('dashAgendaContainer'); agendaContainer.innerHTML = getAgendaHTML(todayStr, "Today") + getAgendaHTML(tmrwStr, "Tomorrow");
 
       const totalT = Object.keys(state.masterTopics).length || 1; 
       let mDone = 0, mHY = 0, r1 = 0, r2 = 0, r3 = 0; let subjVolumes = {};
