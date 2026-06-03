@@ -1862,43 +1862,92 @@
     }
 
     function navTo(pageId, element) {
-      document.querySelectorAll('.page').forEach(p => {
-        p.classList.remove('active');
-      });
-      document.querySelectorAll('.nav-item').forEach(n => {
-        n.classList.remove('active');
-        if(n.style.color === 'var(--orange)' && !n.textContent.includes('Add Custom Topic')) n.style.color = 'var(--text-muted)';
-        if(n.style.color === 'var(--teal)' && !n.textContent.includes('Subject Progress Bar')) n.style.color = 'var(--text-muted)';
-        if(n.style.color === 'var(--pink)' && !n.textContent.includes('Study Partner')) n.style.color = 'var(--text-muted)';
-      });
-      
-      const targetPage = document.getElementById('page-' + pageId);
-      // Force DOM Reflow to restart CSS animations reliably
-      void targetPage.offsetWidth; 
-      targetPage.classList.add('active'); 
+      try {
+        document.querySelectorAll('.page').forEach(p => {
+          p.classList.remove('active');
+        });
+        document.querySelectorAll('.nav-item').forEach(n => {
+          n.classList.remove('active');
+          if(n.style.color === 'var(--orange)' && !n.textContent.includes('Add Custom Topic')) n.style.color = 'var(--text-muted)';
+          if(n.style.color === 'var(--teal)' && !n.textContent.includes('Subject Progress Bar')) n.style.color = 'var(--text-muted)';
+          if(n.style.color === 'var(--pink)' && !n.textContent.includes('Study Partner')) n.style.color = 'var(--text-muted)';
+        });
+        
+        const targetPage = document.getElementById('page-' + pageId);
+        if (!targetPage) {
+          console.error('Page not found: page-' + pageId);
+          showToast('Page not found!', 'error');
+          return;
+        }
+        
+        // Force DOM Reflow to restart CSS animations reliably
+        void targetPage.offsetWidth; 
+        targetPage.classList.add('active'); 
 
-      if(element) {
-        element.classList.add('active');
-        document.getElementById('headerTitle').textContent = element.textContent.trim().replace(/[^a-zA-Z\s]/g, '');
-      }
-      toggleSidebar(true);
+        if(element) {
+          element.classList.add('active');
+          document.getElementById('headerTitle').textContent = element.textContent.trim().replace(/[^a-zA-Z\s]/g, '');
+        }
+        toggleSidebar(true);
 
-      // Re-trigger quote animation if returning to dashboard
-      if (pageId === 'dashboard') { 
-          const mq = document.getElementById('motivationalQuote');
-          mq.classList.remove('quote-animate');
-          void mq.offsetWidth;
-          mq.classList.add('quote-animate');
-          renderDashboard(); 
+        // Re-trigger quote animation if returning to dashboard
+        if (pageId === 'dashboard') { 
+            const mq = document.getElementById('motivationalQuote');
+            mq.classList.remove('quote-animate');
+            void mq.offsetWidth;
+            mq.classList.add('quote-animate');
+            renderDashboard(); 
+        }
+        
+        // Render all pages based on their ID
+        if (pageId === 'test-records') renderTestRecords();
+        if (pageId === 'error-log') renderErrorLog();
+        if (pageId === 'master-tracker') renderMasterTracker();
+        if (pageId === 'revision-tracker') renderRevisionTable();
+        if (pageId === 'planner') renderPlanner();
+        if (pageId === 'mcq-practice') renderMcqHistory();
+        if (pageId === 'upcoming-tests') renderUpcomingTests();
+        if (pageId === 'subject-progress') renderProgressSliders();
+        if (pageId === 'add-topic') {
+          // Ensure subject dropdown is populated
+          const ctSubjectEl = document.getElementById('ct-subject');
+          if(ctSubjectEl && ctSubjectEl.options.length === 0) {
+            const uniqueSubjects = Object.keys(SUBJECT_EMOJIS).sort();
+            ctSubjectEl.innerHTML = '';
+            uniqueSubjects.forEach(s => {
+              const opt = document.createElement('option');
+              opt.value = s;
+              opt.textContent = SUBJECT_EMOJIS[s] + " " + s;
+              ctSubjectEl.appendChild(opt);
+            });
+          }
+        }
+        if (pageId === 'test-entry') {
+          // Ensure form inputs are ready and populated
+          const chipsContainer = document.getElementById('te-subjects');
+          if(chipsContainer && chipsContainer.children.length === 0) {
+            const uniqueSubjects = Object.keys(SUBJECT_EMOJIS).sort();
+            chipsContainer.innerHTML = '';
+            uniqueSubjects.forEach(s => {
+              const span = document.createElement('span');
+              span.className = 's-chip';
+              span.textContent = s;
+              span.onclick = () => span.classList.toggle('selected');
+              chipsContainer.appendChild(span);
+            });
+          }
+          // Set today's date if empty
+          const teDate = document.getElementById('te-date');
+          if(teDate && !teDate.value) {
+            teDate.value = new Date().toISOString().split('T')[0];
+          }
+        }
+        // revision-schedule and syllabus are static pages, no rendering needed
+        
+      } catch (error) {
+        console.error('Navigation error:', error);
+        showToast('Error navigating to page!', 'error');
       }
-      if (pageId === 'test-records') renderTestRecords();
-      if (pageId === 'error-log') renderErrorLog();
-      if (pageId === 'master-tracker') renderMasterTracker();
-      if (pageId === 'revision-tracker') renderRevisionTable();
-      if (pageId === 'planner') renderPlanner();
-      if (pageId === 'mcq-practice') renderMcqHistory();
-      if (pageId === 'upcoming-tests') renderUpcomingTests();
-      if (pageId === 'subject-progress') renderProgressSliders();
     }
 
     function toggleSidebar(forceClose = false) {
