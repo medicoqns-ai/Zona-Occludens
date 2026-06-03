@@ -786,7 +786,6 @@
         <div class="nav-item" onclick="navTo('error-log', this)"><i class="fas fa-triangle-exclamation w-5 text-center"></i> Mistake Notebook</div>
         
         <div class="nav-section">Community & Resources</div>
-        <div class="nav-item" onclick="navTo('study-partner', this)" style="color:var(--pink); font-weight:600;"><i class="fas fa-user-friends w-5 text-center"></i> Find Study Partner</div>
         <div class="nav-item" onclick="navTo('revision-schedule', this)" style="color:var(--orange); font-weight:600;"><i class="fas fa-calendar-alt w-5 text-center"></i> 90-Day Revision Schedule</div>
         <div class="nav-item" onclick="navTo('syllabus', this)"><i class="fas fa-scale-balanced w-5 text-center"></i> Syllabus & Weightage</div>
       </div>
@@ -928,58 +927,6 @@
           </div>
         </div>
 
-        <!-- ================= STUDY PARTNER ================= -->
-        <div id="page-study-partner" class="page">
-          <div class="glass-card" style="border-top: 4px solid var(--pink); max-width: 800px; margin: 0 auto;">
-            <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px;">
-              <div>
-                <h2 class="h2-title" style="color:var(--pink); margin-bottom:6px;"><i class="fas fa-user-friends mr-2"></i> Find a Study Partner</h2>
-                <p class="sub-text">Connect with other aspirants who have similar study habits, phases, and resources.</p>
-              </div>
-              <div id="partnerCompleteBadge" style="background: rgba(255,255,255,0.08); border:1px solid rgba(251,146,60,0.18); color: var(--text-main); padding: 10px 16px; border-radius: 999px; font-size: 12px; font-weight: 700; display:inline-flex; align-items:center; gap:8px; min-width:180px; justify-content:center; box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);">
-                <span style="width:10px; height:10px; border-radius:50%; background: var(--orange); display:inline-block;"></span>
-                Profile: <span id="partnerCompletePercent">0%</span> complete
-              </div>
-            </div>
-            <p id="partnerWelcome" class="sub-text" style="margin-top: 0; color: var(--text-main);">Your profile helps match you with a partner who shares your goals.</p>
-            <div id="partnerOnboardingCard" style="display:none; margin-top: 18px; padding: 18px; border-radius: var(--radius-md); background: rgba(251,146,60,0.08); border: 1px solid rgba(251,146,60,0.18); color: var(--text-main);">
-              <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;"><span style="font-size:18px;">✨</span><strong style="font-size:14px;">Complete your profile to improve matching</strong></div>
-              <p id="partnerMissingInfo" style="font-size:13px; margin:0; color: var(--text-muted);"></p>
-            </div>
-            
-            <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); padding: 24px; border-radius: var(--radius-md); margin-top: 24px;">
-              <h4 style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 16px; letter-spacing: 1px; font-family:var(--font-mono);">Your Profile Data</h4>
-              <div class="grid-2" id="partnerProfileData" style="gap: 12px;">
-                <!-- Filled via JS -->
-              </div>
-              <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top: 16px;">
-                <button class="btn btn-outline btn-sm" onclick="editProfile()"><i class="fas fa-pen mr-1"></i> Edit Profile Info</button>
-                <button class="btn btn-outline btn-sm" style="border-color: rgba(239,68,68,0.3); color: var(--red);" onclick="deleteProfile()"><i class="fas fa-user-slash mr-1"></i> Delete Profile</button>
-              </div>
-            </div>
-
-            <div style="margin-top: 32px; text-align: center;">
-              <button class="btn btn-primary" style="padding: 14px 28px; font-size: 15px; background: linear-gradient(135deg, var(--pink), var(--purple)); border:none; border-radius: 30px; font-weight: 700;" onclick="findMatch()">
-                <i class="fas fa-radar mr-2"></i> Search for a Partner
-              </button>
-              
-              <div id="matchLoading" style="display: none; margin-top: 24px; color: var(--text-muted);">
-                <i class="fas fa-circle-notch fa-spin fa-2x"></i>
-                <p style="margin-top: 12px; font-size: 12px; font-weight: 500;">Scanning database for an exact match...</p>
-              </div>
-
-              <div id="matchResult" style="display: none; margin-top: 24px; background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.2); padding: 24px; border-radius: var(--radius-md);">
-                <div style="font-size: 36px; margin-bottom: 12px;">🎉</div>
-                <h3 style="color: var(--green); font-size: 18px; font-weight: 700; margin-bottom: 8px;">Match Found!</h3>
-                <p style="color: var(--text-main); font-size: 13px; margin-bottom: 16px;">We found an aspirant with a highly compatible study profile.</p>
-                <a href="#" id="matchLink" target="_blank" style="display: inline-block; background: #0088cc; color: white; padding: 10px 20px; border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: 14px;">
-                  <i class="fab fa-telegram-plane mr-2"></i> Connect with <span id="matchUsername"></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- ================= SUBJECT PROGRESS BAR ================= -->
         <div id="page-subject-progress" class="page">
           <div class="glass-card border-t-4 border-teal-500">
@@ -1108,6 +1055,11 @@
                 <button class="btn btn-outline btn-sm planner-reset-btn" onclick="resetPlannerProgress()"><i class="fas fa-redo-alt mr-1"></i> Reset Planner</button>
               </div>
             </div>
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;">
+              <span class="badge badge-upsc" style="display:inline-flex; align-items:center; gap:8px;"><i class="fas fa-star text-orange-500"></i> Stars Claimed: <strong id="plannerStarsCount">0</strong></span>
+              <span class="badge badge-rank" style="display:inline-flex; align-items:center; gap:8px;"><i class="fas fa-trophy"></i> Trophies Earned: <strong id="plannerTrophiesCount">0</strong></span>
+            </div>
+          </div>
           </div>
           <div id="overdueTasksContainer"></div>
           <div class="planner-grid" id="plannerContainer"></div>
@@ -1756,147 +1708,11 @@
       const pmf = document.getElementById('planner-month-filter');
       if (pmf && pmf.querySelector(`option[value="${currentMonth}"]`)) pmf.value = currentMonth;
 
-      renderPartnerProfile();
-
       setInterval(tickCountdowns, 1000); tickCountdowns(); 
       updateTicker();
       updateDatalists(); 
       renderProgressSliders();
       renderDashboard();
-    }
-
-    // --- Study Partner Feature ---
-    function renderPartnerProfile() {
-      if(!state.userProfile) return;
-      const welcome = document.getElementById('partnerWelcome');
-      if(welcome) {
-        welcome.textContent = `Hi ${state.userProfile.name || 'Aspirant'}, this profile is used to find the most compatible study partner for your exam and phase.`;
-      }
-      const progress = calculateProfileCompletion();
-      const percentEl = document.getElementById('partnerCompletePercent');
-      const badge = document.getElementById('partnerCompleteBadge');
-      const onboarding = document.getElementById('partnerOnboardingCard');
-      const missingInfo = document.getElementById('partnerMissingInfo');
-      if(percentEl) percentEl.textContent = `${progress.percent}%`;
-      if(badge) {
-        badge.style.background = progress.percent === 100 ? 'rgba(34,197,94,0.12)' : 'rgba(251,146,60,0.08)';
-        badge.style.borderColor = progress.percent === 100 ? 'rgba(34,197,94,0.24)' : 'rgba(251,146,60,0.18)';
-      }
-      if(onboarding) {
-        if(progress.percent < 100) {
-          onboarding.style.display = 'block';
-          missingInfo.innerHTML = `Complete these to improve match quality: <strong>${progress.missing.join(', ')}</strong>. Tap <em>Edit Profile</em> to update.`;
-        } else {
-          onboarding.style.display = 'none';
-        }
-      }
-      const c = document.getElementById('partnerProfileData');
-      if(c) {
-        c.innerHTML = `
-          <div style="background:rgba(255,255,255,0.05); padding:12px; border-radius:8px;">
-            <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">Target Exam</div>
-            <div style="font-weight:700; color:var(--orange); font-size:16px;">${state.userProfile.exam}</div>
-          </div>
-          <div style="background:rgba(255,255,255,0.05); padding:12px; border-radius:8px;">
-            <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">Phase</div>
-            <div style="font-weight:700; color:var(--blue); font-size:16px;">${state.userProfile.phase}</div>
-          </div>
-          <div style="background:rgba(255,255,255,0.05); padding:12px; border-radius:8px;">
-            <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">Daily Hours</div>
-            <div style="font-weight:700; color:var(--green); font-size:16px;">${state.userProfile.hours}</div>
-          </div>
-          <div style="background:rgba(255,255,255,0.05); padding:12px; border-radius:8px;">
-            <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">Resources</div>
-            <div style="font-weight:600; color:var(--text-main); font-size:13px;">${Array.isArray(state.userProfile.resources) ? state.userProfile.resources.join(', ') : 'None'}</div>
-          </div>
-        `;
-      }
-    }
-
-    function calculateProfileCompletion() {
-      const fields = [
-        { key: 'name', label: 'Name' },
-        { key: 'mobile', label: 'Mobile' },
-        { key: 'tg', label: 'Telegram' },
-        { key: 'exam', label: 'Exam' },
-        { key: 'phase', label: 'Phase' },
-        { key: 'hours', label: 'Study Hours' }
-      ];
-      const missing = [];
-      let score = 0;
-      fields.forEach(item => {
-        if (state.userProfile && state.userProfile[item.key]) {
-          score += 1;
-        } else {
-          missing.push(item.label);
-        }
-      });
-      if (state.userProfile && Array.isArray(state.userProfile.resources) && state.userProfile.resources.length) {
-        score += 1;
-      } else {
-        missing.push('Resources');
-      }
-      const percent = Math.round((score / (fields.length + 1)) * 100);
-      return { percent, missing };
-    }
-
-    function editProfile() {
-      if (!state.userProfile || !state.userProfile.name) {
-        showToast('No saved profile found yet. Please fill your profile first from the login overlay.');
-        return;
-      }
-
-      const resources = Array.isArray(state.userProfile.resources) ? state.userProfile.resources : [];
-      document.getElementById('reg-name').value = state.userProfile.name || '';
-      document.getElementById('reg-mobile').value = state.userProfile.mobile || '';
-      document.getElementById('reg-tg').value = state.userProfile.tg || '';
-      document.getElementById('reg-exam').value = state.userProfile.exam || 'NEET PG';
-      document.getElementById('reg-phase').value = state.userProfile.phase || 'Just Started';
-      document.getElementById('reg-hours').value = state.userProfile.hours || '0-2';
-      
-      document.querySelectorAll('.reg-res-cb').forEach(cb => {
-        cb.checked = resources.includes(cb.value);
-      });
-
-      document.getElementById('loginOverlay').classList.add('show');
-      document.getElementById('mainAppContent').style.display = 'none';
-    }
-
-    async function findMatch() {
-      const loader = document.getElementById('matchLoading');
-      const result = document.getElementById('matchResult');
-      
-      loader.style.display = 'block';
-      result.style.display = 'none';
-
-      try {
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            body: JSON.stringify({ action: 'match', userId: state.userProfile.mobile })
-        });
-        const json = await response.json();
-        
-        loader.style.display = 'none';
-        result.style.display = 'block';
-        
-        if (json.status === 'success' && json.data.status === 'match_found') {
-            document.getElementById('matchUsername').textContent = json.data.partnerTg;
-            document.getElementById('matchLink').href = "https://t.me/" + json.data.partnerTg.replace('@', '');
-        } else if (json.status === 'success' && json.data.status === 'already_matched') {
-            document.getElementById('matchUsername').textContent = json.data.partnerTg;
-            document.getElementById('matchLink').href = "https://t.me/" + json.data.partnerTg.replace('@', '');
-            showToast("You already have a partner!");
-        } else {
-            // Fallback to @Zacure
-            document.getElementById('matchUsername').textContent = "@Zacure";
-            document.getElementById('matchLink').href = "https://t.me/zacure";
-            document.getElementById('matchResult').querySelector('p').textContent = "No peer match found. Connected with mentor @Zacure for accountability .";
-            showToast("Connected to Mentor @Zacure.");
-        }
-      } catch(e) {
-        loader.style.display = 'none';
-        showToast("Error connecting to server.", "error");
-      }
     }
 
     // --- Smart Filters (Datalists) ---
@@ -2083,7 +1899,6 @@
       if (pageId === 'mcq-practice') renderMcqHistory();
       if (pageId === 'upcoming-tests') renderUpcomingTests();
       if (pageId === 'subject-progress') renderProgressSliders();
-      if (pageId === 'study-partner') renderPartnerProfile();
     }
 
     function toggleSidebar(forceClose = false) {
@@ -2437,11 +2252,13 @@
       while(curr <= end) {
         let dStr = curr.toISOString().split('T')[0];
         if(!state.planner[dStr] || Array.isArray(state.planner[dStr])) { 
-          state.planner[dStr] = { status: 'PENDING', priority: '', subject: '', targets: [], arsenal: [], notes: '', dayFinished: false, isEditing: false }; 
+          state.planner[dStr] = { status: 'PENDING', priority: '', subject: '', targets: [], arsenal: [], notes: '', dayFinished: false, starClaimed: false, trophyEarned: false, isEditing: false }; 
         }
         if(state.planner[dStr].priority === undefined) state.planner[dStr].priority = '';
         if(state.planner[dStr].notes === undefined) state.planner[dStr].notes = '';
         if(state.planner[dStr].dayFinished === undefined) state.planner[dStr].dayFinished = false;
+        if(state.planner[dStr].starClaimed === undefined) state.planner[dStr].starClaimed = false;
+        if(state.planner[dStr].trophyEarned === undefined) state.planner[dStr].trophyEarned = false;
         curr.setDate(curr.getDate() + 1);
       }
     }
@@ -2454,7 +2271,7 @@
       let curr = new Date(start);
       while(curr <= end) {
         const dStr = curr.toISOString().split('T')[0];
-        newPlanner[dStr] = { status: 'PENDING', priority: '', subject: '', targets: [], arsenal: [], notes: '', dayFinished: false, isEditing: false };
+        newPlanner[dStr] = { status: 'PENDING', priority: '', subject: '', targets: [], arsenal: [], notes: '', dayFinished: false, starClaimed: false, trophyEarned: false, isEditing: false };
         curr.setDate(curr.getDate() + 1);
       }
       state.planner = newPlanner;
@@ -2517,6 +2334,7 @@
       const planStartIso = APP_PLANNER_START;
       const planEndIso = APP_PLANNER_END;
       const sortedDates = Object.keys(state.planner).sort(); let html = '';
+      const todayIso = new Date().toISOString().split('T')[0];
       
       const examDaysMap = {
           '2026-08-30': 'NEET PG 2026 🚨',
@@ -2563,13 +2381,17 @@
           }).join('') : '<li style="color:var(--text-dim); text-align:center; padding:10px;">No targets set</li>';
           
           let dayFinishedBtn = `<button class="btn btn-sm ${entry.dayFinished ? 'btn-primary' : 'btn-outline'}" style="padding: 6px 12px; font-size: 11px; font-weight:800;" onclick="toggleDayFinished('${d}')"><i class="fas ${entry.dayFinished ? 'fa-check-double' : 'fa-flag-checkered'} mr-1"></i> ${entry.dayFinished ? 'Day Finished' : 'Finish Day'}</button>`;
+          let starButton = d <= todayIso ? `<button class="btn btn-sm ${entry.starClaimed ? 'btn-primary' : 'btn-outline'}" style="padding: 6px 12px; font-size: 11px; font-weight:800;" onclick="claimDailyStar('${d}')"><i class="fas fa-star mr-1"></i> ${entry.starClaimed ? 'Star Claimed' : 'Claim Star'}</button>` : `<button class="btn btn-sm btn-outline" style="padding: 6px 12px; font-size: 11px; font-weight:800; opacity:0.55; cursor:not-allowed;" disabled><i class="fas fa-star mr-1"></i> Claim Star</button>`;
+          let trophyChip = entry.trophyEarned ? `<span class="badge badge-rank" style="background: linear-gradient(135deg, #f59e0b, #a855f7); color:#fff; font-size:11px; padding: 6px 10px;">🏆 Trophy</span>` : '';
 
           html += `
             <div class="planner-day edit-mode" id="pd-${d}">
               <div class="p-header">
                 <span class="p-target"><i class="fas fa-calendar-day text-blue-500 mr-2"></i> ${formatStr}</span>
-                <div style="display:flex; gap:10px; align-items:center;">
+                <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
                   ${dayFinishedBtn}
+                  ${starButton}
+                  ${trophyChip}
                   <button class="btn btn-primary btn-sm" onclick="togglePlannerEdit('${d}')"><i class="fas fa-save"></i> Save</button>
                 </div>
               </div>
@@ -2605,13 +2427,17 @@
           let priorityBadge = entry.priority ? `<span class="p-priority ${entry.priority.toLowerCase().replace(' ','-')}">${entry.priority}</span>` : '';
           let notesHtml = entry.notes ? `<div style="margin-top:16px; padding:12px; background:rgba(0,0,0,0.3); border-radius:8px; font-size:13px; font-weight:500; border-left:3px solid var(--blue); color:white;">${entry.notes}</div>` : '';
           let dayFinishedBtn = `<button class="btn btn-sm ${entry.dayFinished ? 'btn-primary' : 'btn-outline'}" style="padding: 6px 12px; font-size: 11px; font-weight:800;" onclick="toggleDayFinished('${d}')"><i class="fas ${entry.dayFinished ? 'fa-check-double' : 'fa-flag-checkered'} mr-1"></i> ${entry.dayFinished ? 'Day Finished' : 'Finish Day'}</button>`;
+          let starButton = d <= todayIso ? `<button class="btn btn-sm ${entry.starClaimed ? 'btn-primary' : 'btn-outline'}" style="padding: 6px 12px; font-size: 11px; font-weight:800;" onclick="claimDailyStar('${d}')"><i class="fas fa-star mr-1"></i> ${entry.starClaimed ? 'Star Claimed' : 'Claim Star'}</button>` : `<button class="btn btn-sm btn-outline" style="padding: 6px 12px; font-size: 11px; font-weight:800; opacity:0.55; cursor:not-allowed;" disabled><i class="fas fa-star mr-1"></i> Claim Star</button>`;
+          let trophyChip = entry.trophyEarned ? `<span class="badge badge-rank" style="background: linear-gradient(135deg, #f59e0b, #a855f7); color:#fff; font-size:11px; padding: 6px 10px;">🏆 Trophy</span>` : '';
 
           html += `
             <div class="planner-day" id="pd-${d}">
               <div class="p-header">
                 <span class="p-target"><i class="fas fa-calendar-day text-blue-500 mr-2"></i> ${formatStr}</span>
-                <div style="display:flex; gap:10px; align-items:center;">
+                <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
                   ${dayFinishedBtn}
+                  ${starButton}
+                  ${trophyChip}
                   <span class="p-status ${statusClass}">${entry.status}</span>
                   <button class="icon-btn" style="width:28px; height:28px; border:none; background:rgba(0,0,0,0.3); font-size:12px;" onclick="togglePlannerEdit('${d}')"><i class="fas fa-pen"></i></button>
                 </div>
@@ -2625,6 +2451,12 @@
             </div>`;
         }
       });
+      const starsCount = Object.values(state.planner).filter(p => p.starClaimed).length;
+      const trophiesCount = Object.values(state.planner).filter(p => p.trophyEarned).length;
+      const starCountEl = document.getElementById('plannerStarsCount');
+      const trophyCountEl = document.getElementById('plannerTrophiesCount');
+      if (starCountEl) starCountEl.textContent = starsCount;
+      if (trophyCountEl) trophyCountEl.textContent = trophiesCount;
       container.innerHTML = html;
     }
 
@@ -2652,6 +2484,12 @@
       let t = state.planner[d].targets[idx];
       if (typeof t === 'string') { state.planner[d].targets[idx] = { text: t, done: true }; } 
       else { t.done = !t.done; }
+      const entry = state.planner[d];
+      const allTargetsDone = entry.targets.length > 0 && entry.targets.every(t => typeof t !== 'string' ? t.done : false);
+      if (entry.starClaimed && allTargetsDone) {
+        entry.trophyEarned = true;
+        showToast('Trophy earned! 🏆');
+      }
       saveData(); renderPlanner();
     }
 
@@ -2663,8 +2501,30 @@
           let text = typeof t === 'string' ? t : t.text;
           return { text: text, done: true };
         });
+        const eligibleForTrophy = state.planner[d].starClaimed && (state.planner[d].targets.length > 0 || (state.planner[d].notes || '').trim() !== '');
+        if (eligibleForTrophy) {
+          state.planner[d].trophyEarned = true;
+          showToast('Trophy earned! 🏆');
+        } else {
+          showToast('Day marked completed. Claim a star and add at least one to-do to earn a trophy.');
+        }
       } else {
         state.planner[d].status = 'PENDING';
+      }
+      saveData(); renderPlanner();
+    }
+
+    function claimDailyStar(d) {
+      const today = new Date().toISOString().split('T')[0];
+      if (d > today) {
+        showToast('You can only claim stars for today or earlier dates.', 'error');
+        return;
+      }
+      state.planner[d].starClaimed = !state.planner[d].starClaimed;
+      if (state.planner[d].starClaimed) {
+        showToast('Daily star claimed! ⭐');
+      } else {
+        showToast('Daily star removed.');
       }
       saveData(); renderPlanner();
     }
@@ -2749,6 +2609,8 @@
       qs.innerHTML = `
         <div class="stat-card"><div class="stat-title"><i class="fas fa-check-double text-blue-500 mr-1"></i> Mastered / Total</div><div class="stat-val" style="color: var(--text-main);">${mDone} <span style="font-size:14px; color:var(--text-muted); font-weight:700; font-family:var(--font-body);">/ ${totalT}</span></div></div>
         <div class="stat-card"><div class="stat-title"><i class="fas fa-fire text-orange-500 mr-1"></i> High Yield Mastered</div><div class="stat-val" style="color: var(--orange);">${mHY}</div></div>
+        <div class="stat-card"><div class="stat-title"><i class="fas fa-star text-yellow-400 mr-1"></i> Stars Claimed</div><div class="stat-val" style="color: #fbbf24;">${Object.values(state.planner).filter(p => p.starClaimed).length}</div></div>
+        <div class="stat-card"><div class="stat-title"><i class="fas fa-trophy text-purple-500 mr-1"></i> Trophies Earned</div><div class="stat-val" style="color: var(--purple);">${Object.values(state.planner).filter(p => p.trophyEarned).length}</div></div>
         <div class="stat-card"><div class="stat-title"><i class="fas fa-book-open text-purple-500 mr-1"></i> Round 1 Coverage</div><div class="stat-val" style="color: var(--purple);">${r1}</div></div>
         <div class="stat-card"><div class="stat-title"><i class="fas fa-layer-group text-pink-500 mr-1"></i> Round 2 Coverage</div><div class="stat-val" style="color: var(--pink);">${r2}</div></div>
         <div class="stat-card"><div class="stat-title"><i class="fas fa-layer-group text-teal-500 mr-1"></i> Round 3 Coverage</div><div class="stat-val" style="color: var(--teal);">${r3}</div></div>
