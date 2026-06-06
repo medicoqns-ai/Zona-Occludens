@@ -371,6 +371,19 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
       min-width: 0;
     }
+    .planner-day.archived {
+  opacity: 0.45;
+  border-left-color: var(--green) !important;
+  background: rgba(16,185,129,0.04) !important;
+  pointer-events: none;
+}
+.planner-day.archived .p-header { filter: grayscale(0.3); }
+.archive-toggle-btn { 
+  font-size:12px; padding:6px 14px; border-radius:6px;
+  background:rgba(16,185,129,0.1); color:var(--green);
+  border:1px solid rgba(16,185,129,0.3); cursor:pointer; font-weight:700;
+}
+
     .planner-day:nth-child(odd) { background: rgba(15, 23, 42, 0.75); }
     .planner-day:nth-child(even) { background: rgba(10, 17, 32, 0.62); }
     .planner-day:hover { 
@@ -886,12 +899,12 @@
             <div class="glass-card">
               <div class="flex-between" style="margin-bottom:16px;">
                 <h2 class="h2-title" style="margin:0;"><i class="fas fa-chart-line mr-2 text-blue-500"></i> Test Trends</h2>
-                <select class="form-control" style="width:120px; padding:6px 10px; font-size:12px;" id="chart-test-filter" onchange="renderCharts()">
-                  <option value="All">All Formats</option>
-                  <option value="GT">Grand Tests</option>
-                  <option value="SWT">Subject-Wise</option>
-                  <option value="Mock">Mock Tests</option>
-                </select>
+                <select class="form-control" style="width:140px; padding:6px 10px; font-size:12px;" id="chart-test-filter" onchange="renderCharts()">
+  <option value="All">All Tests</option>
+  <option value="GT">Grand Tests</option>
+  <option value="SWT">Subject-Wise</option>
+  <option value="Mock">Mock Tests</option>
+</select>
               </div>
               <div class="chart-wrap" style="height: 240px;"><canvas id="testTrendChart"></canvas></div>
             </div>
@@ -1049,6 +1062,9 @@
                 </select>
                 <button class="btn btn-outline" onclick="jumpToToday()"><i class="fas fa-location-crosshairs mr-1"></i> Today</button>
                 <button class="btn btn-outline btn-sm planner-reset-btn" onclick="resetPlannerProgress()"><i class="fas fa-redo-alt mr-1"></i> Reset Planner</button>
+                <button class="btn btn-outline btn-sm" onclick="toggleShowArchived()" id="archiveToggleBtn">
+  <i class="fas fa-archive mr-1"></i> Show Archived
+</button>
               </div>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;">
@@ -2371,6 +2387,15 @@
       }
     }
 
+    let showArchived = false;
+
+function toggleShowArchived() {
+  showArchived = !showArchived;
+  const btn = document.getElementById('archiveToggleBtn');
+  if (btn) btn.textContent = showArchived ? '🗂️ Hide Archived' : '📦 Show Archived';
+  renderPlanner();
+} 
+
     function renderPlanner() {
       renderOverdueTasks();
       
@@ -2390,6 +2415,8 @@
       sortedDates.forEach(d => {
         if (d < planStartIso || d > planEndIso) return;
         if(d.split('-')[1] !== filterMonth) return;
+        const isArchived = state.planner[d]?.dayFinished === true && d < todayIso;
+if (isArchived && !showArchived) return; // skip archived unless toggled
         const entry = state.planner[d]; const dateObj = new Date(d);
         const formatStr = dateObj.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
         
@@ -2474,8 +2501,9 @@
           let starButton = d <= todayIso ? `<button class="btn btn-sm ${entry.starClaimed ? 'btn-primary' : 'btn-outline'}" style="padding: 6px 12px; font-size: 11px; font-weight:800;" onclick="claimDailyStar('${d}')"><i class="fas fa-star mr-1"></i> ${entry.starClaimed ? 'Star Claimed' : 'Claim Star'}</button>` : `<button class="btn btn-sm btn-outline" style="padding: 6px 12px; font-size: 11px; font-weight:800; opacity:0.55; cursor:not-allowed;" disabled><i class="fas fa-star mr-1"></i> Claim Star</button>`;
           let trophyChip = entry.trophyEarned ? `<span class="badge badge-rank" style="background: linear-gradient(135deg, #f59e0b, #a855f7); color:#fff; font-size:11px; padding: 6px 10px;">🏆 Trophy</span>` : '';
 
-          html += `
-            <div class="planner-day" id="pd-${d}">
+          const archivedClass = (state.planner[d]?.dayFinished && d < todayIso) ? 'archived' : '';
+html += `
+  <div class="planner-day ${archivedClass}" id="pd-${d}" style="${archivedClass ? 'pointer-events:auto;' : ''}">
               <div class="p-header">
                 <span class="p-target"><i class="fas fa-calendar-day text-blue-500 mr-2"></i> ${formatStr}</span>
                 <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
@@ -2611,7 +2639,17 @@
     }
 
     function deleteMcq(id) { const idx = state.mcqPractice.findIndex(m => m.id === id); if(idx > -1) { undoStack.push({ action: 'del_mcq', data: state.mcqPractice[idx], idx }); state.mcqPractice.splice(idx, 1); saveData(); renderMcqHistory(); updateDatalists(); showToast('Practice Deleted 🗑️', 'undo_del_mcq'); } }
-
+    
+    function getPlannerDaySummary(dateStr) {
+  const entry = state.planner[dateStr];
+  if (!entry) return '<em style="color:var(--text-dim)">No entry</em>';
+  const targets = entry.targets.map(t => {
+    const text = typeof t === 'string' ? t : t.text;
+    const done = typeof t === 'object' ? t.done : false;
+    return `<li style="font-size:13px; padding:6px 10px; background:rgba(0,0,0,0.2); border-radius:6px; border-left:3px solid ${done ? 'var(--green)' : 'var(--blue)'}; color:${done ? 'var(--green)' : 'var(--text-main)'}; ${done ? 'text-decoration:line-through;opacity:0.6;' : ''}">${text}</li>`;
+  }).join('') || '<li style="color:var(--text-dim); font-size:13px;">No targets set</li>';
+  return `<ul style="list-style:none; display:flex; flex-direction:column; gap:6px;">${targets}</ul>`;
+}  
     // --- Dashboard & Tests ---
     function renderDashboard() {
       const qs = document.getElementById('quickStatsContainer');
@@ -2648,7 +2686,27 @@
       
       renderWeightageChart();
       renderCharts(); renderTopMistakes(); renderRadarChart(r1, r2, r3, mDone, totalT); renderSubjectVolumeChart(subjVolumes);
-    }
+
+      // remove duplicate widget before re-inserting
+      const oldWidget = document.getElementById('today-tomorrow-widget');
+      if (oldWidget) oldWidget.remove();
+
+      const todayIso2 = new Date().toISOString().split('T')[0];
+      const tomorrow2 = new Date(); tomorrow2.setDate(tomorrow2.getDate() + 1);
+      const tomorrowIso2 = tomorrow2.toISOString().split('T')[0];
+
+      document.getElementById('page-dashboard').insertAdjacentHTML('beforeend', `
+        <div id="today-tomorrow-widget" class="grid-2" style="margin-top:24px;">
+          <div class="glass-card" style="border-left:4px solid var(--orange);">
+            <h2 class="h2-title" style="margin-bottom:12px;"><i class="fas fa-sun mr-2 text-orange-500"></i> Today's Plan <span style="font-size:13px; color:var(--text-muted); font-weight:500;">(${todayIso2})</span></h2>
+            ${getPlannerDaySummary(todayIso2)}
+          </div>
+          <div class="glass-card" style="border-left:4px solid var(--purple);">
+            <h2 class="h2-title" style="margin-bottom:12px;"><i class="fas fa-moon mr-2 text-purple-500"></i> Tomorrow's Plan <span style="font-size:13px; color:var(--text-muted); font-weight:500;">(${tomorrowIso2})</span></h2>
+            ${getPlannerDaySummary(tomorrowIso2)}
+          </div>
+        </div>`);
+    }  // closes renderDashboard()
 
     function renderRadarChart(r1, r2, r3, mDone, totalT) {
       if(window.radarChartInstance) window.radarChartInstance.destroy();
@@ -2676,37 +2734,115 @@
     function renderCharts() {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       
-      const ctxT = document.getElementById('testTrendChart'); 
-      if(ctxT) {
-        if(window.testChartInst) window.testChartInst.destroy();
-        
-        const filter = document.getElementById('chart-test-filter').value;
-        let combined = [];
-        if(filter !== 'MCQ') combined = combined.concat(state.tests);
-        if(filter === 'All' || filter === 'MCQ') combined = combined.concat(state.mcqPractice.map(m => ({...m, type: 'MCQ', score: null})));
-        if (filter !== 'All') { combined = combined.filter(item => item.type === filter); }
-        combined.sort((a,b) => new Date(a.date) - new Date(b.date));
-        
-        let labels = combined.map(item => item.date.slice(5) + (item.name ? ' ' + item.name.substring(0,6) : ''));
-        const datasets = []; 
+      const ctxT = document.getElementById('testTrendChart');
+if (ctxT) {
+  if (window.testChartInst) window.testChartInst.destroy();
 
-        if (filter === 'All' || filter === 'GT' || filter === 'SWT' || filter === 'Mock') {
-          const typesToPlot = filter === 'All' ? ['GT', 'SWT', 'Mock'] : [filter];
-          const colors = { 'GT': '#F59E0B', 'SWT': '#8B5CF6', 'Mock': '#EC4899' };
-          typesToPlot.forEach(type => {
-              let typeData = combined.map(item => item.type === type ? item.score : null);
-              if(typeData.some(d => d !== null)) datasets.push({ label: type + ' Score', data: typeData, borderColor: colors[type], backgroundColor: 'transparent', borderWidth: 3, tension: 0.4, spanGaps: true, pointBackgroundColor: colors[type], pointRadius: 5, yAxisID: 'y' });
-          });
+  const filter = document.getElementById('chart-test-filter').value;
+  let tests = [...state.tests].sort((a, b) => new Date(a.date) - new Date(b.date));
+  if (filter !== 'All') tests = tests.filter(t => t.type === filter);
+
+  const labels = tests.map(t => t.date.slice(5) + (t.name ? ' ' + t.name.substring(0, 6) : ''));
+  const datasets = [];
+
+  const formatGroups = {
+    'NEET PG':  { color: '#F59E0B', max: 800 },
+    'INICET':   { color: '#3B82F6', max: 200 },
+    'FMGE':     { color: '#EC4899', max: 300 },
+    'UPSC CMS': { color: '#10B981', max: 500 },
+  };
+
+  Object.entries(formatGroups).forEach(([fmt, cfg]) => {
+    const data = tests.map(t => t.format === fmt ? t.score : null);
+    if (data.some(d => d !== null)) {
+      datasets.push({
+        label: `${fmt} Score (/${cfg.max})`,
+        data,
+        borderColor: cfg.color,
+        backgroundColor: 'transparent',
+        borderWidth: 3,
+        tension: 0.4,
+        spanGaps: true,
+        pointBackgroundColor: cfg.color,
+        pointRadius: 5,
+        yAxisID: 'y'
+      });
+    }
+  });
+
+  // Accuracy line (correct/attempted)
+  const accData = tests.map(t => t.attempted > 0 ? parseFloat(((t.correct / t.attempted) * 100).toFixed(1)) : null);
+  if (accData.some(d => d !== null)) {
+    datasets.push({
+      label: 'Accuracy % (C/Att)',
+      data: accData,
+      borderColor: '#A855F7',
+      backgroundColor: 'transparent',
+      borderWidth: 2,
+      borderDash: [5, 5],
+      tension: 0.4,
+      spanGaps: true,
+      pointBackgroundColor: '#A855F7',
+      pointRadius: 4,
+      yAxisID: 'y1'
+    });
+  }
+
+  // Left (unattempted) questions line
+  const leftData = tests.map(t => (t.total && t.attempted != null) ? (t.total - t.attempted) : null);
+  if (leftData.some(d => d !== null)) {
+    datasets.push({
+      label: 'Left (Unattempted)',
+      data: leftData,
+      borderColor: '#EF4444',
+      backgroundColor: 'transparent',
+      borderWidth: 2,
+      borderDash: [3, 3],
+      tension: 0.4,
+      spanGaps: true,
+      pointBackgroundColor: '#EF4444',
+      pointRadius: 4,
+      yAxisID: 'y2'
+    });
+  }
+
+  window.testChartInst = new Chart(ctxT, {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          type: 'linear', position: 'left',
+          title: { display: true, text: 'Raw Score', color: isDark ? '#94A3B8' : '#0F172A', font: { weight: 'bold', size: 12 } },
+          ticks: { color: isDark ? '#94A3B8' : '#0F172A', font: { weight: 'bold' } },
+          grid: { color: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }
+        },
+        y1: {
+          type: 'linear', position: 'right', max: 100, min: 0,
+          title: { display: true, text: 'Accuracy %', color: '#A855F7', font: { weight: 'bold', size: 12 } },
+          ticks: { color: '#A855F7', font: { weight: 'bold' } },
+          grid: { display: false }
+        },
+        y2: {
+          type: 'linear', position: 'right', min: 0,
+          title: { display: true, text: 'Left Qs', color: '#EF4444', font: { weight: 'bold', size: 12 } },
+          ticks: { color: '#EF4444', font: { weight: 'bold' } },
+          grid: { display: false }
+        },
+        x: {
+          ticks: { color: isDark ? '#94A3B8' : '#0F172A', font: { size: 10, weight: 'bold' }, maxRotation: 45, minRotation: 45 },
+          grid: { display: false }
         }
-        
-        let accData = combined.map(item => parseFloat(item.acc || item.accuracy || 0));
-        if(accData.some(d => !isNaN(d) && d > 0)) datasets.push({ label: 'Accuracy %', data: accData, borderColor: '#10B981', backgroundColor: 'transparent', borderWidth: 3, tension: 0.4, borderDash: filter !== 'MCQ' ? [5,5] : [], spanGaps: true, pointBackgroundColor: '#10B981', pointRadius: 5, yAxisID: 'y1' });
-
-        window.testChartInst = new Chart(ctxT, {
-          type: 'line', data: { labels: labels, datasets: datasets },
-          options: { responsive: true, maintainAspectRatio: false, scales: { y: { display: filter !== 'MCQ', type: 'linear', position: 'left', title: { display: true, text: 'Raw Score', color: isDark?'#94A3B8':'#0F172A', font: {weight:'bold', size:12} }, ticks: { color: isDark?'#94A3B8':'#0F172A', font:{weight:'bold'} }, grid: { color: isDark?'rgba(255,255,255,0.05)':'rgba(0,0,0,0.05)' } }, y1: { type: 'linear', position: 'right', max: 100, min: 0, title: { display: true, text: 'Accuracy %', color: '#10B981', font: {weight:'bold', size:12} }, ticks: { color: '#10B981', font:{weight:'bold'} }, grid: { display: false } }, x: { ticks: { color: isDark?'#94A3B8':'#0F172A', font:{size:10, weight:'bold'}, maxRotation: 45, minRotation: 45 }, grid: { display: false } } }, plugins: { legend: { display: true, labels: { color: isDark?'#F8FAFC':'#0F172A', font: {family:'Inter', weight:'bold'}, boxWidth: 12 } } }, interaction: { mode: 'index', intersect: false } }
-        });
-      }
+      },
+      plugins: {
+        legend: { display: true, labels: { color: isDark ? '#F8FAFC' : '#0F172A', font: { family: 'Inter', weight: 'bold' }, boxWidth: 12 } }
+      },
+      interaction: { mode: 'index', intersect: false }
+    }
+  });
+}
 
       const ctxM = document.getElementById('mcqTrendChart');
       if(ctxM) {
