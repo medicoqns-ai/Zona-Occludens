@@ -301,6 +301,44 @@
     .toast::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--blue); }
     .toast.t-error::before { background:var(--red); }
     [data-theme="light"] .toast { color: #0F172A; }
+    [data-theme="light"] .glass-card,
+    [data-theme="light"] .streak-card,
+    [data-theme="light"] .countdown-card,
+    [data-theme="light"] .topic-card,
+    [data-theme="light"] .stat-card,
+    [data-theme="light"] .modal-box,
+    [data-theme="light"] .planner-day,
+    [data-theme="light"] .planner-day.edit-mode,
+    [data-theme="light"] .table-container-wrapper,
+    [data-theme="light"] .toast {
+      background: rgba(255,255,255,0.96);
+      color: #0F172A;
+      border-color: rgba(15, 23, 42, 0.12);
+      box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.12);
+    }
+    [data-theme="light"] .sub-text,
+    [data-theme="light"] .form-label,
+    [data-theme="light"] .p-subject,
+    [data-theme="light"] .p-target,
+    [data-theme="light"] .a-chip,
+    [data-theme="light"] .p-item-list li,
+    [data-theme="light"] .topic-title,
+    [data-theme="light"] .rev-table td,
+    [data-theme="light"] .rev-table th {
+      color: #0F172A;
+    }
+    [data-theme="light"] .p-item-list li,
+    [data-theme="light"] .arsenal-chips,
+    [data-theme="light"] .planner-day .form-control {
+      background: rgba(248,250,252,0.95);
+      color: #0F172A;
+    }
+    [data-theme="light"] .planner-day .form-control::placeholder {
+      color: #64748B;
+    }
+    [data-theme="light"] .btn-outline {
+      color: #0F172A;
+    }
     .undo-btn { background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); color: var(--blue); padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 700; cursor: pointer; transition: 0.2s; text-transform: uppercase; font-family: var(--font-mono);}
     .undo-btn:hover { background: var(--blue); color: #fff; }
     @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
@@ -1051,7 +1089,7 @@
             <div class="flex-between" style="flex-wrap: wrap; gap: 16px;">
               <div>
                 <h2 class="h2-title" style="margin:0;"><i class="fas fa-calendar-check mr-2 text-orange-500"></i> Ultimate Daily Planner</h2>
-                <p class="sub-text" style="margin:4px 0 0 0;">Execute daily missions from May 22nd through November 1st, 2026.</p>
+                <p class="sub-text" style="margin:4px 0 0 0;">Execute daily missions from June 27th through November 1st, 2026.</p>
               </div>
               <div class="planner-filter-bar" style="margin-bottom:0; align-items:center; gap:10px; display:flex; flex-wrap:wrap;">
                 <select class="form-control" id="planner-month-filter" style="width: 140px; font-weight:600;" onchange="renderPlanner()">
@@ -1080,7 +1118,7 @@
         <div id="page-revision-schedule" class="page">
           <div class="glass-card" style="margin-top: 24px; border-left: 4px solid var(--orange);">
               <h2 class="h2-title"><i class="fas fa-calendar-alt mr-2 text-orange-400"></i> 90-Day Master Revision Schedule</h2>
-              <p class="sub-text" style="margin-bottom: 20px;">Calculated from May 17, 2026. The structured blueprint to conquer NEET PG, INICET & FMGE.</p>
+              <p class="sub-text" style="margin-bottom: 20px;">Calculated from June 27, 2026. The structured blueprint to conquer NEET PG, INICET & FMGE.</p>
               <div style="display: flex; flex-direction: column; gap: 16px;">
                   <div style="background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.18); padding: 16px; border-radius: var(--radius-md);">
                       <div class="flex-between" style="flex-wrap: wrap; margin-bottom: 8px;">
@@ -1475,7 +1513,21 @@
     };
 
     const RESOURCES_OPTIONS = ["Custom Notes", "RR Notes", "RR Videos 🎬", "Main Notes 📚", "Review Books", "Image PYQs 🖼️", "Error Log"];
-    const APP_PLANNER_START = '2026-05-22';
+
+    function getLocalDateString(date = new Date()) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    function diffDays(startDate, endDate) {
+      const start = new Date(`${startDate}T00:00:00`);
+      const end = new Date(`${endDate}T00:00:00`);
+      return Math.round((end - start) / (1000 * 60 * 60 * 24));
+    }
+
+    const APP_PLANNER_START = '2026-06-27';
     const APP_PLANNER_END = '2026-11-01';
     const APP_START_DATE = APP_PLANNER_START;
 
@@ -1711,7 +1763,7 @@
         });
       }
 
-      const todayIso = new Date().toISOString().split('T')[0];
+      const todayIso = getLocalDateString();
       ['te-date', 'err-date', 'mcq-date', 'up-date'].forEach(id => { const el = document.getElementById(id); if(el) el.value = todayIso; });
       
       const today = new Date();
@@ -1758,25 +1810,49 @@
     }
 
     function handleStreak() {
-      const todayStr = new Date().toISOString().split('T')[0];
+      const todayStr = getLocalDateString();
       const streakAnchor = APP_START_DATE;
-      const diffDays = (d1, d2) => Math.floor((new Date(d2) - new Date(d1)) / (1000*60*60*24));
-      if (!state.streak.lastDate) {
-        state.streak.lastDate = todayStr < streakAnchor ? todayStr : streakAnchor;
+      if (!state.streak) {
+        state.streak = { count: 0, lastDate: null, cards: 3, history: [], pendingRepair: false };
+      }
+
+      const history = Array.isArray(state.streak.history) ? state.streak.history : [];
+      const normalizedHistory = [...new Set(history.filter(date => date && date >= streakAnchor && date <= todayStr))].sort();
+      let lastDate = normalizedHistory.length ? normalizedHistory[normalizedHistory.length - 1] : null;
+
+      if (!lastDate) {
+        lastDate = todayStr < streakAnchor ? todayStr : streakAnchor;
         state.streak.count = 1;
-        state.streak.history = [state.streak.lastDate];
+        state.streak.lastDate = lastDate;
+        state.streak.history = [lastDate];
         state.streak.pendingRepair = false;
-      } else if (state.streak.lastDate < streakAnchor) {
-        state.streak.lastDate = streakAnchor;
+      } else if (lastDate < streakAnchor) {
+        lastDate = streakAnchor;
         state.streak.count = 1;
-        state.streak.history = [streakAnchor];
+        state.streak.lastDate = lastDate;
+        state.streak.history = [lastDate];
         state.streak.pendingRepair = false;
       } else {
-        const d = diffDays(state.streak.lastDate, todayStr);
-        if (d === 1) { state.streak.count++; state.streak.lastDate = todayStr; state.streak.history.push(todayStr); state.streak.pendingRepair = false; } 
-        else if (d > 1) { if (state.streak.cards > 0 && !state.streak.pendingRepair) { state.streak.pendingRepair = true; } else if (!state.streak.pendingRepair) { state.streak.count = 1; state.streak.lastDate = todayStr; state.streak.history = [todayStr]; } }
+        const d = diffDays(lastDate, todayStr);
+        if (d === 0) {
+          state.streak.count = normalizedHistory.length;
+          state.streak.lastDate = lastDate;
+        } else if (d === 1) {
+          normalizedHistory.push(todayStr);
+          state.streak.count = normalizedHistory.length;
+          state.streak.lastDate = todayStr;
+        } else if (d > 1) {
+          state.streak.count = 1;
+          state.streak.lastDate = todayStr;
+          state.streak.history = [todayStr];
+          state.streak.pendingRepair = false;
+          saveData(); renderStreak(); calculateLevel();
+          return;
+        }
+        state.streak.history = normalizedHistory.slice(-14);
+        state.streak.pendingRepair = false;
       }
-      if(state.streak.history.length > 7) state.streak.history.shift();
+
       saveData(); renderStreak(); calculateLevel();
     }
 
@@ -1787,7 +1863,7 @@
       const daysStr = ["S", "M", "T", "W", "T", "F", "S"]; const today = new Date();
       for(let i=6; i>=0; i--) {
         let d = new Date(today); d.setDate(today.getDate() - i);
-        let dIso = d.toISOString().split('T')[0]; let dayChar = daysStr[d.getDay()];
+        let dIso = getLocalDateString(d); let dayChar = daysStr[d.getDay()];
         let isActive = state.streak.history.includes(dIso);
         visual.innerHTML += `<div class="s-day ${isActive ? 'active' : ''}">${dayChar}</div>`;
       }
@@ -1796,8 +1872,10 @@
 
     function repairStreak() {
       if (state.streak.cards > 0 && state.streak.pendingRepair) {
-        state.streak.cards--; state.streak.count++; state.streak.lastDate = new Date().toISOString().split('T')[0];
-        state.streak.history.push(state.streak.lastDate); state.streak.pendingRepair = false;
+        state.streak.cards--; state.streak.count++; state.streak.lastDate = getLocalDateString();
+        if (!state.streak.history.includes(state.streak.lastDate)) state.streak.history.push(state.streak.lastDate);
+        state.streak.history = state.streak.history.slice(-14);
+        state.streak.pendingRepair = false;
         saveData(); renderStreak(); showToast('Streak Repaired! 🛡️');
       }
     }
@@ -1950,7 +2028,7 @@
           // Set today's date if empty
           const teDate = document.getElementById('te-date');
           if(teDate && !teDate.value) {
-            teDate.value = new Date().toISOString().split('T')[0];
+            teDate.value = getLocalDateString();
           }
         }
         // revision-schedule and syllabus are static pages, no rendering needed
@@ -1971,15 +2049,16 @@
 
     function toggleTheme() {
       const html = document.documentElement;
-      if (html.getAttribute('data-theme') === 'dark') {
-        html.setAttribute('data-theme', 'light');
-        document.getElementById('themeBtn').innerHTML = '<i class="fas fa-sun"></i>';
-        localStorage.setItem('zona-theme', 'light');
-      } else {
-        html.setAttribute('data-theme', 'dark');
-        document.getElementById('themeBtn').innerHTML = '<i class="fas fa-moon"></i>';
-        localStorage.setItem('zona-theme', 'dark');
-      }
+      const nextTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', nextTheme);
+      const themeBtn = document.getElementById('themeBtn');
+      if (themeBtn) themeBtn.innerHTML = nextTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+      localStorage.setItem('zona-theme', nextTheme);
+      requestAnimationFrame(() => {
+        renderWeightageChart();
+        renderPlanner();
+        renderStreak();
+      });
     }
 
     // --- Upcoming Tests Ticker ---
@@ -2036,7 +2115,6 @@
       const cards = [
         { id: 'neet', title: 'NEET PG 2026', target: new Date(EXAM_DATES.neetpg), class: 'cd-neet' },
         { id: 'upsc', title: 'UPSC CMS 2026', target: new Date(EXAM_DATES.upsc), class: 'cd-upsc' },
-        { id: 'fmge', title: 'FMGE 2026', target: new Date(EXAM_DATES.fmge), class: 'cd-fmge' },
         { id: 'iniNov', title: 'INICET Nov 2026', target: new Date(EXAM_DATES.inicetNov), class: 'cd-ini' }
       ];
 
@@ -2047,7 +2125,7 @@
         const m = Math.floor((diff / 1000 / 60) % 60); const s = Math.floor((diff / 1000) % 60);
         return `
           <div class="countdown-card ${c.class}">
-            <div class="cd-title">${c.title} <span style="font-size:11px;font-weight:600;color:var(--text-muted);">${c.target.toISOString().split('T')[0]}</span></div>
+            <div class="cd-title">${c.title} <span style="font-size:11px;font-weight:600;color:var(--text-muted);">${getLocalDateString(c.target)}</span></div>
             <div class="cd-timer">
               <div class="cd-box"><span class="cd-num c-days">${d}</span><span class="cd-lbl">Days</span></div> <span class="cd-colon">:</span>
               <div class="cd-box"><span class="cd-num c-hrs">${h.toString().padStart(2,'0')}</span><span class="cd-lbl">Hrs</span></div> <span class="cd-colon">:</span>
@@ -2308,9 +2386,9 @@
 
     // --- Ultimate Planner (May 17 - Nov 1) ---
     function setupPlanner() {
-      const start = new Date(APP_PLANNER_START); const end = new Date(APP_PLANNER_END); let curr = new Date(start);
+      const start = new Date(`${APP_PLANNER_START}T00:00:00`); const end = new Date(`${APP_PLANNER_END}T00:00:00`); let curr = new Date(start);
       while(curr <= end) {
-        let dStr = curr.toISOString().split('T')[0];
+        let dStr = getLocalDateString(curr);
         if(!state.planner[dStr] || Array.isArray(state.planner[dStr])) { 
           state.planner[dStr] = { status: 'PENDING', priority: '', subject: '', targets: [], arsenal: [], notes: '', dayFinished: false, starClaimed: false, trophyEarned: false, isEditing: false }; 
         }
@@ -2324,13 +2402,13 @@
     }
 
     function resetPlannerProgress() {
-      if (!confirm('Reset planner progress and streak to May 22, 2026? Your profile data will be preserved.')) return;
+      if (!confirm('Reset planner progress and streak to June 27, 2026? Your profile data will be preserved.')) return;
       const newPlanner = {};
-      const start = new Date(APP_PLANNER_START);
-      const end = new Date(APP_PLANNER_END);
+      const start = new Date(`${APP_PLANNER_START}T00:00:00`);
+      const end = new Date(`${APP_PLANNER_END}T00:00:00`);
       let curr = new Date(start);
       while(curr <= end) {
-        const dStr = curr.toISOString().split('T')[0];
+        const dStr = getLocalDateString(curr);
         newPlanner[dStr] = { status: 'PENDING', priority: '', subject: '', targets: [], arsenal: [], notes: '', dayFinished: false, starClaimed: false, trophyEarned: false, isEditing: false };
         curr.setDate(curr.getDate() + 1);
       }
@@ -2346,7 +2424,7 @@
     function renderOverdueTasks() {
       const container = document.getElementById('overdueTasksContainer');
       if(!container) return;
-      const todayIso = new Date().toISOString().split('T')[0];
+      const todayIso = getLocalDateString();
       let overdueHtml = '';
       let count = 0;
 
@@ -2403,7 +2481,7 @@ function toggleShowArchived() {
       const planStartIso = APP_PLANNER_START;
       const planEndIso = APP_PLANNER_END;
       const sortedDates = Object.keys(state.planner).sort(); let html = '';
-      const todayIso = new Date().toISOString().split('T')[0];
+      const todayIso = getLocalDateString();
       
       const examDaysMap = {
           '2026-08-30': 'NEET PG 2026 🚨',
@@ -2587,7 +2665,7 @@ html += `
     }
 
     function claimDailyStar(d) {
-      const today = new Date().toISOString().split('T')[0];
+      const today = getLocalDateString();
       if (d > today) {
         showToast('You can only claim stars for today or earlier dates.', 'error');
         return;
@@ -2606,7 +2684,7 @@ html += `
       const mStr = (today.getMonth()+1).toString().padStart(2,'0');
       document.getElementById('planner-month-filter').value = mStr; renderPlanner();
       setTimeout(() => {
-        let dStr = today.toISOString().split('T')[0];
+        let dStr = getLocalDateString(today);
         if (dStr < APP_START_DATE) dStr = APP_START_DATE;
         const el = document.getElementById('pd-'+dStr);
         if(el) { el.scrollIntoView({ behavior: "smooth", block: "center" }); el.style.borderColor = "var(--orange)"; setTimeout(() => el.style.borderColor = "var(--glass-border)", 2000); }
@@ -2691,9 +2769,9 @@ html += `
       const oldWidget = document.getElementById('today-tomorrow-widget');
       if (oldWidget) oldWidget.remove();
 
-      const todayIso2 = new Date().toISOString().split('T')[0];
+      const todayIso2 = getLocalDateString();
       const tomorrow2 = new Date(); tomorrow2.setDate(tomorrow2.getDate() + 1);
-      const tomorrowIso2 = tomorrow2.toISOString().split('T')[0];
+      const tomorrowIso2 = getLocalDateString(tomorrow2);
 
       document.getElementById('page-dashboard').insertAdjacentHTML('beforeend', `
         <div id="today-tomorrow-widget" class="grid-2" style="margin-top:24px;">
