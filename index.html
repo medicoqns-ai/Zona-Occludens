@@ -392,6 +392,55 @@
     }
 
     .chart-wrap { position: relative; width: 100%; }
+    .upsc-pyts-section { margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .upsc-pyts-header { margin-bottom: 18px; }
+    .upsc-pyts-header h3 { font-family: var(--font-head); font-size: 18px; color: var(--orange); margin-bottom: 6px; }
+    .upsc-pyts-header p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .upsc-weight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 16px 0 22px; }
+    .upsc-weight-card { background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px 14px; }
+    .upsc-weight-card .label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 700; font-family: var(--font-mono); }
+    .upsc-weight-card .value { font-family: var(--font-head); font-size: 22px; color: var(--text-main); margin-top: 6px; }
+    .upsc-toolbar { display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap; margin: 16px 0 14px; padding: 12px 14px; border: 1px solid var(--glass-border); border-radius: 14px; background: rgba(255,255,255,0.03); }
+    .upsc-search-box { display:flex; align-items:center; gap:8px; min-width:min(320px, 100%); padding:8px 12px; border-radius:999px; border:1px solid var(--glass-border); background: rgba(0,0,0,0.2); }
+    .upsc-search-box input { width:100%; border:none; outline:none; background:transparent; color:var(--text-main); font-size:13px; }
+    .upsc-search-box input::placeholder { color: var(--text-dim); }
+    .upsc-filter-scroll { display:flex; gap:8px; flex-wrap:wrap; align-items:center; flex:1; min-width:0; }
+    .upsc-filter-pill { border:1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: var(--text-main); padding:7px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.3px; cursor:pointer; white-space:nowrap; }
+    .upsc-filter-pill.active { background: rgba(245,158,11,0.16); color: var(--orange); border-color: rgba(245,158,11,0.25); }
+    .upsc-subject-block { margin-top: 12px; padding: 12px 12px 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 14px; }
+    .upsc-subject-block summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .upsc-subject-block summary::-webkit-details-marker { display: none; }
+    .upsc-subject-title { font-size: 15px; font-weight: 800; color: var(--orange); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; width: 100%; }
+    .upsc-subject-badge { font-size: 10px; padding: 4px 8px; border-radius: 999px; background: rgba(245,158,11,0.12); color: var(--orange); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+    .upsc-subject-meta { font-size: 11px; color: var(--text-dim); margin-top: 4px; line-height: 1.45; }
+    .upsc-subject-body { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .upsc-chapter-block { padding: 9px 10px; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; background: rgba(0,0,0,0.18); }
+    .upsc-chapter-block summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .upsc-chapter-block summary::-webkit-details-marker { display: none; }
+    .upsc-chapter-title { font-size: 13px; font-weight: 700; color: var(--blue); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; width: 100%; }
+    .upsc-chapter-count { font-size: 10px; color: var(--text-dim); font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; }
+    .upsc-topic-list { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .upsc-topic-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 9px; border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; background: rgba(255,255,255,0.025); }
+    .upsc-topic-cell { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
+    .upsc-topic-cell input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--orange); flex-shrink: 0; }
+    .upsc-topic-text { font-size: 12px; font-weight: 600; color: var(--text-main); line-height: 1.4; }
+    .upsc-year-tags { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; min-width: 150px; }
+    .upsc-year-pill { font-size: 9px; padding: 3px 6px; border-radius: 999px; background: rgba(255,255,255,0.04); color: var(--text-muted); border: 1px solid rgba(255,255,255,0.06); font-family: var(--font-mono); font-weight: 700; }
+    .upsc-year-pill.active { background: rgba(245,158,11,0.12); color: var(--orange); border-color: rgba(245,158,11,0.2); }
+    .upsc-revision-block { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+    .upsc-revision-block label { display: inline-flex; align-items: center; gap: 4px; font-size: 9px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; }
+    .upsc-revision-block input[type="checkbox"] { width: 13px; height: 13px; accent-color: var(--blue); }
+    .upsc-freq-pill { font-size: 9px; padding: 4px 7px; border-radius: 999px; background: rgba(59,130,246,0.12); color: var(--blue); font-weight: 700; white-space: nowrap; }
+    [data-theme="light"] .upsc-subject-block, [data-theme="light"] .upsc-chapter-block, [data-theme="light"] .upsc-topic-row { background: rgba(255,255,255,0.8); }
+    [data-theme="light"] .upsc-year-pill { background: rgba(15,23,42,0.04); border-color: rgba(15,23,42,0.06); }
+    @media (max-width: 768px) {
+      .upsc-toolbar { align-items: stretch; }
+      .upsc-filter-scroll { overflow-x: auto; padding-bottom: 2px; -webkit-overflow-scrolling: touch; }
+      .upsc-filter-pill { flex-shrink: 0; }
+      .upsc-topic-row { flex-direction: column; align-items: flex-start; }
+      .upsc-year-tags { justify-content: flex-start; min-width: 0; }
+      .upsc-revision-block { width: 100%; justify-content: flex-start; }
+    }
     datalist { font-family: var(--font-body); }
 
     /* ================= DAILY PLANNER STYLING ================= */
@@ -831,6 +880,7 @@
         <div class="nav-item" onclick="navTo('revision-tracker', this)"><i class="fas fa-layer-group w-5 text-center"></i> Subject Revision</div>
         
         <div class="nav-section">Exams & Tests</div>
+        <div class="nav-item" onclick="navTo('upsc-cms-pyts', this)" style="color:var(--orange); font-weight:600;"><i class="fas fa-book-open w-5 text-center"></i> UPSC CMS PYTS</div>
         <div class="nav-item" onclick="navTo('upcoming-tests', this)"><i class="fas fa-clock w-5 text-center"></i> Upcoming Tests</div>
         <div class="nav-item" onclick="navTo('test-entry', this)"><i class="fas fa-pen-to-square w-5 text-center"></i> Enter Test Data</div>
         <div class="nav-item" onclick="navTo('test-records', this)"><i class="fas fa-folder-open w-5 text-center"></i> Test Records</div>
@@ -1277,6 +1327,32 @@
           </div>
         </div>
 
+        <!-- ================= UPSC CMS PYTS ================= -->
+        <div id="page-upsc-cms-pyts" class="page">
+          <div class="glass-card">
+            <div class="upsc-pyts-header">
+              <h3 style="margin:0 0 8px 0; color:var(--orange);"><i class="fas fa-book-open mr-2"></i> UPSC CMS PYTS</h3>
+              <p>Subject-wise, chapter-wise previous-year topic analysis with revision tracking for CMS preparation. Each topic includes quick review checkboxes for R1 and R2.</p>
+              <div class="upsc-weight-grid">
+                <div class="upsc-weight-card"><div class="label">General Medicine</div><div class="value">96</div></div>
+                <div class="upsc-weight-card"><div class="label">Pediatrics</div><div class="value">24</div></div>
+                <div class="upsc-weight-card"><div class="label">Surgery</div><div class="value">40</div></div>
+                <div class="upsc-weight-card"><div class="label">OBG</div><div class="value">40</div></div>
+                <div class="upsc-weight-card"><div class="label">PSM</div><div class="value">40</div></div>
+              </div>
+            </div>
+
+            <div class="upsc-toolbar" style="margin-top: 0;">
+              <div class="upsc-filter-scroll" id="upsc-pyts-subject-filters"></div>
+              <button class="btn btn-outline btn-sm" onclick="markAllUpcsRevised()"><i class="fas fa-check-double mr-2"></i> Mark all as revised</button>
+            </div>
+
+            <div id="upsc-pyts-list"></div>
+
+            <p style="font-size: 11px; color: var(--text-dim); margin-top: 16px; line-height: 1.5;">⭐ marks repeated CMS topics. Frequency is the total count across the years shown above.</p>
+          </div>
+        </div>
+
         <!-- ================= TEST RECORDS ================= -->
         <div id="page-test-records" class="page">
           <div class="glass-card">
@@ -1580,6 +1656,7 @@
       userProfile: null,
       tests: [], errors: [], masterTopics: {}, planner: {}, mcqPractice: [], errorTracker: {},
       upcomingTests: [], subjectProgress: {},
+      upscCmsPyts: { selectedSubject: 'ALL', topics: {} },
       streak: { count: 0, lastDate: null, cards: 3, history: [], pendingRepair: false }
     };
     
@@ -1587,7 +1664,7 @@
 
     // --- REPLACED google.script.run WITH fetch API ---
     // PASTE YOUR GOOGLE SCRIPT WEB APP URL HERE:
-    const API_URL = "https://script.google.com/macros/s/AKfycbw9u1GmDJu5jdBUcOM2jxHR7q3mVwztKYWbuTujy2pS6F0XAa7Sp4Fg6BzTsYyXyMP8/exec"; 
+    const API_URL = "https://script.google.com/macros/s/AKfycbwZMFVx6n6R7kA_eKsfkLQv4ujopRZITcfDEug8WLBl5IEqC9bpm9KEYFtXNTSowLdg/exec"; 
 
     window.onload = function() {
       const saved = localStorage.getItem('pgmedprep_db_zacurians');
@@ -1723,6 +1800,8 @@
       if (!state.upcomingTests) state.upcomingTests = [];
       if (!state.subjectProgress) state.subjectProgress = {};
       if (!state.streak) state.streak = { count: 0, lastDate: null, cards: 3, history: [], pendingRepair: false };
+      if (!state.upscCmsPyts) state.upscCmsPyts = { selectedSubject: 'ALL', topics: {} };
+      persistUpscPytsState(getUpscPytsStateFromStorage(), state.upscCmsPyts.selectedSubject || 'ALL');
 
       initMasterData(); setupPlanner(); handleStreak(); setUserGreeting();
 
@@ -1914,7 +1993,7 @@
       try {
           const response = await fetch(API_URL, {
               method: 'POST',
-              body: JSON.stringify({ action: 'save', userId: state.userProfile.mobile, payload: state })
+              body: JSON.stringify({ action: 'save', userId: state.userProfile.mobile, payload: state, upscPytsState: getUpscPytsStatePayload() })
           });
           const result = await response.json();
           if(result.status === 'success') {
@@ -2011,6 +2090,9 @@
             });
           }
         }
+        if (pageId === 'upsc-cms-pyts') {
+          initUpscPytsPage();
+        }
         if (pageId === 'test-entry') {
           // Ensure form inputs are ready and populated
           const chipsContainer = document.getElementById('te-subjects');
@@ -2037,6 +2119,1406 @@
         console.error('Navigation error:', error);
         showToast('Error navigating to page!', 'error');
       }
+    }
+
+    const UPSC_PYTS_MARKDOWN = `
+## GENERAL MEDICINE
+
+### Chapter 1: CARDIOLOGY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Cardiac murmurs / Heart sounds | ⭐ | ⭐ | ⭐ | ⭐ | ⭐ | 5 |
+| JVP physiology and abnormalities |  | ⭐ | ⭐ | ⭐ |  | 3 |
+| Valvular heart disease - diagnosis/auscultation |  | ⭐ | ⭐ |  |  | 3 |
+| ECG changes - pericarditis/poisoning/hypothermia |  |  | ⭐ | ⭐ |  | 3 |
+| Heart failure - high output/rate control |  |  |  | ⭐ |  | 2 |
+| Acute coronary syndrome management |  |  |  |  | ⭐ | 2 |
+| Rheumatic fever - Jones criteria/features | ⭐ | ⭐ |  |  |  | 2 |
+| Atrial fibrillation risk stratification |  | ⭐ |  |  |  | 1 |
+| Cardiac conduction system anatomy |  | ⭐ |  |  |  | 1 |
+| Cardiac hypertrophy (physiological vs pathological) |  |  | ⭐ |  |  | 1 |
+| Constrictive pericarditis |  |  | ⭐ |  |  | 1 |
+| Hypertrophic obstructive cardiomyopathy |  |  | ⭐ |  | ⭐ | 2 |
+| Infective endocarditis - Modified Duke criteria |  |  | ⭐ |  |  | 1 |
+| Pericardial effusion |  |  | ⭐ |  |  | 1 |
+| Cardiovascular drugs - adverse effects |  |  |  | ⭐ |  | 1 |
+| Ivabradine pharmacology |  |  |  | ⭐ |  | 1 |
+| Left atrial enlargement - radiology |  |  |  | ⭐ |  | 1 |
+| Cardiac tamponade |  |  |  | ⭐ |  | 1 |
+| Cardiac disease in pregnancy - WHO classification |  |  |  |  | ⭐ | 1 |
+| Digitalis toxicity - ECG |  |  |  |  | ⭐ | 1 |
+| Antiarrhythmic drugs - adverse effects |  |  |  |  | ⭐ | 1 |
+| Supraventricular tachyarrhythmias |  |  |  |  | ⭐ | 1 |
+
+### Chapter 2: RESPIRATORY DISEASES
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Asthma - diagnosis/management/staging | ⭐ |  |  | ⭐ | ⭐ | 4 |
+| COPD - severity/prognostic indices/GOLD | ⭐ | ⭐ |  |  | ⭐ | 4 |
+| Pleural effusion - classification/interpretation | ⭐ | ⭐ |  | ⭐ |  | 4 |
+| Respiratory failure classification | ⭐ |  |  |  | ⭐ | 3 |
+| Pulmonary function tests |  |  | ⭐ |  |  | 2 |
+| Obstructive sleep apnea |  |  |  | ⭐ | ⭐ | 2 |
+| Idiopathic pulmonary fibrosis |  |  |  | ⭐ |  | 1 |
+| Occupational lung diseases |  | ⭐ |  |  |  | 1 |
+| Pulmonary embolism diagnosis |  | ⭐ |  |  |  | 1 |
+| Sarcoidosis syndromic presentations |  | ⭐ |  |  |  | 1 |
+| Pulmonary tuberculosis diagnosis |  | ⭐ |  |  |  | 1 |
+| Digital clubbing |  | ⭐ |  |  |  | 1 |
+| Alpha-1 antitrypsin deficiency |  |  | ⭐ |  |  | 1 |
+| Lung volumes and capacities |  |  | ⭐ |  |  | 1 |
+| ARDS phases and management |  |  |  |  | ⭐ | 1 |
+| Drug-induced bronchial asthma |  |  |  |  | ⭐ | 1 |
+| NIV - indications and contraindications | ⭐ |  |  |  |  | 1 |
+| Systemic sclerosis - pulmonary manifestations | ⭐ |  |  |  |  | 1 |
+| Interstitial lung disease pathology | ⭐ |  |  |  |  | 1 |
+| Respiratory physiology in ageing | ⭐ |  |  |  |  | 1 |
+| Inhaler technique | ⭐ |  |  |  |  | 1 |
+| Mediastinal masses | ⭐ |  |  |  |  | 1 |
+| Chest tube insertion anatomy | ⭐ |  |  |  |  | 1 |
+| Lemierre syndrome | ⭐ |  |  |  |  | 1 |
+| Lung cancer - paraneoplastic syndromes |  |  |  |  | ⭐ | 1 |
+
+### Chapter 3: GASTRO-INTESTINAL
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Hepatitis B - serology/prevention/management |  |  | ⭐ | ⭐ | ⭐ | 4 |
+| Cirrhosis complications - ascites/encephalopathy | ⭐ | ⭐ |  |  |  | 3 |
+| Celiac disease - diagnosis/associations |  | ⭐ | ⭐ |  | ⭐ | 3 |
+| Helicobacter pylori - management/eradication |  | ⭐ |  |  | ⭐ | 3 |
+| Acute pancreatitis - etiology/complications |  | ⭐ | ⭐ | ⭐ |  | 3 |
+| Upper GI bleeding management |  | ⭐ |  |  |  | 2 |
+| Inherited hyperbilirubinemias | ⭐ | ⭐ |  |  |  | 2 |
+| Inflammatory bowel disease - differences/targeted therapy | ⭐ |  | ⭐ |  |  | 2 |
+| Drug-induced liver injury |  |  | ⭐ |  |  | 2 |
+| Zollinger-Ellison syndrome |  |  | ⭐ | ⭐ |  | 2 |
+| Alcoholic liver disease management | ⭐ |  |  |  |  | 1 |
+| Portal hypertension classification | ⭐ |  |  |  |  | 1 |
+| Imaging in cholelithiasis | ⭐ |  |  |  |  | 1 |
+| Capsule endoscopy - indications/contraindications | ⭐ |  |  |  |  | 1 |
+| Gastrinoma |  |  | ⭐ |  |  | 1 |
+| Spontaneous bacterial peritonitis |  |  | ⭐ |  |  | 1 |
+| Stress ulcer prophylaxis |  |  | ⭐ |  |  | 1 |
+| Acute fatty liver of pregnancy |  |  |  | ⭐ |  | 1 |
+| Drug-induced peptic ulcer disease |  |  |  | ⭐ |  | 1 |
+| Irritable bowel syndrome |  |  |  | ⭐ |  | 1 |
+| Jaundice - physiology/clinical features |  |  |  | ⭐ |  | 1 |
+| Whipple disease pathology |  | ⭐ |  |  |  | 1 |
+| Radiation enteritis/proctocolitis |  |  | ⭐ |  |  | 1 |
+| GI hormones - bile physiology |  |  | ⭐ |  |  | 1 |
+| Secondary achalasia |  |  |  |  | ⭐ | 1 |
+| Hepatorenal syndrome |  |  |  |  | ⭐ | 1 |
+| Ileal resection complications in Crohn's |  |  |  |  | ⭐ | 1 |
+| Viral hepatitis in pregnancy |  |  |  |  | ⭐ | 1 |
+| Protein losing enteropathy |  |  |  |  | ⭐ | 1 |
+| Antibiotic-associated colitis |  |  |  |  | ⭐ | 1 |
+| Whipple disease |  | ⭐ |  |  |  | 1 |
+| Achalasia - radiology |  | ⭐ |  |  |  | 1 |
+
+### Chapter 4: GENITO-URINARY / NEPHROLOGY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| CKD - staging/epidemiology | ⭐ | ⭐ |  | ⭐ | ⭐ | 5 |
+| Hyperkalemia - acute management | ⭐ |  |  |  | ⭐ | 3 |
+| Hyponatremia - classification | ⭐ |  |  |  |  | 2 |
+| Glomerular diseases - prognosis/biopsy |  | ⭐ | ⭐ | ⭐ |  | 3 |
+| Tubular disorders | ⭐ |  |  |  |  | 1 |
+| Diabetic nephropathy screening | ⭐ |  |  |  |  | 1 |
+| FSGS - genetic causes | ⭐ |  |  |  |  | 1 |
+| Hereditary tubulointerstitial diseases | ⭐ |  |  |  |  | 1 |
+| Acute nephritic syndrome | ⭐ |  |  |  |  | 1 |
+| Vasopressin antagonists | ⭐ |  |  |  |  | 1 |
+| Anti-GBM disease |  | ⭐ |  |  |  | 1 |
+| Hematuria - urine analysis |  | ⭐ |  |  |  | 1 |
+| Hypocomplementemic glomerulonephritis |  | ⭐ |  |  |  | 1 |
+| Renal biopsy indications |  | ⭐ |  |  |  | 1 |
+| Urinary casts in AKI |  |  | ⭐ |  |  | 1 |
+| Renal regulation of salt/water balance |  |  |  | ⭐ |  | 1 |
+| Pre-renal vs intrinsic renal failure |  |  |  | ⭐ |  | 1 |
+| Contrast induced nephropathy |  |  |  | ⭐ |  | 1 |
+| Renal autoregulation of GFR |  |  |  | ⭐ |  | 1 |
+| Nephrotic syndrome - pathophysiology |  |  |  | ⭐ |  | 1 |
+| Anemia in CKD |  |  |  |  | ⭐ | 1 |
+| Asymptomatic bacteriuria |  |  |  |  | ⭐ | 1 |
+| Renal transplantation - indications/contraindications |  |  |  |  | ⭐ | 1 |
+| Polyuria evaluation | ⭐ |  |  |  |  | 1 |
+| Vascular access for hemodialysis |  |  |  | ⭐ |  | 1 |
+
+### Chapter 5: NEUROLOGY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Parkinson's disease - clinical features | ⭐ | ⭐ |  | ⭐ | ⭐ | 5 |
+| Seizure precipitants | ⭐ | ⭐ |  |  |  | 3 |
+| Headache - classification/migraine/cluster | ⭐ | ⭐ |  |  |  | 3 |
+| Wilson disease - genetics/clinical/neuroimaging | ⭐ |  |  |  |  | 2 |
+| Dementia - types/reversible causes | ⭐ | ⭐ |  |  | ⭐ | 3 |
+| Visual pathway - lesions/localization | ⭐ | ⭐ |  |  |  | 2 |
+| Stroke - thrombolysis/risk factors |  |  | ⭐ | ⭐ |  | 2 |
+| Parkinsonism - secondary causes |  |  |  | ⭐ |  | 2 |
+| Brain death criteria | ⭐ |  |  |  |  | 1 |
+| Subarachnoid haemorrhage etiology | ⭐ |  |  |  |  | 1 |
+| Trigeminal neuralgia | ⭐ |  |  |  |  | 1 |
+| Glymphatic system | ⭐ |  |  |  |  | 1 |
+| Fronto-temporal dementia | ⭐ |  |  |  |  | 1 |
+| CNS glial cells and myelination | ⭐ |  |  |  |  | 1 |
+| Bell's palsy prognosis | ⭐ |  |  |  |  | 1 |
+| Transient global amnesia |  | ⭐ |  |  |  | 1 |
+| Oculomotor nerve palsy |  | ⭐ |  |  |  | 1 |
+| Giant cell arteritis |  | ⭐ |  |  |  | 1 |
+| Extrapyramidal system lesions |  | ⭐ |  |  |  | 1 |
+| Focal seizures - clinical features |  |  | ⭐ |  |  | 1 |
+| Absence seizure - electroclinical features |  |  | ⭐ |  |  | 1 |
+| Nerve conduction studies |  |  | ⭐ |  |  | 1 |
+| Cortical sensory functions |  |  |  | ⭐ |  | 1 |
+| Essential tremor |  |  |  | ⭐ |  | 1 |
+| Myasthenia gravis |  |  |  | ⭐ |  | 1 |
+| Encephalopathy - functional assessment |  |  |  | ⭐ |  | 1 |
+| Spinal cord lesions - localization |  |  |  |  | ⭐ | 1 |
+| Motor neuron lesions - UMN/LMN |  |  |  |  | ⭐ | 1 |
+| Intracerebral hemorrhage |  |  |  |  | ⭐ | 1 |
+| Facial nerve palsy |  |  |  |  | ⭐ | 1 |
+| Parietal lobe functions |  |  |  |  | ⭐ | 1 |
+| Neurofibromatosis type 1 |  |  |  |  | ⭐ | 1 |
+| Polyneuropathy - causes |  |  |  |  | ⭐ | 1 |
+| Tension type headache |  |  |  |  | ⭐ | 1 |
+| Drug-induced intracranial hypertension |  |  |  | ⭐ |  | 1 |
+| Sleep physiology |  |  |  | ⭐ |  | 1 |
+| Trinucleotide repeat disorders |  |  |  |  | ⭐ | 1 |
+| Radiculopathy - localization |  |  |  |  | ⭐ | 1 |
+| Childhood epilepsy syndromes | ⭐ |  |  |  |  | 1 |
+
+### Chapter 6: HEMATOLOGY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Hemolytic anemia - evaluation/autoimmune | ⭐ | ⭐ |  |  | ⭐ | 4 |
+| Vitamin B12 deficiency / Macrocytic anemia | ⭐ |  |  |  | ⭐ | 3 |
+| Chronic myeloid leukemia - treatment | ⭐ |  |  | ⭐ |  | 3 |
+| Polycythemia - classification | ⭐ |  |  |  |  | 2 |
+| ITP - management | ⭐ |  |  | ⭐ |  | 2 |
+| Iron deficiency anemia - stages |  |  |  | ⭐ |  | 2 |
+| G6PD deficiency - drug-induced hemolysis |  |  |  | ⭐ | ⭐ | 2 |
+| Anticoagulants - oral/reversal agents | ⭐ | ⭐ |  |  |  | 2 |
+| Multiple myeloma - treatment |  |  |  | ⭐ |  | 2 |
+| Paroxysmal nocturnal hemoglobinuria |  |  | ⭐ |  |  | 2 |
+| Anticoagulant antidotes/reversal agents | ⭐ |  |  |  |  | 1 |
+| Hematological changes in pregnancy |  |  |  |  | ⭐ | 1 |
+| Hemolysis - laboratory features |  |  |  |  | ⭐ | 1 |
+| Drug-induced hemolytic anemia |  |  |  |  | ⭐ | 1 |
+| Tumor markers |  |  |  |  | ⭐ | 1 |
+| Eosinophilia - causes |  |  |  |  | ⭐ | 1 |
+| Heparin induced thrombocytopenia |  |  |  | ⭐ |  | 1 |
+| Heme synthesis disorders |  |  |  | ⭐ |  | 1 |
+| Reticulocyte production index |  |  |  | ⭐ |  | 1 |
+| Sickle cell disease - molecular basis |  |  |  | ⭐ |  | 1 |
+| Cryoprecipitate contents |  |  | ⭐ |  |  | 1 |
+| Transfusion transmitted infections |  |  | ⭐ |  |  | 1 |
+| Hemophilia - inheritance |  |  | ⭐ |  |  | 1 |
+| Microcytic anemia - causes |  |  | ⭐ |  |  | 1 |
+| Myeloproliferative neoplasms |  |  | ⭐ |  |  | 1 |
+| Iron overload disorders | ⭐ |  |  |  |  | 1 |
+| Staging systems in hematological malignancies |  | ⭐ |  |  |  | 1 |
+| Cutaneous T-cell lymphoma |  | ⭐ |  |  |  | 1 |
+| Blood components and transfusion |  |  |  | ⭐ |  | 1 |
+| Direct thrombin inhibitors |  |  |  | ⭐ |  | 1 |
+
+### Chapter 7: ENDOCRINOLOGY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Thyroid disorders - hypo/hyper/Graves |  | ⭐ | ⭐ | ⭐ | ⭐ | 5 |
+| Diabetes mellitus - diagnostic criteria/management |  |  | ⭐ | ⭐ | ⭐ | 4 |
+| Antidiabetic drugs - classes/mechanisms/SGLT2 |  | ⭐ | ⭐ | ⭐ | ⭐ | 5 |
+| Insulin - pharmacokinetics/preparations |  |  | ⭐ | ⭐ | ⭐ | 4 |
+| Hypercalcemia - diagnosis/management |  | ⭐ |  | ⭐ |  | 3 |
+| Hypocalcemia - differential diagnosis |  |  | ⭐ | ⭐ |  | 3 |
+| Cushing syndrome - evaluation |  |  | ⭐ |  |  | 2 |
+| Drug-induced weight changes | ⭐ |  |  |  |  | 1 |
+| Glucocorticoid adverse effects | ⭐ |  |  |  |  | 1 |
+| Diabetic retinopathy |  | ⭐ |  |  |  | 1 |
+| Lipid lowering drugs |  | ⭐ |  |  |  | 1 |
+| Porphyrias |  | ⭐ |  |  |  | 1 |
+| Hyperparathyroidism diagnosis |  | ⭐ |  |  |  | 1 |
+| Thyroid storm management |  |  | ⭐ |  |  | 1 |
+| Myxoedema coma treatment |  |  | ⭐ |  |  | 1 |
+| Pituitary adenomas and hormone secretion |  |  | ⭐ |  |  | 1 |
+| Thyrotoxicosis - thyroglobulin interpretation |  |  | ⭐ |  |  | 1 |
+| Post-thyroidectomy hypocalcemia |  |  | ⭐ |  |  | 1 |
+| Hypogonadism classification |  |  | ⭐ |  |  | 1 |
+| Klinefelter syndrome |  |  | ⭐ |  |  | 1 |
+| Obesity - pathophysiology/management |  |  | ⭐ |  |  | 1 |
+| Kallmann syndrome |  |  | ⭐ |  |  | 1 |
+| Iodine effects on thyroid physiology |  |  | ⭐ |  |  | 1 |
+| Autoimmune thyroid disorders |  | ⭐ |  |  |  | 1 |
+| Hyperaldosteronism - causes |  | ⭐ |  |  |  | 1 |
+| PCOS - diagnostic criteria |  | ⭐ |  |  |  | 1 |
+| Antihypertensive selection in diabetes |  | ⭐ |  |  |  | 1 |
+| Steroid induced myopathy |  | ⭐ |  |  |  | 1 |
+| Glucose homeostasis and hormonal regulation |  | ⭐ |  |  |  | 1 |
+| Pancreatic islet cell hormones |  | ⭐ |  |  |  | 1 |
+| Cortisol - physiology |  | ⭐ |  |  |  | 1 |
+| Drug-induced osteoporosis |  |  |  |  | ⭐ | 1 |
+| Hypoglycemia - causes/risk |  |  |  | ⭐ | ⭐ | 2 |
+| Hirsutism - causes/management |  |  |  | ⭐ | ⭐ | 2 |
+| Short stature evaluation |  |  |  | ⭐ |  | 1 |
+| Diabetes insipidus |  |  |  |  | ⭐ | 1 |
+| Acute adrenal crisis |  |  |  |  | ⭐ | 1 |
+| Thyroid function tests - interpretation |  |  |  | ⭐ |  | 1 |
+| Dyslipidemia - laboratory artifacts |  |  |  | ⭐ |  | 1 |
+| Gestational diabetes mellitus |  |  |  | ⭐ |  | 1 |
+| Type 2 diabetes - risk factors |  |  |  | ⭐ |  | 1 |
+| Cutaneous manifestations of diabetes |  |  |  |  | ⭐ | 1 |
+
+### Chapter 8: METABOLIC DISORDERS
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Hyperkalemia management | ⭐ |  |  |  |  | 2 |
+| Hyponatremia classification | ⭐ |  |  |  |  | 2 |
+| Serum osmolality |  | ⭐ |  |  |  | 1 |
+| Acid-base disorders in critical illness |  |  |  |  | ⭐ | 1 |
+| Heat stroke - metabolic abnormalities | ⭐ |  |  |  |  | 1 |
+| Tumor lysis syndrome |  |  | ⭐ | ⭐ |  | 2 |
+| Uric acid nephropathy |  |  | ⭐ |  |  | 1 |
+| Osteoporosis - clinical features/pharmacotherapy |  |  |  | ⭐ |  | 2 |
+| Vitamin D - metabolism/supplementation |  |  |  | ⭐ |  | 2 |
+| Vitamin D deficiency |  | ⭐ |  |  |  | 1 |
+| Electrolyte management in DKA |  |  |  | ⭐ |  | 1 |
+| WHO ORS composition |  |  |  | ⭐ |  | 1 |
+
+### Chapter 9: INFECTIOUS DISEASES / TROPICAL MEDICINE
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Tuberculosis - diagnosis/treatment/meningitis |  | ⭐ |  | ⭐ | ⭐ | 4 |
+| Malaria - Duffy antigen/radical cure |  |  | ⭐ |  |  | 3 |
+| HIV - opportunistic infections/immunization |  | ⭐ | ⭐ | ⭐ |  | 4 |
+| Filariasis - clinical features/parasites | ⭐ | ⭐ |  |  |  | 3 |
+| Leptospirosis - diagnosis/treatment | ⭐ |  |  |  |  | 2 |
+| Giardiasis - diagnosis | ⭐ |  | ⭐ |  |  | 2 |
+| Brucellosis - clinical features/microbiology |  |  | ⭐ | ⭐ |  | 2 |
+| Scorpion sting - management |  |  | ⭐ |  |  | 2 |
+| Kyasanur Forest Disease |  |  | ⭐ |  | ⭐ | 2 |
+| Snakebite - elapid/neurotoxic/pathophysiology |  |  | ⭐ |  | ⭐ | 2 |
+| Helminth infections - Strongyloidiasis/cutaneous larva migrans |  |  | ⭐ |  |  | 2 |
+| Schistosomiasis treatment |  |  | ⭐ |  |  | 2 |
+| Fungal infections - opportunistic/subcutaneous | ⭐ | ⭐ | ⭐ |  |  | 3 |
+| Listeria treatment |  |  | ⭐ |  |  | 1 |
+| Varicella exposure in pregnancy |  |  | ⭐ |  |  | 1 |
+| Cysticercosis and neurocysticercosis |  |  | ⭐ |  |  | 1 |
+| HIV-associated neurocognitive disorders |  |  | ⭐ |  |  | 1 |
+| Necrotizing fasciitis |  |  | ⭐ |  |  | 1 |
+| Antibiotic spectrum of activity | ⭐ |  |  |  |  | 1 |
+| Leprosy reactions | ⭐ |  |  |  |  | 1 |
+| Behcet's disease diagnosis | ⭐ |  |  |  |  | 1 |
+| Visceral leishmaniasis treatment |  | ⭐ |  |  |  | 1 |
+| Toxoplasmosis - serological diagnosis |  | ⭐ |  |  |  | 1 |
+| Cat scratch disease - etiology |  | ⭐ |  |  |  | 1 |
+| Clonorchis sinensis - life cycle |  | ⭐ |  |  |  | 1 |
+| Hepatobiliary trematodes |  | ⭐ |  |  |  | 1 |
+| Zoonotic helminth infections |  | ⭐ |  |  |  | 1 |
+| Viral exanthems |  | ⭐ |  |  |  | 1 |
+| BCG vaccination |  | ⭐ |  |  |  | 1 |
+| Immunization in HIV |  | ⭐ |  |  |  | 1 |
+| Coccidioidomycosis |  |  | ⭐ |  |  | 1 |
+| Opportunistic infections in HIV |  |  |  | ⭐ |  | 1 |
+| Post-splenectomy infections |  |  |  | ⭐ |  | 1 |
+| Opportunistic esophageal infections in HIV |  |  |  | ⭐ |  | 1 |
+| Post-gonococcal urethritis |  |  |  | ⭐ |  | 1 |
+| HIV transmission risk |  |  |  | ⭐ |  | 1 |
+| Parvovirus B19 infection |  |  |  |  | ⭐ | 1 |
+| Bartonella infections |  |  |  |  | ⭐ | 1 |
+| Scrub typhus |  |  |  |  | ⭐ | 1 |
+| Tetanus |  |  |  |  | ⭐ | 1 |
+| Antimalarial prophylaxis |  |  |  |  | ⭐ | 1 |
+| Intestinal nematodes - life cycle |  |  |  |  | ⭐ | 1 |
+| Amphotericin B - pharmacology/adverse effects |  |  |  |  | ⭐ | 1 |
+| Mucormycosis - etiology |  |  |  |  | ⭐ | 1 |
+| Vector-borne diseases |  |  |  |  | ⭐ | 1 |
+
+### Chapter 10: DERMATOLOGY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Superficial skin infections | ⭐ |  |  |  |  | 2 |
+| Alopecia - types |  | ⭐ |  | ⭐ |  | 2 |
+| Skin malignancies |  | ⭐ |  |  |  | 2 |
+| Acne vulgaris - management |  |  |  | ⭐ |  | 2 |
+| Scabies - clinical features/treatment |  | ⭐ |  |  |  | 2 |
+| Koebner phenomenon | ⭐ |  |  |  |  | 1 |
+| Hair growth cycle | ⭐ |  |  |  |  | 1 |
+| Oculocutaneous albinism | ⭐ |  |  |  |  | 1 |
+| Cutaneous manifestations of chronic heat exposure | ⭐ |  |  |  |  | 1 |
+| Purpura fulminans |  | ⭐ |  |  |  | 1 |
+| Hypersensitivity reactions |  | ⭐ |  |  |  | 1 |
+| Subcutaneous fungal infections | ⭐ |  |  |  |  | 1 |
+| Scarring alopecia |  |  |  | ⭐ |  | 1 |
+
+### Chapter 11: RHEUMATOLOGY / MUSCULOSKELETAL
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Rheumatoid arthritis |  | ⭐ |  | ⭐ |  | 3 |
+| Osteoarthritis | ⭐ | ⭐ |  |  |  | 3 |
+| Ankylosing spondylitis |  | ⭐ |  | ⭐ |  | 3 |
+| Gout management | ⭐ |  |  |  |  | 2 |
+| Crystal arthropathies |  | ⭐ |  |  |  | 2 |
+| Vasculitis classification |  |  | ⭐ |  |  | 1 |
+| Systemic amyloidosis |  | ⭐ |  |  |  | 1 |
+| Drug-induced lupus |  | ⭐ |  |  |  | 1 |
+| Immunosuppressive drugs - adverse effects |  | ⭐ |  |  |  | 1 |
+| Steroid-induced myopathy |  | ⭐ |  |  |  | 1 |
+| Osteoporosis - clinical features/pharmacotherapy |  |  |  | ⭐ | ⭐ | 2 |
+| Polyarteritis nodosa - epidemiology |  |  |  |  | ⭐ | 1 |
+| Autoantibodies in connective tissue diseases |  |  |  |  | ⭐ | 1 |
+| Systemic sclerosis - pulmonary manifestations | ⭐ |  |  |  |  | 1 |
+
+### Chapter 12: PSYCHIATRY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Mood stabilizers in bipolar disorder |  | ⭐ |  | ⭐ |  | 3 |
+| Antidepressant classification |  | ⭐ |  |  | ⭐ | 3 |
+| Dementia - types/reversible causes | ⭐ | ⭐ |  |  | ⭐ | 3 |
+| Alcohol dependence - pharmacotherapy |  |  | ⭐ |  |  | 2 |
+| Schizophrenia - first rank symptoms |  | ⭐ |  |  |  | 1 |
+| Wernicke-Korsakoff syndrome |  | ⭐ |  |  |  | 1 |
+| Inherited dementias |  | ⭐ |  |  |  | 1 |
+| Lithium adverse effects |  | ⭐ |  |  |  | 1 |
+| Monoamine oxidase inhibitors |  | ⭐ |  |  |  | 1 |
+| Anorexia nervosa - clinical features |  |  | ⭐ |  |  | 1 |
+| Eating disorders |  |  |  |  | ⭐ | 1 |
+| Delirium screening with 4AT | ⭐ |  |  |  |  | 1 |
+| Laboratory markers of chronic alcohol use | ⭐ |  |  |  |  | 1 |
+
+### Chapter 13: CRITICAL CARE / EMERGENCY MEDICINE
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| SOFA score components | ⭐ |  |  | ⭐ |  | 3 |
+| Severity assessment scores in acute illness | ⭐ |  |  |  |  | 2 |
+| Respiratory failure classification | ⭐ |  |  |  | ⭐ | 3 |
+| Brain death criteria | ⭐ |  |  |  |  | 2 |
+| ARDS phases and management |  | ⭐ |  |  |  | 1 |
+| Acid-base disorders in critical illness |  |  |  |  | ⭐ | 1 |
+| Acute severe asthma management |  |  |  |  | ⭐ | 1 |
+| Basic life support and CPR |  |  |  |  | ⭐ | 1 |
+| Cardiac arrest rhythms and defibrillation |  |  |  |  | ⭐ | 1 |
+| Geriatric functional assessment | ⭐ |  |  |  |  | 1 |
+
+### Chapter 14: POISONING / TOXICOLOGY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Organophosphate poisoning - toxidrome/antidotes | ⭐ |  |  | ⭐ |  | 3 |
+| Paracetamol poisoning - antidote/management |  | ⭐ |  | ⭐ | ⭐ | 4 |
+| Salicylate poisoning - acid-base disorders | ⭐ |  |  |  |  | 2 |
+| Anticholinergic poisoning and antidote | ⭐ |  |  |  |  | 2 |
+| Metallic poisoning |  |  |  | ⭐ |  | 2 |
+| Toxic alcohol poisoning and antidotes | ⭐ |  |  |  |  | 1 |
+| Arsenic toxicity and nail signs | ⭐ |  |  |  |  | 1 |
+| Thallium poisoning management | ⭐ |  |  |  |  | 1 |
+| Organophosphate delayed neuropathy |  | ⭐ |  |  |  | 1 |
+| Beta-agonists in electrolyte emergencies |  | ⭐ |  |  |  | 1 |
+| GI decontamination methods |  | ⭐ |  |  |  | 1 |
+| Antipsychotic overdose - toxicology |  | ⭐ |  |  |  | 1 |
+| Urine discoloration in poisoning |  | ⭐ |  |  |  | 1 |
+| ECG changes in poisoning |  | ⭐ |  |  |  | 1 |
+| Enhanced elimination techniques |  |  | ⭐ |  |  | 1 |
+| Activated charcoal use |  |  | ⭐ |  |  | 1 |
+| Acute poisoning management |  |  | ⭐ |  |  | 1 |
+| GI decontamination - contraindications |  |  |  |  | ⭐ | 1 |
+| Frostbite management |  |  |  | ⭐ |  | 1 |
+
+### Chapter 15: GENETICS
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Inheritance patterns of genetic diseases | ⭐ |  |  |  |  | 2 |
+| Wilson disease genetics | ⭐ |  |  |  |  | 2 |
+| Inherited cancer syndromes |  |  |  |  | ⭐ | 1 |
+| Trinucleotide repeat disorders |  |  |  |  | ⭐ | 1 |
+| DiGeorge syndrome |  |  |  |  | ⭐ | 1 |
+| Cystic fibrosis - genetics |  |  |  |  | ⭐ | 1 |
+| Neurofibromatosis type 1 |  |  |  |  | ⭐ | 1 |
+| Genomic imprinting disorders |  |  |  |  |  | 1 |
+| FSGS - genetic causes | ⭐ |  |  |  |  | 1 |
+
+### Chapter 16: NUTRITION / VITAMIN DEFICIENCY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Vitamin B12 deficiency | ⭐ |  |  |  | ⭐ | 3 |
+| Vitamin D - deficiency/metabolism |  | ⭐ |  | ⭐ |  | 3 |
+| Pellagra and nutritional deficiencies | ⭐ |  |  | ⭐ |  | 3 |
+| Trace element deficiency disorders | ⭐ |  |  |  |  | 1 |
+| Vitamin A toxicity and supplementation | ⭐ |  |  |  |  | 1 |
+| Vitamin C deficiency |  |  |  | ⭐ |  | 1 |
+| Protein energy malnutrition - marasmus |  |  |  |  | ⭐ | 1 |
+| Obesity - pathophysiology/management |  |  | ⭐ |  |  | 1 |
+| Anorexia of aging |  |  |  |  | ⭐ | 1 |
+| Complications of parenteral nutrition |  |  |  |  | ⭐ | 1 |
+
+### Chapter 17: MISCELLANEOUS / GENERAL MEDICINE
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Drug-induced weight changes | ⭐ |  |  |  |  | 2 |
+| Hypersensitivity reactions |  | ⭐ |  | ⭐ |  | 3 |
+| Geriatric functional assessment | ⭐ |  |  |  |  | 1 |
+| Anorexia of aging |  |  |  |  | ⭐ | 1 |
+| Weight gain - causes |  |  |  |  | ⭐ | 1 |
+| Systemic amyloidosis |  | ⭐ |  |  |  | 1 |
+| Drug-induced edema |  |  |  | ⭐ |  | 1 |
+| Calciphylaxis risk factors |  |  | ⭐ |  |  | 1 |
+
+## PAEDIATRICS
+
+### Chapter 1: DEVELOPMENTAL MILESTONES
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Developmental milestones (general) | ⭐ | ⭐ | ⭐ | ⭐ | ⭐ | 5 |
+| Developmental screening tools |  |  | ⭐ | ⭐ |  | 3 |
+| Early social and visual milestones |  |  |  |  | ⭐ | 1 |
+| Fine motor and adaptive milestones |  |  |  |  | ⭐ | 1 |
+| Language milestones at 2 years |  |  |  | ⭐ |  | 1 |
+| Nine-month developmental milestones |  |  | ⭐ |  |  | 1 |
+| Social development milestones |  |  | ⭐ |  |  | 1 |
+| Developmental quotient calculation |  | ⭐ |  |  |  | 1 |
+| Dental eruption and puberty correlation |  |  |  | ⭐ |  | 1 |
+| Upper limits of normal developmental milestones |  |  | ⭐ |  |  | 1 |
+
+### Chapter 2: BASIC NEWBORN CARE
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Essential newborn care | ⭐ |  |  |  |  | 2 |
+| Breast milk - composition |  | ⭐ |  | ⭐ |  | 3 |
+| Breastfeeding - attachment/physiology |  | ⭐ |  |  |  | 2 |
+| Neonatal resuscitation algorithm |  |  | ⭐ |  |  | 2 |
+| Pathological jaundice in newborn |  |  |  | ⭐ |  | 2 |
+| Neonatal apnea - physiology/stages |  | ⭐ |  |  |  | 1 |
+| Newborn danger signs |  |  |  | ⭐ |  | 1 |
+| Home Based Newborn Care |  |  |  |  | ⭐ | 1 |
+| Hypothermia assessment in newborns |  |  |  |  | ⭐ | 1 |
+| Unconjugated hyperbilirubinemia - causes |  |  |  |  | ⭐ | 1 |
+| Feeding of preterm neonate |  |  |  | ⭐ |  | 1 |
+| Iron supplementation in LBW infants |  |  | ⭐ |  |  | 1 |
+| IUGR - complications |  |  | ⭐ |  |  | 1 |
+| Normal neonatal growth patterns |  |  | ⭐ |  |  | 1 |
+| Tracheoesophageal fistula |  |  |  |  | ⭐ | 1 |
+
+### Chapter 3: IMMUNIZATION
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Childhood vaccination principles | ⭐ |  |  |  |  | 2 |
+| Rotavirus vaccine - characteristics/contraindications | ⭐ | ⭐ |  |  |  | 3 |
+| Polio immunization strategy |  |  | ⭐ | ⭐ |  | 3 |
+| National Immunization Schedule |  |  |  |  | ⭐ | 2 |
+| Contraindications to vaccination |  |  | ⭐ |  |  | 1 |
+| Adverse events following immunization |  |  | ⭐ |  |  | 1 |
+| Cold chain and vaccine storage |  |  |  | ⭐ |  | 1 |
+| Vaccine program principles |  | ⭐ |  |  |  | 1 |
+| Varicella vaccine post-exposure prophylaxis |  |  |  |  | ⭐ | 1 |
+| Catch-up immunization schedule |  |  | ⭐ |  |  | 1 |
+
+### Chapter 4: PAEDIATRIC EMERGENCIES
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Status epilepticus - management | ⭐ |  |  |  |  | 2 |
+| Hyperkalemia - emergency management | ⭐ |  |  |  |  | 2 |
+| Pediatric airway management | ⭐ |  |  |  |  | 2 |
+| Pediatric Glasgow Coma Scale |  |  |  | ⭐ |  | 2 |
+| Pediatric respiratory rate cutoffs |  | ⭐ |  |  |  | 1 |
+| Hypertensive emergency in children |  | ⭐ |  |  |  | 1 |
+| Fluid resuscitation in pediatric burns |  | ⭐ |  |  |  | 1 |
+| Pulseless electrical activity - reversible causes |  |  |  | ⭐ |  | 1 |
+| Acute liver failure - prognostic criteria |  |  |  | ⭐ |  | 1 |
+| Head injury management |  |  |  |  | ⭐ | 1 |
+| Pediatric basic life support |  |  |  |  | ⭐ | 1 |
+| Modified Glasgow Coma Scale |  |  |  |  | ⭐ | 1 |
+| Dengue with warning signs - fluid management |  |  |  |  | ⭐ | 1 |
+| Pediatric burn assessment |  |  |  |  | ⭐ | 1 |
+| Pediatric GI bleeding management | ⭐ |  |  |  |  | 1 |
+| Hypernatremia in pediatrics | ⭐ |  |  |  |  | 1 |
+| Hypocalcemia in children | ⭐ |  |  |  |  | 1 |
+
+### Chapter 5: NATIONAL PROGRAMMES
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| IMNCI - strategy/danger signs/pneumonia | ⭐ | ⭐ | ⭐ | ⭐ |  | 4 |
+| RBSK - 4Ds/Deficiencies | ⭐ |  |  |  |  | 2 |
+| WIFS programme components |  | ⭐ |  |  |  | 1 |
+| Rashtriya Bal Swasthya Karyakram |  |  |  |  | ⭐ | 1 |
+| Folic acid prophylaxis for NTD |  | ⭐ |  |  |  | 1 |
+| Child health programs in India |  |  |  | ⭐ |  | 1 |
+| Nurturing care framework |  |  | ⭐ |  |  | 1 |
+
+### Chapter 6: BIRTH DEFECTS / GENETICS
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Autism spectrum disorder - genetic associations | ⭐ |  | ⭐ | ⭐ | ⭐ | 5 |
+| Trisomy syndromes | ⭐ |  |  |  |  | 2 |
+| Genomic imprinting disorders | ⭐ | ⭐ |  |  |  | 3 |
+| Robertsonian translocation and Down syndrome |  | ⭐ |  |  |  | 1 |
+| NIPS principles and interpretation |  | ⭐ |  |  |  | 1 |
+| Specific learning disabilities |  |  | ⭐ |  | ⭐ | 2 |
+| ADHD - pharmacological management | ⭐ |  |  |  |  | 1 |
+| Cerebral palsy - definition/core features | ⭐ |  |  |  |  | 1 |
+| Spasticity in cerebral palsy - assessment | ⭐ |  |  |  |  | 1 |
+| Pharmacotherapy in autism |  |  |  |  | ⭐ | 1 |
+
+### Chapter 7: MISCELLANEOUS
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| POCSO Act and aggravated sexual assault | ⭐ |  |  |  |  | 2 |
+| Rickets due to vitamin D deficiency |  |  | ⭐ |  |  | 1 |
+| Prevention of mother to child transmission of HIV |  |  | ⭐ | ⭐ |  | 2 |
+| Secondary immunodeficiency in children | ⭐ |  |  |  |  | 1 |
+| Toxicology radiographic findings | ⭐ |  |  |  |  | 1 |
+| Behavioral management in children |  |  |  |  | ⭐ | 1 |
+
+## OBSTETRICS & GYNAECOLOGY
+
+### Chapter 1: OBSTETRICS - ANTE-NATAL
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Physiological changes in pregnancy |  | ⭐ |  |  | ⭐ | 3 |
+| Iron deficiency anaemia in pregnancy |  |  | ⭐ |  |  | 2 |
+| Fetal growth restriction - predictors/surveillance | ⭐ |  | ⭐ |  | ⭐ | 3 |
+| Hypertensive disorders of pregnancy |  | ⭐ |  | ⭐ |  | 3 |
+| Gestational diabetes mellitus |  |  |  | ⭐ |  | 2 |
+| Early clinical signs of pregnancy | ⭐ |  |  |  |  | 1 |
+| Sickle cell disease in pregnancy | ⭐ |  |  |  |  | 1 |
+| Thalassemia trait in pregnancy | ⭐ |  |  |  |  | 1 |
+| SLE management in pregnancy | ⭐ |  |  |  |  | 1 |
+| Hyperemesis gravidarum - complications | ⭐ |  |  |  |  | 1 |
+| Ovarian tumors in pregnancy | ⭐ |  |  |  |  | 1 |
+| Twin pregnancy ultrasound assessment | ⭐ |  |  |  |  | 1 |
+| Neonatal complications of maternal diabetes | ⭐ |  |  |  |  | 1 |
+| Foetal physiology and development |  | ⭐ |  |  |  | 1 |
+| Amniotic fluid assessment |  | ⭐ |  |  |  | 1 |
+| Endocrine changes in pregnancy |  | ⭐ |  |  |  | 1 |
+| Types of abortion |  | ⭐ |  |  |  | 1 |
+| First trimester aneuploidy screening |  |  |  | ⭐ |  | 1 |
+| Congenital infections and IUGR |  |  |  | ⭐ |  | 1 |
+| Lightening in pregnancy |  |  |  | ⭐ |  | 1 |
+| Group B Streptococcal infection in pregnancy |  |  |  | ⭐ |  | 1 |
+| Antepartum haemorrhage - definition/classification |  |  |  |  | ⭐ | 1 |
+| Risk factors for pre-eclampsia |  |  |  |  | ⭐ | 1 |
+| Ovarian ectopic pregnancy |  |  |  |  | ⭐ | 1 |
+| Assessment of fetal well being |  |  |  |  | ⭐ | 1 |
+| Role of antenatal ultrasonography |  |  |  |  | ⭐ | 1 |
+| Iron supplementation in pregnancy |  |  |  |  | ⭐ | 1 |
+| Rh isoimmunization |  |  |  |  | ⭐ | 1 |
+| SARS-CoV-2 exposure criteria in pregnancy |  |  |  |  | ⭐ | 1 |
+| Septic abortion |  |  |  |  | ⭐ | 1 |
+| Maternal nutrition and weight gain |  |  |  |  | ⭐ | 1 |
+| Metabolic changes in pregnancy |  |  | ⭐ |  |  | 1 |
+| Iron requirement in pregnancy |  |  | ⭐ |  |  | 1 |
+| Vaccination in pregnancy |  |  | ⭐ |  |  | 1 |
+| Intrahepatic cholestasis of pregnancy |  |  | ⭐ |  |  | 1 |
+| Postmaturity complications |  |  | ⭐ |  |  | 1 |
+| External cephalic version - contraindications | ⭐ |  |  | ⭐ |  | 2 |
+| Complications of previous caesarean section |  | ⭐ |  |  |  | 1 |
+
+### Chapter 2: OBSTETRICS - INTRA-NATAL
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Stages/phases of labour |  | ⭐ | ⭐ |  |  | 3 |
+| Mechanism of labour |  |  |  |  | ⭐ | 2 |
+| True vs false labour |  | ⭐ | ⭐ |  | ⭐ | 4 |
+| Shoulder dystocia | ⭐ |  |  |  |  | 2 |
+| Umbilical cord prolapse | ⭐ |  |  | ⭐ |  | 3 |
+| Occiput posterior position | ⭐ |  |  |  |  | 1 |
+| Oxytocin complications | ⭐ |  |  |  |  | 1 |
+| WHO Intrapartum labour guidelines | ⭐ |  |  |  |  | 1 |
+| WHO intrapartum care recommendations | ⭐ |  |  |  |  | 1 |
+| Diagnosis of true labour |  | ⭐ |  |  |  | 1 |
+| Diameters of fetal skull |  | ⭐ |  |  |  | 1 |
+| Physiology of onset of labour |  | ⭐ |  |  |  | 1 |
+| Birth injuries |  | ⭐ |  |  |  | 1 |
+| Uterine rupture |  | ⭐ |  |  |  | 1 |
+| Disorders of labour progress |  |  | ⭐ |  |  | 1 |
+| Operative vaginal delivery - indications |  |  |  | ⭐ | ⭐ | 2 |
+| Pelvic anatomy and mechanics of labour |  |  |  | ⭐ |  | 1 |
+| Labour management in bronchial asthma |  |  |  | ⭐ |  | 1 |
+| Normal labor progress |  |  |  |  | ⭐ | 1 |
+| Active management of third stage |  |  | ⭐ |  |  | 1 |
+| Obstetric anal sphincter injuries |  |  | ⭐ |  |  | 1 |
+| External cephalic version in breech |  |  |  |  | ⭐ | 1 |
+
+### Chapter 3: OBSTETRICS - POST-NATAL
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Postpartum psychosis | ⭐ |  |  |  |  | 2 |
+| Puerperal blues | ⭐ |  |  |  |  | 2 |
+| Placental separation mechanisms | ⭐ |  |  |  |  | 1 |
+| Postpartum hematomas | ⭐ |  |  |  |  | 1 |
+| Breastfeeding complications and management | ⭐ |  |  |  |  | 1 |
+| Placenta accreta spectrum |  | ⭐ |  |  |  | 1 |
+| Peripartum cardiomyopathy |  | ⭐ |  |  |  | 1 |
+| Lactation physiology and failure |  |  | ⭐ |  |  | 1 |
+| Acute mastitis |  |  | ⭐ |  |  | 1 |
+| Uterine inversion differentials | ⭐ |  |  |  |  | 1 |
+| Puerperium and uterine involution |  |  |  | ⭐ |  | 1 |
+| Early cord clamping indications |  |  |  | ⭐ |  | 1 |
+| Colostrum composition |  |  |  |  | ⭐ | 1 |
+| Postpartum ovulation |  |  |  |  | ⭐ | 1 |
+| Magnesium sulphate toxicity | ⭐ |  |  |  |  | 1 |
+
+### Chapter 4: GYNAECOLOGY - ANATOMY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Female genital tract anatomy | ⭐ |  |  |  |  | 2 |
+| Pelvic floor anatomy |  |  | ⭐ |  |  | 2 |
+| Pelvic cellular tissue |  | ⭐ |  |  |  | 1 |
+| Uterine blood supply |  |  | ⭐ |  |  | 1 |
+| Vulvar anatomy | ⭐ |  |  |  |  | 1 |
+| Pelvic nerve injury in gynaecological surgery |  |  |  | ⭐ |  | 1 |
+| Vaginal physiology |  |  |  |  | ⭐ | 1 |
+
+### Chapter 5: GYNAECOLOGY - MENSTRUAL DISORDERS
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| PALM-COEIN classification of AUB | ⭐ |  |  |  |  | 2 |
+| Evaluation of primary amenorrhoea |  | ⭐ |  |  |  | 2 |
+| Secondary amenorrhoea |  | ⭐ |  |  |  | 1 |
+| Primary dysmenorrhoea |  |  |  |  | ⭐ | 1 |
+| Premenstrual syndrome - management |  |  |  | ⭐ |  | 1 |
+| Heavy menstrual bleeding - causes |  |  |  | ⭐ |  | 1 |
+| Congenital causes of primary amenorrhoea |  | ⭐ |  |  |  | 1 |
+| Endometrial ablation indications |  |  | ⭐ |  |  | 1 |
+| Pubertal menorrhagia - evaluation |  |  |  |  | ⭐ | 1 |
+
+### Chapter 6: GYNAECOLOGY - INFECTIONS
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Pelvic inflammatory disease - etiology/diagnosis | ⭐ | ⭐ |  |  | ⭐ | 4 |
+| Bacterial vaginosis - diagnosis | ⭐ |  |  |  |  | 2 |
+| Genital tuberculosis - clinical features |  | ⭐ |  |  |  | 1 |
+| Herpes simplex - suppressive therapy | ⭐ |  |  |  |  | 1 |
+| Condyloma acuminata |  |  |  | ⭐ |  | 1 |
+| Vaginal discharge syndromes |  |  |  | ⭐ |  | 1 |
+| Post-gonococcal urethritis |  |  |  |  |  | 1 |
+
+### Chapter 7: GYNAECOLOGY - NEOPLASMS
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Cervical intraepithelial neoplasia - management |  | ⭐ | ⭐ |  |  | 3 |
+| Ovarian tumors - epidemiology/types | ⭐ |  | ⭐ |  | ⭐ | 4 |
+| Endometrial carcinoma - prognosis/factors | ⭐ |  |  | ⭐ |  | 3 |
+| Gestational trophoblastic neoplasia |  | ⭐ |  |  |  | 1 |
+| Chemotherapy for GTD |  | ⭐ |  |  |  | 1 |
+| Sex cord stromal tumours of ovary |  | ⭐ |  |  |  | 1 |
+| Ovarian germ cell tumours |  |  | ⭐ |  |  | 1 |
+| Prophylactic oophorectomy indications |  |  | ⭐ |  |  | 1 |
+| Placental site trophoblastic tumour |  |  |  | ⭐ |  | 1 |
+| Uterine fibroid - indications for surgery | ⭐ |  |  |  | ⭐ | 2 |
+| Dermoid cyst of ovary | ⭐ |  |  |  |  | 1 |
+| Meigs' syndrome |  |  |  |  | ⭐ | 1 |
+| Risk reduction strategies for ovarian cancer |  |  | ⭐ |  |  | 1 |
+| CA 125 - clinical significance |  |  |  | ⭐ |  | 1 |
+| Screening for cervical cancer |  |  |  | ⭐ |  | 1 |
+
+### Chapter 8: GYNAECOLOGY - PROLAPSE
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| POP-Q system classification | ⭐ | ⭐ |  |  |  | 3 |
+| Surgical management of pelvic organ prolapse | ⭐ |  |  |  |  | 2 |
+| Uterovaginal prolapse |  |  |  |  | ⭐ | 2 |
+| Vesicovaginal fistula classification |  |  | ⭐ |  |  | 1 |
+| Vaginal cysts and prolapse |  |  | ⭐ |  | ⭐ | 2 |
+| Operations for uterine prolapse |  | ⭐ |  |  |  | 1 |
+| Uterine prolapse in pregnancy |  |  | ⭐ |  |  | 1 |
+| Surgical correction of uterine malposition |  |  | ⭐ |  |  | 1 |
+| Anatomical supports of uterus |  |  |  | ⭐ |  | 1 |
+| Stress urinary incontinence |  | ⭐ |  |  |  | 1 |
+| Uterine inversion differentials | ⭐ |  |  |  |  | 1 |
+| Vaginal cysts |  |  |  |  | ⭐ | 1 |
+
+### Chapter 9: FAMILY PLANNING
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Combined oral contraceptives - contraindications |  |  | ⭐ |  | ⭐ | 3 |
+| IUCD - indications/contraindications/complications |  | ⭐ | ⭐ | ⭐ | ⭐ | 5 |
+| Emergency contraception |  | ⭐ |  |  |  | 2 |
+| Long acting reversible contraception |  |  | ⭐ |  |  | 2 |
+| Female sterilization |  |  | ⭐ |  |  | 2 |
+| Centchroman (Chhaya) - mechanism |  |  | ⭐ |  | ⭐ | 3 |
+| National family planning methods |  | ⭐ |  |  |  | 1 |
+| Contraception with enzyme inducing drugs |  | ⭐ |  |  |  | 1 |
+| Hormonal intrauterine contraceptive devices |  | ⭐ |  |  |  | 1 |
+| PC & PNDT Act indications |  |  |  | ⭐ |  | 1 |
+| National AIDS Control Programme |  |  | ⭐ |  |  | 1 |
+| Prevention of mother-to-child transmission HIV |  |  | ⭐ |  |  | 1 |
+| Effectiveness of contraceptive methods |  |  |  | ⭐ |  | 1 |
+| Contraceptive failure rates |  |  |  |  | ⭐ | 1 |
+| National contraceptive basket |  |  |  |  | ⭐ | 1 |
+| Post-vasectomy contraception |  |  |  |  | ⭐ | 1 |
+| Tubal ligation techniques |  |  | ⭐ |  |  | 1 |
+| MTP indications |  |  |  | ⭐ |  | 1 |
+
+### Chapter 10: INFERTILITY & ENDOCRINOLOGY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Androgen insensitivity syndrome |  | ⭐ |  |  |  | 2 |
+| Hyperprolactinemia - clinical features |  |  |  | ⭐ |  | 2 |
+| Evaluation of ovulation |  |  |  |  | ⭐ | 2 |
+| Semen analysis - parameters |  |  |  |  | ⭐ | 2 |
+| Tuboplasty and fertility outcomes |  | ⭐ |  |  |  | 1 |
+| Assessment of ovarian reserve |  |  |  | ⭐ |  | 1 |
+| Obesity and infertility |  |  |  |  | ⭐ | 1 |
+| Genital tuberculosis and infertility |  |  | ⭐ |  |  | 1 |
+| Evaluation of tubal patency |  |  |  | ⭐ |  | 1 |
+| Endometrial biopsy and ovulation |  |  | ⭐ |  |  | 1 |
+| Evaluation of primary amenorrhoea |  | ⭐ |  |  |  | 1 |
+| Congenital uterine anomalies |  | ⭐ |  |  |  | 1 |
+| Precocious puberty - etiology |  |  |  |  | ⭐ | 1 |
+| Mullerian anomalies - surgical management |  |  |  | ⭐ |  | 1 |
+
+### Chapter 11: GYNAECOLOGICAL SURGERY & PROCEDURES
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Hysterosalpingography - applications | ⭐ |  |  |  |  | 2 |
+| Indications of endometrial sampling | ⭐ |  |  |  |  | 2 |
+| Ureteric injury in gynecologic surgery |  | ⭐ |  |  |  | 1 |
+| Clinical audit in obstetrics and gynaecology | ⭐ |  |  |  |  | 1 |
+| Ectopic pregnancy after sterilization | ⭐ |  |  |  |  | 1 |
+| Evaluation of post coital bleeding |  |  |  |  | ⭐ | 1 |
+| Maternal mortality causes |  | ⭐ |  |  |  | 1 |
+
+## SURGERY
+
+### Chapter 1: GENERAL SURGERY - WOUNDS, INFECTIONS, TUMOURS
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Wound healing - types/classification/complications | ⭐ |  | ⭐ | ⭐ | ⭐ | 5 |
+| Gas gangrene |  |  | ⭐ |  |  | 2 |
+| Pressure sores - sites/management | ⭐ |  |  | ⭐ |  | 3 |
+| Risk factors for surgical wound infection |  | ⭐ |  |  |  | 2 |
+| Principles of cancer screening | ⭐ |  |  |  |  | 2 |
+| Hereditary cancer syndromes |  | ⭐ |  |  | ⭐ | 3 |
+| Tumour growth kinetics |  |  | ⭐ |  |  | 1 |
+| Radiation induced malignancies |  | ⭐ |  |  |  | 1 |
+| BRCA-associated malignancies |  |  |  |  | ⭐ | 1 |
+| Soft tissue infections |  |  |  |  | ⭐ | 1 |
+| Mycetoma (Madura foot) |  |  |  | ⭐ |  | 1 |
+| Glomus tumour |  |  |  | ⭐ |  | 1 |
+| Epidermal cyst |  |  |  | ⭐ |  | 1 |
+| Carcinoid tumour |  |  |  |  | ⭐ | 1 |
+| Suturing materials and techniques | ⭐ |  |  |  |  | 1 |
+| Hypertrophic scars - management |  | ⭐ |  |  |  | 1 |
+
+### Chapter 2: GENERAL SURGERY - LYMPHATIC & BLOOD VESSELS
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Peripheral arterial disease and claudication | ⭐ | ⭐ |  |  |  | 3 |
+| Lymphoedema - clinical features/complications | ⭐ |  |  |  | ⭐ | 3 |
+| Thromboangiitis obliterans |  |  |  | ⭐ |  | 2 |
+| Peripheral vascular disorders - vasospastic | ⭐ |  |  |  |  | 1 |
+| Duplex ultrasound vascular anatomy |  |  | ⭐ |  | ⭐ | 2 |
+| Vascular lesions in children |  |  | ⭐ |  |  | 1 |
+| Klippel-Trenaunay syndrome |  |  | ⭐ |  |  | 1 |
+| Pressure sores and common sites | ⭐ |  |  |  |  | 1 |
+| Splenic artery aneurysm | ⭐ |  |  |  |  | 1 |
+
+### Chapter 3: GENERAL SURGERY - HEAD & NECK
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Thyroid nodules - red flag features |  | ⭐ |  |  |  | 2 |
+| Thyroid malignancies - papillary/clinical behavior |  |  |  | ⭐ | ⭐ | 3 |
+| Thyroglossal duct cyst/anomalies |  | ⭐ | ⭐ |  |  | 3 |
+| Oral premalignant lesions |  | ⭐ | ⭐ |  |  | 3 |
+| Tuberculous lymphadenitis |  |  | ⭐ |  |  | 2 |
+| Deep neck space infections |  |  |  |  | ⭐ | 2 |
+| Evaluation of hypercalcemia and primary hyperparathyroidism | ⭐ |  |  |  |  | 1 |
+| Juvenile recurrent parotitis |  |  |  | ⭐ |  | 1 |
+| Congenital neck swellings |  |  |  |  | ⭐ | 1 |
+| Tumor markers in thyroid cancer |  |  |  |  | ⭐ | 1 |
+| Parotitis - juvenile recurrent |  |  |  | ⭐ |  | 1 |
+
+### Chapter 4: GENERAL SURGERY - BREAST
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| TNM staging of carcinoma breast | ⭐ |  |  |  |  | 2 |
+| Triple assessment of breast lump |  |  |  | ⭐ |  | 2 |
+| Breast reconstruction techniques |  |  | ⭐ |  |  | 2 |
+| Long-term complications of breast cancer surgery |  |  |  |  | ⭐ | 2 |
+| Surgical anatomy of axilla in mastectomy |  |  |  | ⭐ |  | 1 |
+| Nipple discharge |  |  |  |  | ⭐ | 1 |
+| BRCA-associated malignancies |  |  |  |  | ⭐ | 1 |
+
+### Chapter 5: ALIMENTARY TRACT - OESOPHAGUS & STOMACH
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Oesophageal perforation |  | ⭐ | ⭐ |  |  | 3 |
+| Gastric outlet obstruction | ⭐ |  |  | ⭐ |  | 3 |
+| Zollinger-Ellison syndrome |  |  | ⭐ | ⭐ |  | 3 |
+| Diagnosis of oesophageal motility disorders | ⭐ |  |  |  |  | 2 |
+| Peptic ulcer disease |  |  |  | ⭐ | ⭐ | 3 |
+| Dumping syndrome | ⭐ |  |  |  |  | 2 |
+| Barrett's oesophagus - premalignant |  | ⭐ |  |  |  | 1 |
+| Oesophageal adenocarcinoma - etiology | ⭐ |  |  |  |  | 1 |
+| Plummer-Vinson syndrome | ⭐ |  |  |  |  | 1 |
+| Achalasia cardia - management |  |  |  | ⭐ |  | 1 |
+| GERD - diagnosis |  |  |  | ⭐ |  | 1 |
+| GIST - epidemiology/pathology |  |  |  | ⭐ |  | 1 |
+| Gastric submucosal tumors |  |  |  |  | ⭐ | 1 |
+| Bezoars and GI obstruction |  |  | ⭐ |  |  | 1 |
+| Preoperative staging of gastro-oesophageal malignancy |  |  |  |  | ⭐ | 1 |
+
+### Chapter 6: ALIMENTARY TRACT - INTESTINES, ANUS, DEVELOPMENTAL
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Crohn's disease vs ulcerative colitis |  |  | ⭐ |  |  | 2 |
+| Extraintestinal manifestations of Crohn's disease |  |  |  | ⭐ | ⭐ | 3 |
+| Familial adenomatous polyposis |  |  | ⭐ |  | ⭐ | 3 |
+| Meckel's diverticulum |  |  | ⭐ |  |  | 2 |
+| Colorectal carcinoma - presentation/diagnosis |  |  | ⭐ |  |  | 2 |
+| Acute appendicitis |  |  |  |  | ⭐ | 2 |
+| Appendix tumors | ⭐ |  |  |  |  | 1 |
+| Ogilvie's syndrome |  |  |  |  | ⭐ | 1 |
+| Assessment of bowel viability |  |  |  | ⭐ |  | 1 |
+| Mesenteric cyst |  | ⭐ |  |  |  | 1 |
+| Rectal and anal canal blood supply |  |  | ⭐ |  |  | 1 |
+| Acute abdominal emergencies in infants |  |  |  |  | ⭐ | 1 |
+| Anorectal malformations |  |  |  |  |  | 1 |
+
+### Chapter 7: LIVER, BILE, PANCREAS
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Acute pancreatitis - complications/severity |  | ⭐ |  | ⭐ |  | 3 |
+| Budd-Chiari syndrome | ⭐ |  |  | ⭐ |  | 3 |
+| Management of variceal bleeding |  |  | ⭐ |  |  | 2 |
+| Pancreatic carcinoma - risk factors |  | ⭐ |  |  |  | 2 |
+| Gall bladder - physiology/congenital anomalies | ⭐ |  |  |  |  | 2 |
+| Hepatic adenomas |  |  |  |  | ⭐ | 2 |
+| Benign liver tumors |  |  | ⭐ |  |  | 2 |
+| Congenital anomalies of gall bladder | ⭐ |  |  |  |  | 1 |
+| Gall bladder physiology | ⭐ |  |  |  |  | 1 |
+| Complications of hepatic trauma |  | ⭐ |  |  |  | 1 |
+| MELD score |  |  |  |  | ⭐ | 1 |
+| Pancreatic pseudocyst - management |  |  |  |  | ⭐ | 1 |
+| Ectopic pancreas |  |  |  |  | ⭐ | 1 |
+| Annular pancreas - embryology/management |  |  |  | ⭐ |  | 1 |
+| Liver trauma management |  |  |  | ⭐ |  | 1 |
+| Ranson criteria |  |  |  | ⭐ |  | 1 |
+| Cystic fibrosis (pancreatic) |  |  |  | ⭐ |  | 1 |
+| Pringle manoeuvre |  |  |  |  | ⭐ | 1 |
+| Surgical anatomy of liver |  |  |  |  | ⭐ | 1 |
+| Ascites classification |  |  | ⭐ |  |  | 1 |
+
+### Chapter 8: SPLEEN & PERITONEUM
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Splenomegaly - causes |  | ⭐ |  |  |  | 2 |
+| Functions of spleen |  |  | ⭐ | ⭐ |  | 3 |
+| Indications of splenectomy |  |  |  |  | ⭐ | 2 |
+| Clinical examination of spleen |  |  | ⭐ |  |  | 2 |
+| Peritoneal metastasis patterns |  |  |  | ⭐ |  | 2 |
+| Felty's syndrome |  |  |  | ⭐ |  | 1 |
+| Abdominal cystic swellings |  |  |  |  | ⭐ | 1 |
+
+### Chapter 9: ABDOMINAL WALL & HERNIAS
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Inguinal hernia - pediatric/repair techniques | ⭐ |  |  | ⭐ |  | 3 |
+| Umbilical hernia in adults |  | ⭐ |  |  |  | 2 |
+| Complicated hernias |  |  |  |  | ⭐ | 2 |
+| Types of abdominal wall hernia |  |  |  | ⭐ |  | 2 |
+| Incisional hernia - risk factors |  |  |  | ⭐ |  | 1 |
+| Surgical repair of hernias |  |  |  |  | ⭐ | 1 |
+| Hypospadias anatomy | ⭐ |  |  |  |  | 1 |
+
+### Chapter 10: ABDOMINAL INJURIES
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Blunt abdominal trauma |  |  | ⭐ |  |  | 2 |
+| Abdominal injuries - complications |  |  |  |  |  | 1 |
+| Damage control surgery |  | ⭐ |  |  |  | 2 |
+| Trauma ultrasound (eFAST) |  |  | ⭐ |  |  | 1 |
+| Postoperative abdominal complications |  |  | ⭐ |  |  | 1 |
+
+### Chapter 11: UROLOGICAL SURGERY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Urinary calculi - management |  | ⭐ |  |  |  | 2 |
+| Renal cell carcinoma |  | ⭐ |  |  |  | 2 |
+| Bilharzial cystitis | ⭐ |  |  |  |  | 2 |
+| Autosomal dominant polycystic kidney disease |  | ⭐ |  |  |  | 2 |
+| Hydrocele - pediatric/management |  |  | ⭐ |  |  | 2 |
+| Varicocele - clinical features/management |  |  | ⭐ |  |  | 2 |
+| Urinary fistulae |  |  | ⭐ |  |  | 1 |
+| Retroperitoneal fibrosis |  |  |  | ⭐ |  | 1 |
+| Pelvi-ureteric junction obstruction surgery |  |  |  | ⭐ |  | 1 |
+| Ectopic ureter |  |  |  |  | ⭐ | 1 |
+| Hypospadias anatomy | ⭐ |  |  |  |  | 1 |
+
+### Chapter 12: NEURO SURGERY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Cauda equina syndrome | ⭐ |  | ⭐ |  |  | 3 |
+| Brain tumours - clinical presentation |  | ⭐ |  | ⭐ |  | 3 |
+| Head injury - classification/primary survey | ⭐ |  | ⭐ | ⭐ |  | 4 |
+| Hydrocephalus - types/causes | ⭐ |  |  |  |  | 2 |
+| Basilar skull fracture - signs |  | ⭐ |  |  | ⭐ | 3 |
+| Brain abscess - etiology/presentation | ⭐ |  |  |  |  | 1 |
+| Craniosynostosis | ⭐ |  |  |  |  | 1 |
+| Neurocutaneous syndromes and brain tumours |  | ⭐ |  |  |  | 1 |
+| Normal pressure hydrocephalus |  |  | ⭐ |  |  | 1 |
+| Causes of hypotension in head injury |  |  |  | ⭐ |  | 1 |
+| ICU targets in severe head injury |  |  |  |  | ⭐ | 1 |
+
+### Chapter 13: OTORHINOLARYNGOLOGY (ENT)
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Functions of larynx |  |  | ⭐ |  |  | 2 |
+| Acute suppurative otitis media - microbiology |  |  |  |  | ⭐ | 1 |
+| Deep neck space infections |  |  |  |  | ⭐ | 1 |
+
+### Chapter 14: THORACIC SURGERY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Lung cancer - pathology/management |  |  |  | ⭐ |  | 2 |
+| Tension pneumothorax - management |  |  |  |  | ⭐ | 2 |
+| Pericardial tamponade |  |  | ⭐ |  |  | 2 |
+| Congenital diaphragmatic hernias |  | ⭐ |  |  |  | 1 |
+| Thymoma staging |  |  | ⭐ |  |  | 1 |
+
+### Chapter 15: ORTHOPEDIC SURGERY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Fracture management - principles |  | ⭐ |  |  |  | 2 |
+| Cervical spine fractures |  | ⭐ |  |  |  | 2 |
+| Bone metastasis | ⭐ |  |  |  |  | 2 |
+| Rheumatoid arthritis (orthopedic aspects) |  | ⭐ |  |  |  | 1 |
+| Adhesive capsulitis |  | ⭐ |  |  |  | 1 |
+| Wrist swellings |  | ⭐ |  |  |  | 1 |
+| Upper motor neuron signs |  | ⭐ |  |  |  | 1 |
+
+### Chapter 16: OPHTHALMOLOGY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Causes of acute visual loss |  | ⭐ |  |  |  | 2 |
+| Visual pathway lesions | ⭐ |  |  |  |  | 1 |
+
+### Chapter 17: ANAESTHESIOLOGY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Local anaesthetics - pharmacology | ⭐ |  | ⭐ |  |  | 3 |
+| Neuromuscular blocking agents | ⭐ |  |  |  |  | 2 |
+| ASA physical status classification |  | ⭐ |  |  |  | 2 |
+| Airway assessment | ⭐ |  |  |  |  | 1 |
+| Adverse effects of anaesthetic agents |  |  |  |  | ⭐ | 1 |
+
+### Chapter 18: TRAUMATOLOGY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| ABCDE approach in trauma care | ⭐ |  |  |  |  | 2 |
+| Trauma triage colour coding |  |  |  | ⭐ |  | 2 |
+| Damage control surgery |  | ⭐ |  |  |  | 2 |
+| SIRS - definition/systemic inflammatory response |  | ⭐ |  |  |  | 2 |
+| Shock - types/hemodynamics/monitoring | ⭐ | ⭐ |  |  |  | 3 |
+| Primary survey in head injury | ⭐ |  |  |  |  | 1 |
+| Basilar skull fracture signs |  | ⭐ |  |  |  | 1 |
+| Cervical spine fractures |  | ⭐ |  |  |  | 1 |
+| Pressure sores and common sites | ⭐ |  |  |  |  | 1 |
+
+### Chapter 19: SHOCK PATHOPHYSIOLOGY & MANAGEMENT
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Shock assessment and ABG interpretation | ⭐ | ⭐ |  |  |  | 3 |
+| Types of shock and hemodynamics |  | ⭐ |  |  |  | 2 |
+| Monitoring of shock and resuscitation |  | ⭐ |  |  |  | 1 |
+| Blood substitutes and artificial oxygen carriers |  |  | ⭐ |  |  | 1 |
+
+### Chapter 20: FLUID & ELECTROLYTE MANAGEMENT
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Daily electrolyte requirements |  | ⭐ |  |  |  | 2 |
+| Composition of intravenous crystalloids |  |  |  |  | ⭐ | 2 |
+| Intestinal resection and fluid electrolyte balance | ⭐ |  |  |  |  | 1 |
+| Metabolic derangements in gastric outlet obstruction |  |  |  | ⭐ |  | 1 |
+
+### Chapter 21: PRE-OPERATIVE & POST-OPERATIVE CARE
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Postoperative complications |  |  |  |  | ⭐ | 2 |
+| Surgical safety checklist |  | ⭐ |  |  |  | 2 |
+| Preoperative assessment |  |  |  | ⭐ |  | 2 |
+| Complications of enteral nutrition |  |  | ⭐ |  |  | 1 |
+| Indications for blood transfusion |  |  |  |  | ⭐ | 1 |
+
+### Chapter 22: MEDICOLEGAL & ETHICAL ISSUES
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Medical ethics and consent in emergencies | ⭐ |  |  |  |  | 2 |
+| Informed consent in surgery | ⭐ |  |  |  |  | 2 |
+| Research ethics and publication bias | ⭐ |  |  |  |  | 1 |
+| Surgical safety checklist |  | ⭐ |  |  |  | 1 |
+
+### Chapter 23: PRINCIPLES OF MINIMAL ACCESS SURGERY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Principles of minimal access surgery | ⭐ |  |  |  |  | 2 |
+| Surgical repair of hernias |  |  |  |  | ⭐ | 1 |
+
+### Chapter 24: SURGICAL PROCEDURES & TECHNIQUES
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Pilonidal sinus - surgical management | ⭐ |  |  |  |  | 2 |
+| Suturing materials and techniques | ⭐ |  |  |  |  | 1 |
+| Wound classification and characteristics |  |  |  |  | ⭐ | 1 |
+
+### Chapter 25: VASCULAR SURGERY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Peripheral vascular disorders | ⭐ | ⭐ |  |  |  | 3 |
+| Vascular imaging with duplex ultrasound |  |  |  | ⭐ |  | 2 |
+| Thromboangiitis obliterans |  |  |  | ⭐ |  | 1 |
+| Lymphoedema - clinical features/complications | ⭐ |  |  |  | ⭐ | 2 |
+
+## PREVENTIVE & SOCIAL MEDICINE
+
+### Chapter 1: CONCEPT OF HEALTH, DISEASE AND PREVENTIVE MEDICINE
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Concepts of health and disease | ⭐ | ⭐ |  | ⭐ | ⭐ | 4 |
+| Concepts of disease control, elimination and eradication | ⭐ | ⭐ |  |  | ⭐ | 3 |
+| Levels of prevention |  | ⭐ |  |  |  | 1 |
+| Physical Quality of Life Index and Human Development Index | ⭐ |  |  | ⭐ | ⭐ | 3 |
+| Concepts of health promotion and prevention |  |  | ⭐ |  |  | 1 |
+
+### Chapter 2: HEALTH ADMINISTRATION AND PLANNING
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Health planning and planning cycle | ⭐ | ⭐ |  |  |  | 2 |
+| Management by objectives and health services management | ⭐ |  |  |  | ⭐ | 2 |
+| Health planning terminology |  | ⭐ |  |  |  | 1 |
+| Health systems research and management techniques |  |  | ⭐ |  |  | 1 |
+
+### Chapter 3: GENERAL EPIDEMIOLOGY
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Epidemiological study designs | ⭐ |  | ⭐ |  | ⭐ | 3 |
+| Cross-over study design limitations | ⭐ |  | ⭐ |  | ⭐ | 3 |
+| Sensitivity and specificity of screening tests | ⭐ | ⭐ |  | ⭐ | ⭐ | 4 |
+| Principles of screening | ⭐ | ⭐ |  | ⭐ | ⭐ | 4 |
+| Measures of disease frequency and association | ⭐ | ⭐ |  | ⭐ | ⭐ | 4 |
+| Epidemic investigation and outbreak epidemiology | ⭐ |  |  |  | ⭐ | 2 |
+
+### Chapter 4: DEMOGRAPHY AND HEALTH STATISTICS
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Vital statistics and civil registration | ⭐ | ⭐ | ⭐ |  |  | 3 |
+| Sample Registration System and vital events |  | ⭐ | ⭐ |  |  | 2 |
+| Hospital statistics and bias | ⭐ |  |  |  |  | 1 |
+| Measures of dispersion and mean calculation |  |  | ⭐ | ⭐ | ⭐ | 3 |
+| Correlation and statistical interpretation |  |  | ⭐ | ⭐ | ⭐ | 3 |
+
+### Chapter 5: COMMUNICABLE DISEASES
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| National Immunization Schedule and immunization | ⭐ | ⭐ | ⭐ | ⭐ | ⭐ | 5 |
+| Open vial policy, cold chain and vaccine logistics | ⭐ | ⭐ |  |  |  | 2 |
+| Vaccine interactions and contraindications |  |  | ⭐ |  | ⭐ | 2 |
+| Vector-borne diseases - dengue, malaria and chikungunya | ⭐ | ⭐ | ⭐ |  |  | 3 |
+| Rabies exposure management and post-exposure prophylaxis | ⭐ | ⭐ |  |  | ⭐ | 3 |
+| Malaria elimination targets and programme strategies |  |  |  | ⭐ |  | 1 |
+
+### Chapter 6: ENVIRONMENTAL HEALTH
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Water purification methods and water quality assessment | ⭐ | ⭐ | ⭐ |  |  | 3 |
+| Defluoridation of drinking water |  |  | ⭐ |  |  | 1 |
+| Solid waste and excreta disposal | ⭐ | ⭐ |  | ⭐ |  | 3 |
+| Biomedical waste management rules | ⭐ | ⭐ |  | ⭐ |  | 3 |
+| Noise pollution, illumination standards and thermal comfort | ⭐ |  |  |  |  | 1 |
+| Air pollution and health impact |  |  | ⭐ |  |  | 1 |
+
+### Chapter 7: NUTRITION AND HEALTH
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Protein quality, biological value and limiting amino acids | ⭐ | ⭐ | ⭐ | ⭐ |  | 4 |
+| Essential amino acids and dietary protein requirements | ⭐ | ⭐ | ⭐ | ⭐ |  | 4 |
+| Vitamin A deficiency manifestations and supplementation | ⭐ |  |  |  | ⭐ | 2 |
+| Iodine deficiency disorders | ⭐ | ⭐ |  |  |  | 2 |
+| Stages of iron deficiency and anemia prevention | ⭐ | ⭐ |  |  | ⭐ | 3 |
+| Dietary energy sources, dietary fibre and composition of different milks | ⭐ | ⭐ |  |  |  | 2 |
+
+### Chapter 8: NON-COMMUNICABLE DISEASES
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Coronary heart disease and risk factor epidemiology | ⭐ |  | ⭐ | ⭐ | ⭐ | 4 |
+| Smoking and pathophysiology of coronary heart disease |  |  | ⭐ |  | ⭐ | 2 |
+| Obesity indices and risk of type 2 diabetes | ⭐ | ⭐ |  | ⭐ |  | 3 |
+| Screening for diabetes mellitus |  | ⭐ |  |  |  | 1 |
+
+### Chapter 9: OCCUPATIONAL HEALTH
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Occupational lung diseases and pneumoconiosis | ⭐ | ⭐ | ⭐ | ⭐ |  | 4 |
+| Asbestos exposure and mesothelioma | ⭐ | ⭐ | ⭐ | ⭐ |  | 4 |
+| Employees State Insurance Act and sickness benefit provisions | ⭐ |  | ⭐ |  | ⭐ | 3 |
+
+### Chapter 10: MATERNAL AND CHILD HEALTH
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| Maternal mortality definitions and causes | ⭐ | ⭐ |  | ⭐ | ⭐ | 4 |
+| Determinants of neonatal mortality and infant mortality rate | ⭐ | ⭐ |  | ⭐ | ⭐ | 4 |
+| GOBI strategy for child health | ⭐ |  |  | ⭐ |  | 2 |
+| Antenatal screening tests and maternal health indicators | ⭐ |  |  |  |  | 1 |
+
+### Chapter 11: NATIONAL PROGRAMMES
+| Topic | 2025 | 2024 | 2023 | 2022 | 2021 | Frequency |
+|-------|:----:|:----:|:----:|:----:|:----:|:---------:|
+| National AIDS Control Programme targets and services | ⭐ |  | ⭐ |  |  | 2 |
+| National Malaria Elimination Programme |  |  |  | ⭐ |  | 1 |
+| National Vector Borne Disease Control Programme | ⭐ |  |  |  |  | 1 |
+`;
+
+    const UPSC_PYTS_SUBJECT_CONFIG = {
+      'GENERAL MEDICINE': { marks: 96, meta: 'High-yield medicine topics mapped chapter-wise with repeated CMS years.' },
+      'PAEDIATRICS': { marks: 24, meta: 'Child health, newborn care, developmental milestones, emergencies and immunization.' },
+      'OBSTETRICS & GYNAECOLOGY': { marks: 40, meta: 'Antenatal care, labour, postnatal care, menstrual disorders, infections, neoplasms and family planning.' },
+      'SURGERY': { marks: 40, meta: 'General surgery, trauma, head and neck, breast, abdomen, urology, neuro, orthopaedics and anaesthesia.' },
+      'PREVENTIVE & SOCIAL MEDICINE': { marks: 40, meta: 'Community medicine, epidemiology, biostatistics, maternal-child health, nutrition and environmental health.' }
+    };
+
+    function buildUpscPytsTopics() {
+      const lines = UPSC_PYTS_MARKDOWN.split(/\r?\n/);
+      const subjects = [];
+      let currentSubject = null;
+      let currentChapter = null;
+      const yearOrder = ['2025', '2024', '2023', '2022', '2021'];
+
+      const pushSubject = () => {
+        if (currentSubject) {
+          subjects.push(currentSubject);
+        }
+      };
+
+      lines.forEach(line => {
+        const trimmed = line.trim();
+        if (!trimmed) return;
+
+        if (trimmed.startsWith('## ')) {
+          pushSubject();
+          const heading = trimmed.replace(/^##\s+/, '').trim();
+          const key = heading.toUpperCase();
+          currentSubject = {
+            subject: heading,
+            marks: UPSC_PYTS_SUBJECT_CONFIG[key]?.marks || 40,
+            meta: UPSC_PYTS_SUBJECT_CONFIG[key]?.meta || 'CMS high-yield topics compiled chapter-wise.',
+            chapters: []
+          };
+          currentChapter = null;
+          return;
+        }
+
+        if (trimmed.startsWith('### ')) {
+          if (!currentSubject) return;
+          const chapterTitle = trimmed.replace(/^###\s+/, '').trim();
+          currentChapter = { title: chapterTitle, topics: [] };
+          currentSubject.chapters.push(currentChapter);
+          return;
+        }
+
+        if (!currentSubject || !currentChapter) return;
+
+        if (!trimmed.startsWith('|') || trimmed.includes('---') || trimmed.includes('Topic') || trimmed.startsWith('|-------')) return;
+
+        const cells = trimmed.split('|').slice(1, -1).map(cell => cell.trim());
+        if (cells.length < 2) return;
+        const topicText = cells[0].replace(/\*\*/g, '').trim();
+        if (!topicText || topicText.toLowerCase() === 'topic') return;
+
+        const frequency = parseInt((cells[cells.length - 1] || '').replace(/\*\*/g, '').trim(), 10) || 1;
+        const years = [];
+        yearOrder.forEach((year, index) => {
+          if (cells[index + 1] === '⭐') years.push(year);
+        });
+
+        currentChapter.topics.push({ text: topicText, years, frequency });
+      });
+
+      pushSubject();
+      return subjects.filter(Boolean);
+    }
+
+    const UPSC_PYTS_TOPICS = buildUpscPytsTopics();
+    let upscPytsSelectedSubject = 'ALL';
+
+    function getUpscPytsStateFromStorage() {
+      try {
+        const stateTopics = state && state.upscCmsPyts && state.upscCmsPyts.topics;
+        if (stateTopics && typeof stateTopics === 'object' && Object.keys(stateTopics).length > 0) {
+          return stateTopics;
+        }
+      } catch (e) {}
+
+      const saved = localStorage.getItem('upsc-pyts-state');
+      if (!saved) return {};
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function persistUpscPytsState(payload, selectedSubject = upscPytsSelectedSubject) {
+      const nextPayload = payload || {};
+      localStorage.setItem('upsc-pyts-state', JSON.stringify(nextPayload));
+      if (state) {
+        state.upscCmsPyts = {
+          ...(state.upscCmsPyts || {}),
+          selectedSubject: selectedSubject || 'ALL',
+          topics: nextPayload
+        };
+      }
+    }
+
+    function getUpscPytsStatePayload() {
+      return {
+        selectedSubject: upscPytsSelectedSubject || 'ALL',
+        topics: getUpscPytsStateFromStorage()
+      };
+    }
+
+    function renderUpscPytsSubjectFilters() {
+      const container = document.getElementById('upsc-pyts-subject-filters');
+      if (!container) return;
+
+      container.innerHTML = `
+        <button class="upsc-filter-pill ${upscPytsSelectedSubject === 'ALL' ? 'active' : ''}" onclick="filterUpscPytsSubject('ALL')">All subjects</button>
+        ${UPSC_PYTS_TOPICS.map(group => `
+          <button class="upsc-filter-pill ${upscPytsSelectedSubject === group.subject.toUpperCase() ? 'active' : ''}" onclick="filterUpscPytsSubject('${group.subject.toUpperCase()}')">${group.subject}</button>
+        `).join('')}
+      `;
+    }
+
+    function filterUpscPytsSubject(subject) {
+      upscPytsSelectedSubject = subject;
+      persistUpscPytsState(getUpscPytsStateFromStorage(), subject);
+      saveData();
+      initUpscPytsPage();
+    }
+
+    function renderUpscPytsContent() {
+      const container = document.getElementById('upsc-pyts-list');
+      if (!container) return;
+
+      const visibleSubjects = upscPytsSelectedSubject === 'ALL'
+        ? UPSC_PYTS_TOPICS
+        : UPSC_PYTS_TOPICS.filter(group => group.subject.toUpperCase() === upscPytsSelectedSubject);
+
+      container.innerHTML = visibleSubjects.map(group => `
+        <details class="upsc-subject-block" ${upscPytsSelectedSubject !== 'ALL' ? 'open' : ''}>
+          <summary class="upsc-subject-title">
+            <span>${group.subject}</span>
+            <span class="upsc-subject-badge">${group.marks} marks</span>
+          </summary>
+          <div class="upsc-subject-meta">${group.meta}</div>
+          <div class="upsc-subject-body">
+            ${group.chapters.map(chapter => `
+              <details class="upsc-chapter-block" open>
+                <summary class="upsc-chapter-title">
+                  <span>${chapter.title}</span>
+                  <span class="upsc-chapter-count">${chapter.topics.length} topics</span>
+                </summary>
+                <div class="upsc-topic-list">
+                  ${chapter.topics.map(topic => `
+                    <div class="upsc-topic-row">
+                      <div class="upsc-topic-cell">
+                        <input type="checkbox">
+                        <div class="upsc-topic-text">${topic.text}</div>
+                      </div>
+                      <div class="upsc-year-tags">
+                        ${topic.years.map(year => `<span class="upsc-year-pill active">${year}</span>`).join('')}
+                      </div>
+                      <div class="upsc-revision-block">
+                        <label><input type="checkbox"> R1</label>
+                        <label><input type="checkbox"> R2</label>
+                      </div>
+                      <div class="upsc-freq-pill">Freq ${topic.frequency}</div>
+                    </div>
+                  `).join('')}
+                </div>
+              </details>
+            `).join('')}
+          </div>
+        </details>
+      `).join('');
+    }
+
+    function initUpscPytsPage() {
+      const page = document.getElementById('page-upsc-cms-pyts');
+      if (!page) return;
+
+      if (state && state.upscCmsPyts && state.upscCmsPyts.selectedSubject) {
+        upscPytsSelectedSubject = state.upscCmsPyts.selectedSubject;
+      }
+
+      renderUpscPytsSubjectFilters();
+      renderUpscPytsContent();
+
+      const rows = Array.from(page.querySelectorAll('.upsc-topic-row'));
+      const savedState = getUpscPytsStateFromStorage();
+
+      rows.forEach((row, index) => {
+        if (row.dataset.bound === '1') return;
+        const topicCb = row.querySelector('.upsc-topic-cell input[type="checkbox"]');
+        const revisionBoxes = Array.from(row.querySelectorAll('.upsc-revision-block input[type="checkbox"]'));
+        if (!topicCb) return;
+
+        const key = `topic-${index + 1}`;
+        const savedRow = savedState[key] || {};
+        topicCb.checked = !!savedRow.topic;
+        revisionBoxes.forEach((box, boxIndex) => {
+          box.checked = !!(savedRow.revisions && savedRow.revisions[boxIndex]);
+        });
+
+        row.dataset.topicKey = key;
+        row.dataset.topicText = row.textContent.toLowerCase();
+        row.dataset.bound = '1';
+
+        const applyState = () => {
+          saveUpcsPytsState();
+          updateUpcsPytsProgress();
+        };
+
+        topicCb.onchange = applyState;
+        revisionBoxes.forEach(box => box.onchange = applyState);
+      });
+
+      updateUpcsPytsProgress();
+    }
+
+    function saveUpcsPytsState() {
+      const page = document.getElementById('page-upsc-cms-pyts');
+      if (!page) return;
+
+      const payload = {};
+      const rows = Array.from(page.querySelectorAll('.upsc-topic-row'));
+      rows.forEach((row, index) => {
+        const topicCb = row.querySelector('.upsc-topic-cell input[type="checkbox"]');
+        const revisionBoxes = Array.from(row.querySelectorAll('.upsc-revision-block input[type="checkbox"]'));
+        if (!topicCb) return;
+        payload[`topic-${index + 1}`] = {
+          topic: !!topicCb.checked,
+          revisions: revisionBoxes.map(box => !!box.checked)
+        };
+      });
+      persistUpscPytsState(payload, upscPytsSelectedSubject);
+      saveData();
+    }
+
+    function updateUpcsPytsProgress() {
+      const page = document.getElementById('page-upsc-cms-pyts');
+      if (!page) return;
+    }
+
+    function markAllUpcsRevised() {
+      const page = document.getElementById('page-upsc-cms-pyts');
+      if (!page) return;
+
+      const rows = Array.from(page.querySelectorAll('.upsc-topic-row'));
+      rows.forEach(row => {
+        Array.from(row.querySelectorAll('.upsc-revision-block input[type="checkbox"]')).forEach(box => {
+          box.checked = true;
+        });
+      });
+      saveUpcsPytsState();
+      updateUpcsPytsProgress();
+      showToast('All topics marked as revised.');
     }
 
     function toggleSidebar(forceClose = false) {
