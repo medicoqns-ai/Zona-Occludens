@@ -1256,7 +1256,7 @@
               <div class="form-group"><label class="form-label">Exam Format</label>
                 <select class="form-control" id="te-format" onchange="handleFormatChange()">
                   <option value="NEET PG">NEET PG (+4/-1)</option><option value="INICET">INICET (+1/-0.33)</option>
-                  <option value="UPSC CMS">UPSC CMS (Dual Paper)</option><option value="FMGE">FMGE (300Qs, No Neg)</option>
+                  <option value="UPSC CMS">UPSC CMS (Dual Paper)</option><option value="FMGE">FMGE </option>
                 </select>
               </div>
               <div class="form-group"><label class="form-label">Test Type</label><select class="form-control" id="te-type" onchange="handleTestTypeChange()"><option value="GT">Grand Test</option><option value="Mock">Mock Test</option><option value="SWT">Subject-Wise</option></select></div>
@@ -1276,7 +1276,7 @@
             <!-- Standard Entry -->
             <div id="standard-entry">
               <div class="grid-4">
-                <div class="form-group"><label class="form-label text-center">Total Qs</label><input type="number" class="form-control" id="te-total" value="200" oninput="calcPreview()" style="font-size:22px; font-family:var(--font-mono); font-weight:700; text-align:center; padding:10px;"></div>
+                <div class="form-group"><label class="form-label text-center">Total Qs</label><input type="number" class="form-control" id="te-total" value="180" oninput="calcPreview()" style="font-size:22px; font-family:var(--font-mono); font-weight:700; text-align:center; padding:10px;"></div>
                 <div class="form-group"><label class="form-label text-center">Attempted</label><input type="number" class="form-control" id="te-attempt" value="0" oninput="calcPreview()" style="font-size:22px; font-family:var(--font-mono); font-weight:700; text-align:center; padding:10px; color:var(--blue);"></div>
                 <div class="form-group"><label class="form-label text-center text-green-500">Correct</label><input type="number" class="form-control" id="te-correct" value="0" oninput="calcPreview()" style="font-size:22px; font-family:var(--font-mono); font-weight:700; text-align:center; padding:10px; color:var(--green); border-color:rgba(16,185,129,0.2);"></div>
                 <div class="form-group"><label class="form-label text-center text-red-500">Wrong</label><input type="number" class="form-control" id="te-wrong" value="0" oninput="calcPreview()" style="font-size:22px; font-family:var(--font-mono); font-weight:700; text-align:center; padding:10px; color:var(--red); border-color:rgba(239,68,68,0.2);"></div>
@@ -4437,17 +4437,27 @@ if (ctxT) {
     }
 
     function handleFormatChange() {
-      const f = document.getElementById('te-format').value;
-      const std = document.getElementById('standard-entry');
-      const upsc = document.getElementById('upsc-entry');
-      const fmge = document.getElementById('fmge-entry');
-      
-      std.style.display = 'none'; upsc.style.display = 'none'; fmge.style.display = 'none';
-      if (f === 'UPSC CMS') { upsc.style.display = 'block'; } 
-      else if (f === 'FMGE') { fmge.style.display = 'block'; }
-      else { std.style.display = 'block'; if(!document.getElementById('te-total').value) document.getElementById('te-total').value = '200'; }
-      calcPreview();
+  const f = document.getElementById('te-format').value;
+  const std = document.getElementById('standard-entry');
+  const upsc = document.getElementById('upsc-entry');
+  const fmge = document.getElementById('fmge-entry');
+  
+  std.style.display = 'none'; upsc.style.display = 'none'; fmge.style.display = 'none';
+  if (f === 'UPSC CMS') { upsc.style.display = 'block'; } 
+  else if (f === 'FMGE') { fmge.style.display = 'block'; }
+  else { 
+    std.style.display = 'block'; 
+    const totalInput = document.getElementById('te-total');
+    if(!totalInput.value) {
+      if(f === 'NEET PG') {
+        totalInput.value = '180';  // NEET PG now has 180 questions
+      } else {
+        totalInput.value = '200';  // INICET still uses 200
+      }
     }
+  }
+  calcPreview();
+}
 
     function handleTestTypeChange() {
       const t = document.getElementById('te-type').value; const sw = document.getElementById('te-subj-wrapper');
